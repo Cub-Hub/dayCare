@@ -1,26 +1,38 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
+import ParentChildren from "./widgets/tables/ParentChildren";
+import { ParentCheckin } from "./widgets/tiles/ParentCheckin";
+import { ParentNotifications } from "./widgets/tiles/ParentNotifications";
+import { ParentBill } from "./widgets/tiles/ParentBill";
+import Tile1 from "./widgets/tiles/tile1";
+import TableWidget from "./widgets/tables/TableWidget";
+import TableWidget3 from "./widgets/tables/ParentChildren";
 
 /**
  * COMPONENT
  */
-export const Home = props => {
-  const {username} = props
+export const Home = (props) => {
+  const { username } = props;
+  const className = "card-stretch mb-5 mb-xxl-8";
+  const innerPadding = "";
 
   return (
-    <div>
-      <h3>Welcome, {username}</h3>
+    <div className="row g-0 g-xl-5 g-xxl-8">
+      <ParentCheckin />
+      <ParentNotifications />
+      <ParentBill />
+      <ParentChildren/>
     </div>
-  )
-}
+  );
+};
 
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    username: state.auth.username
-  }
-}
+    username: state.auth.username,
+  };
+};
 
-export default connect(mapState)(Home)
+export default connect(mapState)(Home);
