@@ -4,7 +4,11 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import EmployeeLanding from './components/employee/EmployeeLanding';
 import Home from './components/Home';
-import { me } from './store'
+
+import Calendar from './components/Calendar';
+import {me} from './store'
+
+
 
 /**
  * COMPONENT
@@ -20,15 +24,18 @@ class Routes extends Component {
     return (
       <div>
         {isLoggedIn ? (
+
           userType < 3 ?
             <Switch>
               <Route path="/home" component={EmployeeLanding} />
               <Redirect to="/home" />
+              <Route path="/calendar" component={Calendar} />
             </Switch>
             :
             <Switch>
               <Route path="/home" component={Home} />
               <Redirect to="/home" />
+              <Route path="/calendar" component={Calendar} />
             </Switch>
         ) : (
           <Switch>
