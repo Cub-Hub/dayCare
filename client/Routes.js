@@ -28,14 +28,14 @@ class Routes extends Component {
           userType < 3 ?
             <Switch>
               <Route path="/home" component={EmployeeLanding} />
-              <Redirect to="/home" />
               <Route path="/calendar" component={Calendar} />
+              <Redirect to="/home" />
             </Switch>
             :
             <Switch>
               <Route path="/home" component={Home} />
-              <Redirect to="/home" />
               <Route path="/calendar" component={Calendar} />
+              <Redirect to="/home" />
             </Switch>
         ) : (
           <Switch>
