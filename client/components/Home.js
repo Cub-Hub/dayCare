@@ -4,13 +4,11 @@ import ParentChildren from "./widgets/tables/ParentChildren";
 import { ParentCheckin } from "./widgets/tiles/ParentCheckin";
 import { ParentNotifications } from "./widgets/tiles/ParentNotifications";
 import { ParentBill } from "./widgets/tiles/ParentBill";
-import Tile1 from "./widgets/tiles/tile1";
-import TableWidget from "./widgets/tables/TableWidget";
-import TableWidget3 from "./widgets/tables/ParentChildren";
 
 /**
  * COMPONENT
  */
+
 export const Home = (props) => {
   const { username } = props;
   const className = "card-stretch mb-5 mb-xxl-8";
@@ -21,7 +19,7 @@ export const Home = (props) => {
       <ParentCheckin />
       <ParentNotifications />
       <ParentBill />
-      <ParentChildren/>
+      <ParentChildren />
     </div>
   );
 };
