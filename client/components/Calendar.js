@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
 
 // Code based on example code in: https://www.npmjs.com/package/react-google-calendar-api
-
+ 
 /**
  * COMPONENT
  */
