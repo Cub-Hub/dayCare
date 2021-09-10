@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import ParentChildren from "./widgets/tables/ParentChildren";
-import { ParentCheckin } from "./widgets/tiles/ParentCheckin";
-import { ParentNotifications } from "./widgets/tiles/ParentNotifications";
-import { ParentBill } from "./widgets/tiles/ParentBill";
+import ParentChildren from "../widgets/tables/ParentChildren";
+import { ParentCheckin } from "../widgets/tiles/ParentCheckin";
+import { ParentNotifications } from "../widgets/tiles/ParentNotifications";
+import { ParentBill } from "../widgets/tiles/ParentBill";
 
 /**
  * COMPONENT
  */
 
-export const Home = (props) => {
+export const ParentLanding = (props) => {
   const { username } = props;
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
@@ -33,4 +33,4 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(Home);
+export default connect(mapState)(ParentLanding);

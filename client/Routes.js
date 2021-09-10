@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import EmployeeLanding from './components/employee/EmployeeLanding';
-import Home from './components/Home';
 
 import Calendar from './components/Calendar';
 import {me} from './store'
+import ParentLanding from './components/parent/ParentLanding';
+import OnlineCheckin from './components/parent/OnlineCheckin';
 
 
 
@@ -33,8 +34,9 @@ class Routes extends Component {
             </Switch>
             :
             <Switch>
-              <Route path="/home" component={Home} />
+              <Route path="/home" component={ParentLanding} />
               <Route path="/calendar" component={Calendar} />
+              <Route path="/onlineCheckin" component={OnlineCheckin} />
               <Redirect to="/home" />
             </Switch>
         ) : (
