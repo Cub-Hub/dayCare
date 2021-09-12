@@ -37,6 +37,7 @@ const OnlineCheckin = (props) => {
 
     const handleAll = () => {
       setLoading(true)
+      setAlert(false)
       Radar.trackOnce(function (err, result) {
       if (!err) {
         const spot = result.location
@@ -47,9 +48,13 @@ const OnlineCheckin = (props) => {
             setChildList(checkedKids)
             setLoading(false)
             setSuccess(true)
+          } else {
+            setLoading(false)
+            setAlert(true)
           }
       } else {
         console.log(err)
+        setLoading(false)
         setAlert(true)
       }
     });
@@ -57,6 +62,7 @@ const OnlineCheckin = (props) => {
 
     const handleSingle = (id) => {
       setSingleLoad(true)
+      setAlert(false)
       Radar.trackOnce(function (err, result) {
       if (!err) {
         const spot = result.location
@@ -65,6 +71,9 @@ const OnlineCheckin = (props) => {
             checkKidsIn([id])
             setChildList([...childList, id])
             setSingleLoad(false)
+          } else {
+            setSingleLoad(false)
+            setAlert(true)
           }
       } else {
         console.log(err)
