@@ -23,7 +23,7 @@ export const ParentCheckin = (props) => {
             <div className="text-center pt-7">
             <Link to='/onlineCheckin' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
                 Checkin Now
-              </Link>
+            </Link>
             </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 

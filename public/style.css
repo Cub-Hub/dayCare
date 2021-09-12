@@ -23,3 +23,23 @@ form div {
 .childPic{
   height: 80px
 }
+
+.checkinHeader{
+  width:60%;
+  height: 100px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkinHeader button{
+  width: 60%;
+}
+
+.checkinHeader h3{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
