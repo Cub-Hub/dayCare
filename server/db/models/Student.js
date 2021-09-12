@@ -17,6 +17,13 @@ const Student = db.define("student", {
   },
   age: {
     type: Sequelize.INTEGER,
+  },
+  imgURL: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://cub-hub.s3.us-east-2.amazonaws.com/generic.jpg',
+    validate: {
+      isUrl: true,
+    },
   }
 });
 
