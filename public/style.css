@@ -25,6 +25,7 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
 .button {
   padding: 0.5em 1em;
   text-align:center;
@@ -103,4 +104,8 @@ form div {
 }
 .col2 > div.sidepanel {
   width: 30%;
+}
+
+.childPic{
+  height: 80px
 }

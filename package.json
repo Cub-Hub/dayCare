@@ -30,7 +30,8 @@
     "react-google-calendar-api": "^1.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^8.174.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
