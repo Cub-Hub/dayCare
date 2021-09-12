@@ -26,7 +26,7 @@ async function seed() {
   ])
 
   // Creating Users
-  const [cody, qonk, lumpy, skunk, tonka, puddle] = await Promise.all([
+  const [cody, qonk, otaco, lumpy, skunk, tonka, puddle] = await Promise.all([
     User.create({ username: 'cody', password: '123', typeId: 2 }),
     User.create({ username: 'qonk', password: '123', typeId: 1 }),
     User.create({ username: 'otaco', password: '123', typeId: 1 }),
@@ -35,16 +35,19 @@ async function seed() {
     User.create({ username: 'tonka', password: '123', typeId: 3 }),
     User.create({ username: 'puddle', password: '123', typeId: 3 })
   ])
-  const users = [cody, qonk, lumpy, skunk, tonka, puddle];
+  const users = [cody, qonk, otaco, lumpy, skunk, tonka, puddle];
 
   // create students
   const students = await Promise.all([
-    Student.create({ firstName: 'bodank', lastName: 'yuck', userId: lumpy.id, 
-    categoryId: infant.id, age: 1 }),
-    Student.create({ firstName: 'cuhcuh', lastName: 'yuck', userId: lumpy.id, 
-    categoryId: toddler.id, age: 2}),
-    Student.create({ firstName: 'tinky', lastName: 'yuck', userId: lumpy.id,
-    categoryId: preschooler.id , age: 3}),
+    Student.create({ firstName: 'bodank', lastName: 'waddle', userId: lumpy.id, 
+    categoryId: infant.id, age: 1,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler3.jpeg" }),
+    Student.create({ firstName: 'wuhwuh', lastName: 'waddle', userId: lumpy.id, 
+    categoryId: toddler.id, age: 2,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler1.jpeg"}),
+    Student.create({ firstName: 'tinky', lastName: 'waddle', userId: lumpy.id,
+    categoryId: preschooler.id , age: 3,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler2.png"}),
     Student.create({ firstName: 'wompum', lastName: 'spee', userId: skunk.id,
     categoryId: infant.id, age: 1 }),
     Student.create({ firstName: 'bumpy', lastName: 'spee', userId: skunk.id,
