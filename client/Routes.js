@@ -5,7 +5,10 @@ import { Login, Signup } from './components/AuthForm';
 import EmployeeLanding from './components/employee/EmployeeLanding';
 
 import Calendar from './components/Calendar';
-import {me} from './store'
+
+import { me } from './store'
+// import { QrGenerator } from './components/QrGenerator';
+import AdminDashboard from './components/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 
@@ -30,22 +33,26 @@ class Routes extends Component {
             <Switch>
               <Route path="/home" component={EmployeeLanding} />
               <Route path="/calendar" component={Calendar} />
+              {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
+              <Route path="/admin-dashboard" component={AdminDashboard} />
               <Redirect to="/home" />
             </Switch>
             :
             <Switch>
-              <Route path="/home" component={ParentLanding} />
+              <Route path="/home" component={Home} />
               <Route path="/calendar" component={Calendar} />
+              {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
+              <Route path="/admin-dashboard" component={AdminDashboard} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
               <Redirect to="/home" />
             </Switch>
         ) : (
-          <Switch>
-            <Route path='/' exact component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-          </Switch>
-        )}
+            <Switch>
+              <Route path='/' exact component={Login} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          )}
       </div>
     )
   }
