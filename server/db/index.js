@@ -9,7 +9,7 @@ const Category = require('./models/Category')
 const Checkin = require('./models/Checkin')
 const School = require('./models/School')
 
-//associations could go here!
+//associations
 User.belongsTo(Type)
 Type.hasMany(User)
 
@@ -24,6 +24,9 @@ Checkin.belongsTo(Student)
 
 School.hasMany(User)
 User.belongsTo(School)
+
+School.hasMany(Student)
+Student.belongsTo(School)
 
 module.exports = {
   db,

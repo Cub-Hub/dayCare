@@ -15,21 +15,26 @@ const OnlineCheckin = (props) => {
   const [loading, setLoading] = useState(() => false);
   const [singleLoad, setSingleLoad] = useState(() => false);
   const [success, setSuccess] = useState(() => false);
+  const [homeSchool, setHomeSchool] = useState(() => false);
 
-
-  console.log('this is props: ', props)
-  console.log('this is childlist: ', childList)
 
   useEffect(() => {
     props.fetchChildren(props.parentId);
   }, []);
 
+  useEffect(() => {
+    findSchool()
+  }, []);
+
 
     const className = "card-stretch mb-5 mb-xxl-8";
-    const latMax = 30.3949
-    const latMin = 30.3942
-    const lonMax = -84.2357
-    const lonMin = -84.2367
+
+    const findSchool = async() => {
+      const {data} = await axios.get(
+        `/api/parents/school/${props.schoolId}`
+        )
+      return setHomeSchool(data)
+    }
 
     const checkKidsIn = async(ids) => {
       await axios.post('/api/parents/checkin', ids)
@@ -41,8 +46,8 @@ const OnlineCheckin = (props) => {
       Radar.trackOnce(function (err, result) {
       if (!err) {
         const spot = result.location
-        if(spot.latitude < latMax && spot.latitude > latMin 
-          && spot.longitude < lonMax && spot.longitude > lonMin){
+        if(spot.latitude < homeSchool.maxLat && spot.latitude > homeSchool.minLat 
+          && spot.longitude < homeSchool.maxLon && spot.longitude > homeSchool.minLon){
             const checkedKids = props.myChildren.map((child) => child.id)
             checkKidsIn(checkedKids)
             setChildList(checkedKids)
@@ -66,8 +71,8 @@ const OnlineCheckin = (props) => {
       Radar.trackOnce(function (err, result) {
       if (!err) {
         const spot = result.location
-        if(spot.latitude < latMax && spot.latitude > latMin 
-          && spot.longitude < lonMax && spot.longitude > lonMin){
+        if(spot.latitude < homeSchool.maxLat && spot.latitude > homeSchool.minLat 
+          && spot.longitude < homeSchool.maxLon && spot.longitude > homeSchool.minLon){
             checkKidsIn([id])
             setChildList([...childList, id])
             setSingleLoad(false)
@@ -81,18 +86,21 @@ const OnlineCheckin = (props) => {
       }
     });
     }
+
+    console.log('this is school!!!: ', homeSchool)
     
     return (
       <div className={`card ${className}`}>
         {/* begin::Header*/}
         <div className='checkinHeader'>
-          <h3>{alert? 
-          `Checkin failed: must be within 10 meters of daycare`
+          {alert? 
+          <h3 className='failure'>Checkin failed: must be within 10 meters of daycare</h3>
           :
           success ?
           ''
           :
-          `Must be within 10 meters of daycare to checkin`}</h3>
+          <h3>`Must be within 10 meters of daycare to checkin`</h3>
+          }
           {loading ? 
           'Checking your child in...'
           :
@@ -208,7 +216,8 @@ const OnlineCheckin = (props) => {
 const mapState = (state) => {
   return {
     parentId: state.auth.id,
-    myChildren: state.children
+    myChildren: state.children,
+    schoolId: state.auth.schoolId
   };
 };
 
