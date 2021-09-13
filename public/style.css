@@ -103,7 +103,7 @@ form div {
   width:100%
 }
 .col2 > div.sidepanel {
-  width: 30%;
+  width: 50%;
 }
 
 .childPic{
@@ -128,4 +128,22 @@ form div {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+}
+
+
+/* EMPLOYEE LANDING */
+.scroll-content-wrapper {
+  height: 450px;
+  width: calc(70vw - 2em);
+}
+.scroll-content {
+  display: flex; 
+  overflow: auto;
+}
+.scroll-content > div > div{
+  padding: 1em;
+  width: 130px;
+  text-align:center;
+  border: 1px solid #eee;
+  border-collapse: collapse;
 }
