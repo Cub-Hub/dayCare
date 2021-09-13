@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import StudentTable from './StudentTable';
 
-import { getStudents, getUsers } from '../store';
+import { getStudents, getUsers } from '../../store';
 
 /**
  * COMPONENT
@@ -20,7 +21,6 @@ class AdminDashboard extends Component {
   }
 
   render() {
-    console.log('RENDER PROPS', this.props)
     return (
       <div id="admindashboard">
         <div id="header" className="block">
@@ -70,9 +70,7 @@ class AdminDashboard extends Component {
                 calendar
               </div>
             </div>
-            <div className="block">
-              activity
-            </div>
+              <StudentTable/>
           </div>
         </div>
       </div>
