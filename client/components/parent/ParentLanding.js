@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import ParentChildren from "./widgets/tables/ParentChildren";
-import { ParentCheckin } from "./widgets/tiles/ParentCheckin";
-import { ParentNotifications } from "./widgets/tiles/ParentNotifications";
-import { ParentBill } from "./widgets/tiles/ParentBill";
+import ParentChildren from "./ChildrenTable";
+import { ParentCheckin } from "./CheckinTile";
+import { ParentNotifications } from "./NotificationsTile";
+import { ParentBill } from "./ParentBill";
 
 /**
  * COMPONENT
  */
 
-export const Home = (props) => {
+export const ParentLanding = (props) => {
+
   const { username } = props;
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
+  //console.log('parent landing props: ', props)
 
   return (
     <div className="row g-0 g-xl-5 g-xxl-8">
@@ -29,8 +31,10 @@ export const Home = (props) => {
  */
 const mapState = (state) => {
   return {
-    username: state.auth.username,
+    state
   };
 };
 
-export default connect(mapState)(Home);
+
+
+export default connect(mapState)(ParentLanding);

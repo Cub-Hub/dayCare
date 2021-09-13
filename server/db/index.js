@@ -4,15 +4,38 @@ const db = require('./db')
 
 const User = require('./models/User')
 const Type = require('./models/Type')
+const Student = require('./models/Student')
+const Category = require('./models/Category')
+const Checkin = require('./models/Checkin')
+const School = require('./models/School')
 
-//associations could go here!
+//associations
 User.belongsTo(Type)
 Type.hasMany(User)
+
+User.hasMany(Student)
+Student.belongsTo(User)
+
+Student.belongsTo(Category)
+Category.hasMany(Student)
+
+Student.hasMany(Checkin)
+Checkin.belongsTo(Student)
+
+School.hasMany(User)
+User.belongsTo(School)
+
+School.hasMany(Student)
+Student.belongsTo(School)
 
 module.exports = {
   db,
   models: {
     User,
-    Type
+    Type,
+    Category,
+    Student,
+    Checkin,
+    School
   },
 }

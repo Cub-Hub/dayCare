@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Type} } = require('../server/db')
+const {db, models: {User, Type, Category, Student, School} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -10,31 +10,74 @@ async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
 
+  //create schools
+  const [cots4tots, lidsNkids, wildChilds] = await Promise.all([
+    School.create({ name: 'cots4tots', maxLat: 30.3949, 
+    minLat: 30.3942, maxLon: -84.2357, minLon: -84.2367 }),
+    School.create({ name: 'lidsNkids', maxLat: 33.3949, 
+    minLat: 32.3942, maxLon: -90.2357, minLon: -90.2367 }),
+    School.create({ name: 'wildChilds', maxLat: 82.3949, 
+    minLat: 82.3942, maxLon: -67.2357, minLon: -67.2367})
+  ])
+
   //create user types 
-  const [employee, admin, parent, child] = await Promise.all([
+  const [employee, admin, parent] = await Promise.all([
     Type.create({ id:1, name: 'employee' }),
     Type.create({ id:2, name: 'admin' }),
-    Type.create({ id:3, name: 'parent' }),
-    Type.create({ id:4, name: 'child' })
+    Type.create({ id:3, name: 'parent' })
+  ])
+
+  //create categories
+  const [infant, toddler, preschooler, kindergartener] = await Promise.all([
+    Category.create({ id:1, name: 'infant' }),
+    Category.create({ id:2, name: 'toddler' }),
+    Category.create({ id:3, name: 'preschooler' }),
+    Category.create({ id:4, name: 'kindergartner' })
   ])
 
   // Creating Users
-  const users = await Promise.all([
-    User.create({ username: 'cody', password: '123', typeId: 2 }),
-    User.create({ username: 'murphy', password: '123', typeId: 1 }),
-    User.create({ username: 'lumpy', password: '123', typeId: 3 }),
-    User.create({ username: 'skunk', password: '123', typeId: 4 })
+  const [cody, qonk, otaco, lumpy, skunk, tonka, puddle] = await Promise.all([
+    User.create({ username: 'cody', password: '123', typeId: 2, schoolId:cots4tots.id }),
+    User.create({ username: 'qonk', password: '123', typeId: 1, schoolId:cots4tots.id }),
+    User.create({ username: 'otaco', password: '123', typeId: 1, schoolId:cots4tots.id }),
+    User.create({ username: 'lumpy', password: '123', typeId: 3, schoolId:cots4tots.id }),
+    User.create({ username: 'skunk', password: '123', typeId: 3, schoolId:cots4tots.id }),
+    User.create({ username: 'tonka', password: '123', typeId: 3, schoolId:wildChilds.id  }),
+    User.create({ username: 'puddle', password: '123', typeId: 3, schoolId:lidsNkids.id })
+  ])
+  const users = [cody, qonk, otaco, lumpy, skunk, tonka, puddle];
+
+  // create students
+  const students = await Promise.all([
+    Student.create({ firstName: 'bodank', lastName: 'waddle', userId: lumpy.id, 
+    categoryId: infant.id, age: 1,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler3.jpeg", schoolId:cots4tots.id }),
+    Student.create({ firstName: 'wuhwuh', lastName: 'waddle', userId: lumpy.id, 
+    categoryId: toddler.id, age: 2,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler1.jpeg", schoolId:cots4tots.id }),
+    Student.create({ firstName: 'tinky', lastName: 'waddle', userId: lumpy.id,
+    categoryId: preschooler.id , age: 3,
+    imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler2.png", schoolId:cots4tots.id }),
+    Student.create({ firstName: 'wompum', lastName: 'spee', userId: skunk.id,
+    categoryId: infant.id, age: 1, schoolId:cots4tots.id }),
+    Student.create({ firstName: 'bumpy', lastName: 'spee', userId: skunk.id,
+    categoryId: toddler.id, age: 2, schoolId:cots4tots.id }),
+    Student.create({ firstName: 'slepmuch', lastName: 'wackcack', userId: tonka.id,
+    categoryId: toddler.id, age: 2, schoolId:wildChilds.id }),
+    Student.create({ firstName: 'farp', lastName: 'paddle', userId: puddle.id,
+    categoryId: infant.id, age: 1, schoolId:lidsNkids.id }),
+    Student.create({ firstName: 'burlap', lastName: 'paddle', userId: puddle.id,
+    categoryId: infant.id, age: 1, schoolId:lidsNkids.id }),
+    Student.create({ firstName: 'plinkity', lastName: 'paddle', userId: puddle.id,
+    categoryId: toddler.id, age: 2, schoolId:lidsNkids.id }),
+    Student.create({ firstName: 'raanchy', lastName: 'paddle', userId: puddle.id,
+    categoryId: kindergartener.id, age: 4, schoolId:lidsNkids.id }),
   ])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
   return {
-    users: {
-      cody: users[0],
-      murphy: users[1],
-      lumpy: users[2],
-      skunk: users[3]
-    }
+    users
   }
 }
 
