@@ -255,3 +255,8 @@ form div {
   color: firebrick;
 }
 
+.blankBtn {
+  background-color: white;
+  border-style: none;
+}
+
