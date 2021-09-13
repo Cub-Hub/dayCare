@@ -8,7 +8,7 @@ import Calendar from './components/Calendar';
 
 import { me } from './store'
 // import { QrGenerator } from './components/QrGenerator';
-import AdminDashboard from './components/AdminDashboard'
+import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 
@@ -29,21 +29,28 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
 
-          userType < 3 ?
+          userType === 3 ?
             <Switch>
-              <Route path="/home" component={EmployeeLanding} />
+              <Route path="/home" component={ParentLanding} />
               <Route path="/calendar" component={Calendar} />
               {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
-              <Route path="/admin-dashboard" component={AdminDashboard} />
+              <Route path="/onlineCheckin" component={OnlineCheckin} />
+              <Redirect to="/home" />
+            </Switch>
+            :
+          userType === 2 ?
+            <Switch>
+              <Route path="/home" component={AdminDashboard} />
+              <Route path="/calendar" component={Calendar} />
+              {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
               <Redirect to="/home" />
             </Switch>
             :
             <Switch>
-              <Route path="/home" component={Home} />
+              <Route path="/home" component={EmployeeLanding} />
               <Route path="/calendar" component={Calendar} />
               {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
-              <Route path="/admin-dashboard" component={AdminDashboard} />
-              <Route path="/onlineCheckin" component={OnlineCheckin} />
+              {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
               <Redirect to="/home" />
             </Switch>
         ) : (
