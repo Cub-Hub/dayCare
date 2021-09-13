@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import EmployeeLanding from './components/employee/EmployeeLanding';
-import Home from './components/Home';
+import Invoices from './components/parent/Invoices';
 
 import Calendar from './components/Calendar';
 import {me} from './store'
-
-
+import ParentLanding from './components/parent/ParentLanding';
+import OnlineCheckin from './components/parent/OnlineCheckin';
+import StripeSuccess from './components/parent/StripeSuccess';
+import StripeCanceled from './components/parent/StripeCanceled';
 
 /**
  * COMPONENT
@@ -33,8 +35,12 @@ class Routes extends Component {
             </Switch>
             :
             <Switch>
-              <Route path="/home" component={Home} />
+              <Route path="/home" component={ParentLanding} />
               <Route path="/calendar" component={Calendar} />
+              <Route path="/onlineCheckin" component={OnlineCheckin} />
+              <Route path='/invoices' component={ Invoices } />
+              <Route path='/checkout/success' component={ StripeSuccess } />
+              <Route path='/checkout/canceled' component={ StripeCanceled } />
               <Redirect to="/home" />
             </Switch>
         ) : (

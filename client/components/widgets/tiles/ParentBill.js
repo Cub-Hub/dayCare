@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -19,11 +20,11 @@ export const ParentBill = (props) => {
             <h3 className="text-dark text-center fs-1 fw-bolder pt-15 lh-lg">
               Bill Management
             </h3>
-            <div className="text-center pt-7">
-              <a className="btn btn-primary fw-bolder fs-6 px-7 py-3">
-                Review Invoices
-              </a>
-            </div>
+              <div className="text-center pt-7">
+                <Link to='/invoices' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
+                    Review Invoices
+                </Link>
+              </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}

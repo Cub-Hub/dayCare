@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -20,9 +21,9 @@ export const ParentCheckin = (props) => {
               Online Checkin
             </h3>
             <div className="text-center pt-7">
-              <a className="btn btn-primary fw-bolder fs-6 px-7 py-3">
-                Checkin Now
-              </a>
+              <Link to='/onlineCheckin' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
+                  Checkin Now 
+              </Link>
             </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
