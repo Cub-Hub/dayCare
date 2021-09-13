@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getStudents, getUsers } from '../store';
+import { getStudents, getUsers } from '../../store';
 
 /**
  * COMPONENT
