@@ -2,8 +2,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Checkin = db.define('checkin', {
-    time: {
-        type: Sequelize.DataTypes.DATE,
+    date: {
+        type: Sequelize.STRING,
         allowNull: false
     }
 })

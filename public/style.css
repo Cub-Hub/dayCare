@@ -133,3 +133,8 @@ form div {
 .failure {
   color: firebrick;
 }
+
+.blankBtn {
+  background-color: white;
+  border-style: none;
+}
