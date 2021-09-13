@@ -3,17 +3,11 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
-// //, {headers: {
-//   'Access-Control-Allow-Origin': '*'
-// }}
 
-//<Logo /> removed
 const Checkout = (props) =>{
   let history = useHistory()
-  //console.log('PROPSSSSS--->,', props)
 
   const handleSubmit = async (evt) =>{
-    //let history = useHistory()
     evt.preventDefault()
     const { data } = await axios.post('/api/create-checkout-session/')
     window.location = data.url

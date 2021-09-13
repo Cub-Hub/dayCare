@@ -6,12 +6,10 @@ process.env.STRIPE_PUBLISHABLE_API = env.STRIPE_PUBLISHABLE_API
 const router = require('express').Router()
 const { models: { User }} = require('../db')
 module.exports = router
-//sk_test_51JXpEdDRn3k8eEigPyFXomt1n14vDgurRZFvX8SrB4ZMgxoAseL3alRXIlkMI04chPsOoYog8kJMDN6k8fvwhiD300ozlfQZm1'
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
 const YOUR_DOMAIN = 'http://localhost:8080'
-//price: 'price_1JXz3UDRn3k8eEigd38orJMC',
-//router.options('*', cors())
 
 router.post('/', cors(), async (req, res, next)=>{
   try {
@@ -35,7 +33,6 @@ router.post('/', cors(), async (req, res, next)=>{
     });
     console.log('SESSION--->', session)
     res.json({ "url": session.url })
-    //res.send('complete')
 
   } catch (err){
     console.log('STRIPE POST Err--->', err)
