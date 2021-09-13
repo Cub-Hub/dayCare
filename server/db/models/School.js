@@ -7,6 +7,10 @@ const School = db.define('school', {
         defaultValue: Sequelize.DataTypes.UUIDV4,
         primaryKey: true,
       },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     minLat: {
         type: Sequelize.DataTypes.DECIMAL,
         allowNull: false
