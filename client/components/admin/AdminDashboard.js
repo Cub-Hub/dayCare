@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import StudentTable from './StudentTable';
 
 import { getStudents, getUsers } from '../../store';
 
@@ -9,11 +10,9 @@ import { getStudents, getUsers } from '../../store';
 class AdminDashboard extends Component {
   constructor(props) {
     super(props)
-    console.log('CONSTRUCTOR PROPS', props)
   }
 
   async componentDidMount() {
-    console.log('COMPONENT DID MOUNT', this.props)
     await this.props.getStudents();
     await this.props.getUsers();
 
@@ -22,7 +21,6 @@ class AdminDashboard extends Component {
   }
 
   render() {
-    console.log('RENDER PROPS', this.props)
     return (
       <div id="admindashboard">
         <div id="header" className="block">
@@ -72,9 +70,7 @@ class AdminDashboard extends Component {
                 calendar
               </div>
             </div>
-            <div className="block">
-              activity
-            </div>
+              <StudentTable/>
           </div>
         </div>
       </div>

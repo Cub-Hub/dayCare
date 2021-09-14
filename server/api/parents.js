@@ -5,7 +5,6 @@ module.exports = router
 
 router.get('/children/:id', async (req, res, next) => {
   try {
-      console.log('this is req.params~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', req.params.id)
     const children = await Student.findAll({
       where: {userId: req.params.id}
     })
@@ -18,12 +17,14 @@ router.get('/children/:id', async (req, res, next) => {
 router.post('/checkin', async (req, res, next) => {
     try {
         const today = new Date()
+        const dateStr = today.toDateString()
 
         const checked = await Promise.all([
             req.body.forEach((id) => {
-                Checkin.create({time: today, studentId: id})
+                Checkin.create({date: dateStr, studentId: id})
             })
         ])
+
         res.send('checkin complete')
     } catch (err) {
         next(err)
