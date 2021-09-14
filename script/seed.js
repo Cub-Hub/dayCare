@@ -37,19 +37,19 @@ async function seed() {
 
   // Creating Users
   const [cody, qonk, otaco, lumpy, skunk, tonka, puddle, plop, wurton, blublub, pwanko, slarzard, oreo] = await Promise.all([
-    User.create({ username: 'cody', password: '123', typeId: 2, schoolId:cots4tots.id }),
-    User.create({ username: 'qonk', password: '123', typeId: 1, schoolId:cots4tots.id }),
-    User.create({ username: 'otaco', password: '123', typeId: 1, schoolId:cots4tots.id }),
-    User.create({ username: 'lumpy', password: '123', typeId: 3, schoolId:cots4tots.id }),
-    User.create({ username: 'skunk', password: '123', typeId: 3, schoolId:cots4tots.id }),
-    User.create({ username: 'tonka', password: '123', typeId: 3, schoolId:wildChilds.id  }),
-    User.create({ username: 'puddle', password: '123', typeId: 3, schoolId:lidsNkids.id }),
-    User.create({ username: 'plop', password: '123', typeId: 3, schoolId:lidsNkids.id }),
-    User.create({ username: 'wurton', password: '123', typeId: 3, schoolId:lidsNkids.id }),
-    User.create({ username: 'blublub', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
-    User.create({ username: 'pwanko', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
-    User.create({ username: 'slarzard', password: '123', typeId: 3, schoolId:cots4tots.id  }),
-    User.create({ username: 'oreo', password: '123', typeId: 3, schoolId:wildChilds.id  }),
+    User.create({ username: 'cody', password: '123', typeId: 2, schoolId:cots4tots.id, email: 'cody@cub.com' }),
+    User.create({ username: 'qonk', password: '123', typeId: 1, schoolId:cots4tots.id, email: 'qonk@cub.com' }),
+    User.create({ username: 'otaco', password: '123', typeId: 1, schoolId:cots4tots.id, email: 'otaco@cub.com' }),
+    User.create({ username: 'lumpy', password: '123', typeId: 3, schoolId:cots4tots.id, email: 'lumpy@cub.com' }),
+    User.create({ username: 'skunk', password: '123', typeId: 3, schoolId:cots4tots.id, email: 'skunk@cub.com' }),
+    User.create({ username: 'tonka', password: '123', typeId: 3, schoolId:wildChilds.id, email: 'tonka@cub.com' }),
+    User.create({ username: 'puddle', password: '123', typeId: 3, schoolId:lidsNkids.id, email: 'puddle@cub.com' }),
+    User.create({ username: 'plop', password: '123', typeId: 3, schoolId:lidsNkids.id, email: 'plop@cub.com' }),
+    User.create({ username: 'wurton', password: '123', typeId: 3, schoolId:lidsNkids.id, email: 'wurton@cub.com' }),
+    User.create({ username: 'blublub', password: '123', typeId: 3, schoolId:lidsNkids.id, email: 'blubblub@cub.com' }),
+    User.create({ username: 'pwanko', password: '123', typeId: 3, schoolId:lidsNkids.id, email: 'pwanko@cub.com' }),
+    User.create({ username: 'slarzard', password: '123', typeId: 3, schoolId:cots4tots.id, email: 'slarzard@cub.com' }),
+    User.create({ username: 'oreo', password: '123', typeId: 3, schoolId:wildChilds.id, email: 'oreo@cub.com' }),
 
   ])
   const users = [cody, qonk, otaco, lumpy, skunk, tonka, puddle, plop, wurton, blublub, pwanko, slarzard, oreo];
