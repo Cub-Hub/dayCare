@@ -21,7 +21,7 @@ router.post('/', cors(), async (req, res, next)=>{
             product_data: {
               name: 'DayCare-Standard',
             },
-            unit_amount: 2000,
+            unit_amount: 19999,
           },
           quantity: 1,
         },
@@ -31,7 +31,7 @@ router.post('/', cors(), async (req, res, next)=>{
       success_url: `${YOUR_DOMAIN}/checkout/success`,
       cancel_url: `${YOUR_DOMAIN}/checkout/canceled`,
     });
-    console.log('SESSION--->', session)
+    console.log('SESSION SINGLE PAYMENT--->', session)
     res.json({ "url": session.url })
 
   } catch (err){

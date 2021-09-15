@@ -7,9 +7,16 @@ import { useHistory } from 'react-router-dom';
 const Checkout = (props) =>{
   let history = useHistory()
 
-  const handleSubmit = async (evt) =>{
+  const handleSingleSubmit = async (evt) =>{
     evt.preventDefault()
     const { data } = await axios.post('/api/create-checkout-session/')
+    console.log('single-payment')
+    window.location = data.url
+  }
+  const handleSubscriptionSubmit = async (evt) =>{
+    evt.preventDefault()
+    const { data } = await axios.post('/api/create-checkout-session/subscription', {lookup_keys: '1subscription'})
+    console.log('subscription')
     window.location = data.url
   }
   
@@ -22,15 +29,26 @@ return (
           <h5>$199.99 / day</h5>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSingleSubmit}>
         <button type="submit">
-          Checkout
+          Single Payment
         </button>
       </form>
+    </section>
+  
+    <section>
+      <div>
+        <form onSubmit={handleSubscriptionSubmit}>
+          <button type='submit'>
+            Monthly Subscription
+          </button>
+        </form>
+      </div>
     </section>
   </div>
  )
 }
+
 const mapState =(state, ownProps) =>{
   return {
     state, 
