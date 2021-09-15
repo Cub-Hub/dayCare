@@ -12,14 +12,13 @@ const myApp = (props) => {
   }
 
   return (
-    <div>fks;jfdadsfasdfa
+    <div>
       <Calendar
         calendarType = 'US'
         onChange={onChange}
         value={value}
         onClick = {showIt()}
       />
-
     </div>
   );
 }

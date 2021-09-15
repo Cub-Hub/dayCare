@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
-
+import Calendar from '../Calendar'
 import { getStudents, getUsers } from '../../store';
 
 /**
@@ -67,7 +67,7 @@ class AdminDashboard extends Component {
                 <div className="button"><p>Parents</p></div>
               </div>
               <div className="block">
-                calendar
+                <Calendar />
               </div>
             </div>
               <StudentTable/>

@@ -34,13 +34,8 @@ class CalendarPage extends React.Component {
     }
     //this.authorizeClick = this.authorizeClick.bind(this);
     this.addItemClick = this.addItemClick.bind(this)
-     // this.listItemsClick = this.listItemsClick.bind(this)
+      this.listItemsClick = this.listItemsClick.bind(this)
       this.displayDate = this.displayDate.bind(this)
-  }
-
-  componentDidMount() {
-    ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
-    //set Calendar to cub hub
   }
 
   myChangeHandlerEventName = (event) => {
@@ -63,19 +58,30 @@ class CalendarPage extends React.Component {
   //  ApiCalendar.handleAUthClick();
     
     ApiCalendar.handleAuthClick();
-    console.log(ApiCalendar.isSignedIn)
     console.log("authroize")
   }
   
   signoutClick() {
     ApiCalendar.handleSignoutClick();
     console.log("signout")
-        console.log(ApiCalendar.isAuthorized)
   }
   
 
 
-
+  async listItemsClick() {
+    
+    
+    
+    let rawResult = await ApiCalendar.listEvents({
+      timeMin: (this.state.message.addDays(0)).toISOString(),
+      timeMax: (this.state.message.addDays(1)).toISOString(),
+      showDeleted: true,
+      maxResults: 10,
+      orderBy: "updated"
+    })
+    await this.setState({listItems: rawResult.result.items})
+    console.log(this.state)
+  }
   
   setCalendarClick() {
     ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
@@ -95,22 +101,7 @@ class CalendarPage extends React.Component {
   }
   
   callbackFunction = async(childData) => {
-
-    
-    let rawResult = await ApiCalendar.listEvents({
-      timeMin: (this.state.message.addDays(0)).toISOString(),
-      timeMax: (this.state.message.addDays(1)).toISOString(),
-      showDeleted: true,
-      maxResults: 10,
-      orderBy: "updated"
-    })
-    await this.setState({listItems: rawResult.result.items})
-        await this.setState({message: childData})
-    console.log(this.state)
-    
-    
-    
-    
+    await this.setState({message: childData})
     
     console.log('message = ' + this.state.message.addDays(1))
 
@@ -123,45 +114,14 @@ class CalendarPage extends React.Component {
     return (
       <div>
       <script async defer src="https://apis.google.com/js/api.js"></script>
+      <h3>Welcome, </h3>
+      <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=czR2Y3NsZjMwZzkxZzkycXU2ZjRzcWE3NGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D81B60&mode=WEEK&showTz=0&showCalendars=0&showTabs=1&showPrint=0&showDate=1&showNav=1&showTitle=0" style="border:solid 1px #777" width="1000" height="800" frameborder="0" scrolling="no" style={{border: 0, width:800, height:600, frameborder:0, scrolling:"no"}}></iframe>
+
+
+    
+        
       
 
-        <button id="authorize-button"
-          onClick={this.authorizeClick}>
-          Authorize
-        </button>
-        
-        <button id="signout_button"
-          onClick={this.signoutClick}>
-          Sign Out
-        </button>
-
-        {/*<button id="setCalendar_button"
-          onClick={this.setCalendarClick}>
-          Set Calendar to Cub Hub
-        </button>*/}
-        
-       {/*  <button id="listItems_button"
-          onClick={this.listItemsClick}>
-          listItems
-        </button> */}
-        
-     
-        
-
-        
-      <tr> {/*this.state.listitems.length === undefined ? */}
-      <td>
-      <ul>{this.state.listitems}{this.state.listItems.length === undefined ? <p>No items</p> : 
-        this.state.listItems.map(x=>
-        <li>{x.start.dateTime.slice(11,13)*1>12 ? x.start.dateTime.slice(11,13)*1-12:x.start.dateTime.slice(11,13)*1}
-        :{x.start.dateTime.slice(14,16)} {x.start.dateTime.slice(11,13)*1>12?'PM':'AM'}-{x.summary}</li>)}</ul>
-      </td>
-      
-      <td>
-        <CalendarMini 
-        parentCallback = {this.callbackFunction}/>
-      </td>
-      </tr> 
           
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     
