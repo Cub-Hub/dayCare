@@ -5,12 +5,13 @@ import { Login, Signup } from './components/AuthForm';
 import EmployeeLanding from './components/employee/EmployeeLanding';
 
 import Calendar from './components/Calendar';
-
 import { me, fetchDailyCheckin, getStudents  } from './store'
+
 // import { QrGenerator } from './components/QrGenerator';
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
+
 
 
 

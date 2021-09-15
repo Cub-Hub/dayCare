@@ -1,25 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Calendar from 'react-calendar'
 import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
+import CalendarMini from './CalendarMini'
+
 
 // Code based on example code in: https://www.npmjs.com/package/react-google-calendar-api
-
+ 
 /**
  * COMPONENT
  */
+// Thanks to Anthony W Jones: https://stackoverflow.com/questions/563406/add-days-to-javascript-date
 
-class Calendar extends React.Component {
+  Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+  }
+  
+  
+
+class CalendarPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       eventName: '',
       startDateTime: '',
       endDateTime: '',
-      listItems: {}
+      listItems: {},
+      value: new Date(),
+      message: new Date(),
+      message2: new Date() 
     }
     //this.authorizeClick = this.authorizeClick.bind(this);
     this.addItemClick = this.addItemClick.bind(this)
       this.listItemsClick = this.listItemsClick.bind(this)
+      this.displayDate = this.displayDate.bind(this)
   }
 
   myChangeHandlerEventName = (event) => {
@@ -50,8 +66,19 @@ class Calendar extends React.Component {
     console.log("signout")
   }
   
+
+
   async listItemsClick() {
-    let rawResult = await ApiCalendar.listUpcomingEvents(10)
+    
+    
+    
+    let rawResult = await ApiCalendar.listEvents({
+      timeMin: (this.state.message.addDays(0)).toISOString(),
+      timeMax: (this.state.message.addDays(1)).toISOString(),
+      showDeleted: true,
+      maxResults: 10,
+      orderBy: "updated"
+    })
     await this.setState({listItems: rawResult.result.items})
     console.log(this.state)
   }
@@ -62,11 +89,27 @@ class Calendar extends React.Component {
   
   async addItemClick() {
     let eventObject = {summary: "Test Appointment", start: {date: '2021-09-09'}, end: {date: '2021-09-09'}}
-    await ApiCalendar.createEvent(eventObject, "s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com", "none")
+    await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
 
     
   }
 
+  displayDate() {
+    console.log(this.state.value)
+    console.log('hi')
+
+  }
+  
+  callbackFunction = async(childData) => {
+    await this.setState({message: childData})
+    
+    console.log('message = ' + this.state.message.addDays(1))
+
+  }
+
+  
+  
+  
   render() {
     return (
       <div>
@@ -97,7 +140,12 @@ class Calendar extends React.Component {
         
         <form>
         <h1>List of Events</h1>
-        <ul>{this.state.listItems.length === undefined ? <p>No items</p> : this.state.listItems.map(x=><li>{x.summary}</li>)}</ul>
+        <ul>{this.state.listItems.length === undefined ? <p>No items</p> : 
+        this.state.listItems.map(x=><li>{x.start.dateTime.slice(11,13)*1>12 
+        ? x.start.dateTime.slice(11,13)*1-12:x.start.dateTime.slice(11,13)*1}
+        :{x.start.dateTime.slice(14,16)}
+        
+        {x.start.dateTime.slice(11,13)*1>12?'PM':'AM'}-{x.summary}</li>)}</ul>
         
         
         
@@ -111,9 +159,26 @@ class Calendar extends React.Component {
           onClick={this.addItemClick}>
           Add Item
         </button>
+        <h1>hello</h1>
+      <tr>
+      <td>
+      <ul>{this.state.listItems.length === undefined ? <p>No items</p> : 
+        this.state.listItems.map(x=><li>{x.start.dateTime.slice(11,13)*1>12 
+        ? x.start.dateTime.slice(11,13)*1-12:x.start.dateTime.slice(11,13)*1}
+        :{x.start.dateTime.slice(14,16)}
         
+        {x.start.dateTime.slice(11,13)*1>12?'PM':'AM'}-{x.summary}</li>)}</ul>
+      </td>
+      
+      <td>
+        <CalendarMini 
+        parentCallback = {this.callbackFunction}/>
+      </td>
+      </tr> 
+          
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     
+
     
     </div>
     )
@@ -132,4 +197,4 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(Calendar)
+export default connect(mapState)(CalendarPage)
