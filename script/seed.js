@@ -52,6 +52,7 @@ async function seed() {
   ])
 
   // Creating Users
+
   const [lemon, onion, tums, shward, gumps, widdle, otaco, kimp, bean, qonk, pregut, frobeets, scunchy, cody,
      lumpy, skunk, slarzard, hoonfunk, tonka, oreo, puddle, plop, wurton, blublub, pwanko, toespink] = await Promise.all([
     User.create({ username: 'lemon', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),

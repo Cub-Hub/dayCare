@@ -1,26 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import StudentTable from './StudentTable';
 
-import { getStudents, getUsers } from '../../store';
+import { getStudents } from '../store';
 
 /**
  * COMPONENT
  */
-class AdminDashboard extends Component {
+class EmployeeLanding extends Component {
   constructor(props) {
     super(props)
   }
 
   async componentDidMount() {
     await this.props.getStudents();
-    await this.props.getUsers();
 
-    // this.setState({ users: this.props.users });
-    // this.setState({ students: this.props.students })
   }
 
   render() {
+    console.log('RENDER PROPS', this.props)
     return (
       <div id="admindashboard">
         <div id="header" className="block">
@@ -28,7 +25,7 @@ class AdminDashboard extends Component {
         </div>
         <div className="col2">
           <div className="block sidepanel">
-            <h2>School Name</h2>
+            <h2>Hi, Teacher {this.props.username}</h2>
             <form>
               <label>school location</label>
               <select>
@@ -70,7 +67,9 @@ class AdminDashboard extends Component {
                 calendar
               </div>
             </div>
-              <StudentTable/>
+            <div className="block">
+              activity
+            </div>
           </div>
         </div>
       </div>
@@ -82,19 +81,21 @@ class AdminDashboard extends Component {
    * CONTAINER
    */
 
+// const mapState = state => {
+//   return {
+//     username: state.username
+//   }
+// }
 const mapStateToProps = state => {
   return {
-    // username: state.auth.username
-    users: state.users,
+    username: state.auth.username,
     students: state.students
-    // state
   }
 }
 
 
 const mapDispatchToProps = {
   getStudents,
-  getUsers,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLanding)
