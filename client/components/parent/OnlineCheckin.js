@@ -180,20 +180,6 @@ const OnlineCheckin = (props) => {
                     
 
                   </td>
-                  <td className="text-end pe-0">
-                    <a href="#" className="btn btn-icon btn-twitter btn-sm me-3">
-                      <i className="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" className="btn btn-icon btn-facebook btn-sm">
-                      <i className="fab fa-twitter"></i>
-                    </a>
-                  </td>
-                  <td className="text-end pe-0">
-                    <a
-                      href="#"
-                      className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                    ></a>
-                  </td>
                 </tr>
                 )
               })

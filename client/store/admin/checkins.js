@@ -18,8 +18,8 @@ export const fetchDailyCheckin = () => async dispatch => {
     const {data} = await axios.get(`/api/students/checkins`)
     const dateObj = new Date()
     const todayStr = dateObj.toDateString()
-    console.log('this is checkin store dateObj ~~ ', todayStr)
-    console.log('this is checkin store data~~ ', data[0].date)
+
+    console.log('this is checkin store data~~ ', data)
 
     const checkins = data.filter((checkin) => {
         return checkin.date === todayStr
