@@ -23,9 +23,6 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div id="admindashboard">
-        <div id="header" className="block">
-          header
-        </div>
         <div className="col2">
           <div className="block sidepanel">
             <h2>School Name</h2>
