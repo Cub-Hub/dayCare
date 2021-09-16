@@ -1,3 +1,6 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+
 /* GLOBAL */
 * {
   margin: 0;
@@ -7,7 +10,9 @@
 body {
   font-family: sans-serif;
 }
-
+p {
+  margin: 0!important;
+}
 a {
   text-decoration: none;
 }
@@ -270,6 +275,28 @@ form div {
 
 
 /* EMPLOYEE LANDING */
+.carousel-wrapper {
+  display: flex;
+  width:100%;
+}
+.carousel-wrapper > div{
+  width:100%;
+}
+.carousel-wrapper .carousel-arrow-left, .carousel-wrapper .carousel-arrow-right {
+  width: fit-content;
+  visibility: hidden;
+}
+.carousel-wrapper .carousel-arrow-left:after {
+  content: "\f053";
+  font-family: 'fontawesome';
+  visibility: visible;
+}
+.carousel-wrapper .carousel-arrow-right:after {
+  content: "\f054";
+  font-family: 'fontawesome';
+  visibility: visible;
+}
+
 .scroll-content-wrapper {
   height: 450px;
   width: calc(70vw - 2em);
@@ -286,3 +313,12 @@ form div {
   border-collapse: collapse;
 }
 
+.ReactModalPortal > div {
+  background-color: rgba(0, 0, 0, 0.5)!important
+}
+.ReactModal__Content.ReactModal__Content--after-open {
+  height:500px;
+  width: 500px;
+  margin: 0 auto;
+  border-radius: 25px!important;
+}
