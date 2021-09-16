@@ -114,8 +114,8 @@ class CalendarPage extends React.Component {
     return (
       <div>
       <script async defer src="https://apis.google.com/js/api.js"></script>
-      <h3>Welcome, </h3>
-      <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=czR2Y3NsZjMwZzkxZzkycXU2ZjRzcWE3NGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D81B60&mode=WEEK&showTz=0&showCalendars=0&showTabs=1&showPrint=0&showDate=1&showNav=1&showTitle=0" style="border:solid 1px #777" width="1000" height="800" frameborder="0" scrolling="no" style={{border: 0, width:800, height:600, frameborder:0, scrolling:"no"}}></iframe>
+      <h3></h3>
+      <iframe id = "FullCalendar" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=czR2Y3NsZjMwZzkxZzkycXU2ZjRzcWE3NGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D81B60&mode=WEEK&showTz=0&showCalendars=0&showTabs=1&showPrint=0&showDate=1&showNav=1&showTitle=0" style="border:solid 1px #777" width="2000" height="800" frameborder="0" scrolling="yes" style={{border: 0, frameborder:0, scrolling:"yes"}}></iframe>
 
 
     
@@ -123,7 +123,7 @@ class CalendarPage extends React.Component {
       
 
           
-    <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
+    {/*<pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>*/}
     
 
     

@@ -278,3 +278,7 @@ form div {
   border-collapse: collapse;
 }
 
+#FullCalendar {
+  width:100%;
+  height:600;
+}

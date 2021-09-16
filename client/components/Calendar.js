@@ -96,16 +96,16 @@ class CalendarPage extends React.Component {
   
   callbackFunction = async(childData) => {
 
-    
+     await this.setState({message: childData})
     let rawResult = await ApiCalendar.listEvents({
       timeMin: (this.state.message.addDays(0)).toISOString(),
       timeMax: (this.state.message.addDays(1)).toISOString(),
-      showDeleted: true,
+      showDeleted: false,
       maxResults: 10,
       orderBy: "updated"
     })
     await this.setState({listItems: rawResult.result.items})
-        await this.setState({message: childData})
+       
     console.log(this.state)
     
     
@@ -117,23 +117,46 @@ class CalendarPage extends React.Component {
   }
 
   
-  
+
   
   render() {
+    
+    ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+    
     return (
       <div>
-      <script async defer src="https://apis.google.com/js/api.js"></script>
-      
+     
+        <h3 className="card-title align-items-start flex-column">
+          <span className="card-label fw-bolder text-dark fs-3">
+            Student Calendar
+          </span>
+        </h3>
+   <div className="card-toolbar">
+          <ul className="nav nav-pills nav-pills-sm nav-light">
+            <li className="nav-item">
+              <a
+                className="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 active"
+                       data-bs-toggle="tab"
+                onClick={this.authorizeClick}
+              >
+                Sign-In
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2"
+                         data-bs-toggle="tab"
+          onClick={this.signoutClick}
+              >
+                Sign-Out
+              </a>
+            </li>
+            
+          </ul>
+        </div>
 
-        <button id="authorize-button"
-          onClick={this.authorizeClick}>
-          Authorize
-        </button>
-        
-        <button id="signout_button"
-          onClick={this.signoutClick}>
-          Sign Out
-        </button>
+
+ 
 
         {/*<button id="setCalendar_button"
           onClick={this.setCalendarClick}>
@@ -149,19 +172,33 @@ class CalendarPage extends React.Component {
         
 
         
-      <tr> {/*this.state.listitems.length === undefined ? */}
-      <td>
+      <div> {/*this.state.listitems.length === undefined ? */}
+      <div style={{width: 300}}>
+      
+      
+      
+                     <span className="text-dark me-2 fs-6 fw-bolder">
+                
+                    
+                          
+                          
+                          
       <ul>{this.state.listitems}{this.state.listItems.length === undefined ? <p>No items</p> : 
         this.state.listItems.map(x=>
-        <li>{x.start.dateTime.slice(11,13)*1>12 ? x.start.dateTime.slice(11,13)*1-12:x.start.dateTime.slice(11,13)*1}
-        :{x.start.dateTime.slice(14,16)} {x.start.dateTime.slice(11,13)*1>12?'PM':'AM'}-{x.summary}</li>)}</ul>
-      </td>
-      
-      <td>
+        <li><div style={{height:60}}>{x.start.dateTime.slice(11,13)*1>12 ? x.start.dateTime.slice(11,13)*1-12:x.start.dateTime.slice(11,13)*1}
+        :{x.start.dateTime.slice(14,16)} {x.start.dateTime.slice(11,13)*1>12?'PM':'AM'}<br></br>{x.summary}<br></br></div></li>)}</ul>      </span>
+        
+        
+        
+        
+        
+      </div>
+  
+      <div>
         <CalendarMini 
         parentCallback = {this.callbackFunction}/>
-      </td>
-      </tr> 
+      </div>
+      </div> 
           
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     
