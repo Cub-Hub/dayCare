@@ -4,9 +4,8 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
 import Calendar from './components/Calendar';
+import { me, fetchDailyCheckin, getStudents  } from './store'
 
-
-import { me } from './store'
 // import { QrGenerator } from './components/QrGenerator';
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
@@ -88,6 +87,8 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(fetchDailyCheckin())
+      dispatch(getStudents())
     }
   }
 }

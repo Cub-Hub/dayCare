@@ -8,6 +8,8 @@ const Student = require('./models/Student')
 const Category = require('./models/Category')
 const Checkin = require('./models/Checkin')
 const School = require('./models/School')
+const Group = require('./models/Group')
+const Timecard = require('./models/Timecards')
 
 //associations
 User.belongsTo(Type)
@@ -28,6 +30,21 @@ User.belongsTo(School)
 School.hasMany(Student)
 Student.belongsTo(School)
 
+Student.belongsTo(Group)
+Group.hasMany(Student)
+
+User.belongsTo(Group)
+Group.hasMany(User)
+
+Group.belongsTo(School)
+School.hasMany(Group)
+
+Group.belongsTo(Category)
+Category.hasMany(Group)
+
+Timecard.belongsTo(User)
+User.hasMany(Timecard)
+
 module.exports = {
   db,
   models: {
@@ -36,6 +53,8 @@ module.exports = {
     Category,
     Student,
     Checkin,
-    School
+    School,
+    Group,
+    Timecard
   },
 }

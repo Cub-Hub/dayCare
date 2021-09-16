@@ -112,7 +112,8 @@ form div {
 }
 
 .childPic{
-  height: 80px
+  height: 80px;
+  margin: 10px
 }
 
 
@@ -262,6 +263,13 @@ form div {
 .blankBtn {
   background-color: white;
   border-style: none;
+}
+
+.basicFlexColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
