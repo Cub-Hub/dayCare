@@ -51,9 +51,9 @@ class EmployeeLanding extends Component {
   //     }
   //   }
   // }
-  openFeedingNote(student) {
+  openFeedingNote() {
     console.log(this)
-    this.setState({ showFeedingNote: true, currentStudent: student });
+    this.setState({ showFeedingNote: true });
   }
 
   closeFeedingNote() {
@@ -119,7 +119,7 @@ class EmployeeLanding extends Component {
                   return (
                     <div key={student.id}>
                       <div>{student.firstName}</div>
-                      <div onClick={() => this.openFeedingNote(student)}>Ate<br />{Math.round(Math.random() * 10)} times</div>
+                      <div onClick={this.openFeedingNote}>Ate<br />{Math.round(Math.random() * 10)} times</div>
 
                       <div>Nap<br />{Math.round(Math.random() * 10)} times</div>
                       <div>Poop<br />{Math.round(Math.random() * 10)} times</div>
@@ -128,13 +128,12 @@ class EmployeeLanding extends Component {
                 })}
                 <Modal
                   isOpen={this.state.showFeedingNote}
-                  ariaHideApp={false}
                   contentLabel="Feeding Activity Update"
                   onRequestClose={this.closeFeedingNote}
                   className=""
                 >
                   <h2>Feeding Activity Update</h2>
-                  {/* <div id="feeding-update-form">{this.state.}</div> */}
+                  <div id="feeding-update-form"></div>
                   <button onClick={this.closeFeedingNote}>Close Modal</button>
                 </Modal>
               </div>

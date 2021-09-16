@@ -57,20 +57,19 @@ class AdminDashboard extends Component {
               <p>4 Credited</p>
               <a href="">Manage</a>
             </div>
+            <br /><br />
+            <hr />
+            <br /><br />
+            <h2>Reports</h2>
+            <div className="button"><p>Teachers</p></div>
+            <div className="button"><p>Children</p></div>
+            <div className="button"><p>Parents</p></div>
           </div>
           <div>
-            <div className="col2">
-              <div className="block sidepanel">
-                <h2>Reports</h2>
-                <div className="button"><p>Teachers</p></div>
-                <div className="button"><p>Children</p></div>
-                <div className="button"><p>Parents</p></div>
-              </div>
-              <div className="block">
-                calendar
-              </div>
+            <div className="block">
+              calendar
             </div>
-              <StudentTable/>
+            <StudentTable />
           </div>
         </div>
       </div>
