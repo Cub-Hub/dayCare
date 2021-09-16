@@ -8,7 +8,7 @@ import { getStudents } from '../../store';
 /**
  * COMPONENT
  */
-class EmployeeLanding extends Component {
+class StudentsActivityMonitor extends Component {
   constructor(props) {
     super(props)
     console.log('CONSTRUCTOR PROPS', props)
@@ -160,4 +160,4 @@ const mapDispatchToProps = {
   getStudents,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLanding)
+export default connect(mapStateToProps, mapDispatchToProps)(StudentsActivityMonitor)
