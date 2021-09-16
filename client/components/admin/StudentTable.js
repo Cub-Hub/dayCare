@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {Button, Modal} from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import Ratios from "./studentTable/Ratios";
 
 const StudentTable = (props) => {
@@ -52,7 +52,7 @@ const StudentTable = (props) => {
 
   const handleModal = (type) => {
     if (!modal) {
-      if(!pages) {setPages([0, 1, 2, 3])}
+      if (!pages) { setPages([0, 1, 2, 3]) }
       setSelectedStudents(type)
       setModal(true);
     } else {
@@ -62,12 +62,12 @@ const StudentTable = (props) => {
   };
 
   const handlePage = (type) => {
-    if(type === 'next') setPages([pages[3]+1, pages[3]+2, pages[3]+3, pages[3]+4 ])
-    if(type === 'prev') setPages([pages[0]-4, pages[0]-3, pages[0]-2, pages[0]-1 ])
+    if (type === 'next') setPages([pages[3] + 1, pages[3] + 2, pages[3] + 3, pages[3] + 4])
+    if (type === 'prev') setPages([pages[0] - 4, pages[0] - 3, pages[0] - 2, pages[0] - 1])
   }
 
 
-  console.log("props of tablewidget~~~~~~~~~: ", props );
+  // console.log("props of tablewidget~~~~~~~~~: ", props );
 
   return (
     <div className={`card ${className}`}>
@@ -116,45 +116,45 @@ const StudentTable = (props) => {
         change class from display none to display absolute. Z index(layering)
       */}
 
-      <Modal show={modal}> 
-      <Modal.Header>Checked In Students</Modal.Header>
-      <Modal.Body>
-        <div className='basicFlexColumn'>
-          { selectedStudents[pages[0]] ? <img className='childPic' src={selectedStudents[pages[0]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[0]] ? `${selectedStudents[pages[0]].firstName}  ${selectedStudents[pages[0]].lastName}` 
-          : ''}</p>
+      <Modal show={modal}>
+        <Modal.Header>Checked In Students</Modal.Header>
+        <Modal.Body>
+          <div className='basicFlexColumn'>
+            {selectedStudents[pages[0]] ? <img className='childPic' src={selectedStudents[pages[0]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[0]] ? `${selectedStudents[pages[0]].firstName}  ${selectedStudents[pages[0]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[1]] ? <img className='childPic' src={selectedStudents[pages[1]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[1]] ? `${selectedStudents[pages[1]].firstName}  ${selectedStudents[pages[1]].lastName}` 
-          : ''}</p>
+            {selectedStudents[pages[1]] ? <img className='childPic' src={selectedStudents[pages[1]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[1]] ? `${selectedStudents[pages[1]].firstName}  ${selectedStudents[pages[1]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[2]] ? <img className='childPic' src={selectedStudents[pages[2]].imgURL}></img> : ''}   
-          <p>{selectedStudents[pages[2]] ? `${selectedStudents[pages[2]].firstName}  ${selectedStudents[pages[2]].lastName}` 
-          : ''}</p>
+            {selectedStudents[pages[2]] ? <img className='childPic' src={selectedStudents[pages[2]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[2]] ? `${selectedStudents[pages[2]].firstName}  ${selectedStudents[pages[2]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[3]] ? <img className='childPic' src={selectedStudents[pages[3]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[3]] ? `${selectedStudents[pages[3]].firstName}  ${selectedStudents[pages[3]].lastName}` 
-          : ''}</p>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-      {pages ? 
-      pages[0] === 0 ? 
-      <button className='btn btn-secondary'>Prev</button> 
-      : 
-      <Button onClick={()=> {handlePage('prev')}}>Prev</Button>
-      : ''}
+            {selectedStudents[pages[3]] ? <img className='childPic' src={selectedStudents[pages[3]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[3]] ? `${selectedStudents[pages[3]].firstName}  ${selectedStudents[pages[3]].lastName}`
+              : ''}</p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          {pages ?
+            pages[0] === 0 ?
+              <button className='btn btn-secondary'>Prev</button>
+              :
+              <Button onClick={() => { handlePage('prev') }}>Prev</Button>
+            : ''}
 
-      <Button className='btn btn-success' onClick={handleModal}>Close</Button>
+          <Button className='btn btn-success' onClick={handleModal}>Close</Button>
 
-      {pages ? 
-      selectedStudents[pages[3]+1] ? 
-      <Button onClick={() => handlePage('next')}>Next</Button>
-      : 
-      <button className='btn btn-secondary'>Next</button>
-      : ''}
+          {pages ?
+            selectedStudents[pages[3] + 1] ?
+              <Button onClick={() => handlePage('next')}>Next</Button>
+              :
+              <button className='btn btn-secondary'>Next</button>
+            : ''}
 
-      </Modal.Footer>
+        </Modal.Footer>
       </Modal>
 
       {/* <!--end::Header--> */}
@@ -190,8 +190,8 @@ const StudentTable = (props) => {
                     <td className="ps-0">
                       {/*~~~~~~~~~~~~MODAL~~~~~~~~~~~~~ */}
                       <button className='blankBtn' onClick={() => handleModal(checkedInfants)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Infants
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Infants
                       </a>
                       </button>
                       {/*~~~~~~~~~~~~~~~~~~MODAL END~~~~~~~~~~~~~ */}
@@ -212,10 +212,9 @@ const StudentTable = (props) => {
                               className="progress-bar bg-primary"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedInfants.length / infantList.length) *
+                                width: `${(checkedInfants.length / infantList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -239,9 +238,9 @@ const StudentTable = (props) => {
                       </div>
                     </td>
                     <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedToddlers)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Toddlers
+                      <button className='blankBtn' onClick={() => handleModal(checkedToddlers)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Toddlers
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
@@ -261,11 +260,10 @@ const StudentTable = (props) => {
                               className="progress-bar bg-warning"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedToddlers.length /
+                                width: `${(checkedToddlers.length /
                                     toddlerList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -289,9 +287,9 @@ const StudentTable = (props) => {
                       </div>
                     </th>
                     <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedPreschoolers)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Preschoolers
+                      <button className='blankBtn' onClick={() => handleModal(checkedPreschoolers)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Preschoolers
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
@@ -311,11 +309,10 @@ const StudentTable = (props) => {
                               className="progress-bar bg-success"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedPreschoolers.length /
+                                width: `${(checkedPreschoolers.length /
                                     preschoolerList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -339,9 +336,9 @@ const StudentTable = (props) => {
                       </div>
                     </th>
                     <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedKinders)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Kindergarteners
+                      <button className='blankBtn' onClick={() => handleModal(checkedKinders)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Kindergarteners
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
@@ -361,10 +358,9 @@ const StudentTable = (props) => {
                               className="progress-bar bg-danger"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedKinders.length / kinderList.length) *
+                                width: `${(checkedKinders.length / kinderList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -396,7 +392,7 @@ const StudentTable = (props) => {
             aria-labelledby="kt_tab_pane_1_1"
           >
             {/* <!--begin::Table--> */}
-              <Ratios />
+            <Ratios />
             {/* <!--end::Table--> */}
           </div>
           {/* <!--end::Tap pane--> */}
