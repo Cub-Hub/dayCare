@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
 
-import { getStudents, getUsers } from '../../store';
+import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
 
 /**
  * COMPONENT
@@ -15,6 +15,7 @@ class AdminDashboard extends Component {
   async componentDidMount() {
     await this.props.getStudents();
     await this.props.getUsers();
+    await this.props.fetchDailyCheckin();
 
     // this.setState({ users: this.props.users });
     // this.setState({ students: this.props.students })
@@ -91,6 +92,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getStudents,
   getUsers,
+  fetchDailyCheckin 
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)
