@@ -53,8 +53,9 @@ async function seed() {
 
   // Creating Users
 
-  const [lemon, onion, tums, shward, gumps, widdle, otaco, kimp, bean, qonk, pregut, frobeets, scunchy, cody,
+  const [olsock, lemon, onion, tums, shward, gumps, widdle, otaco, kimp, bean, qonk, pregut, frobeets, scunchy, cody,
      lumpy, skunk, slarzard, hoonfunk, tonka, oreo, puddle, plop, wurton, blublub, pwanko, toespink] = await Promise.all([
+    User.create({ username: 'olsock', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     User.create({ username: 'lemon', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     User.create({ username: 'onion', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsB.id  }),
     User.create({ username: 'tums', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsC.id  }),
@@ -82,7 +83,7 @@ async function seed() {
     User.create({ username: 'pwanko', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
     User.create({ username: 'toespink', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
   ])
-  const users = [lemon, onion, tums, shward, gumps, widdle, kimp, bean, pregut, frobeets, scunchy, cody, qonk, otaco, lumpy, skunk, 
+  const users = [olsock, lemon, onion, tums, shward, gumps, widdle, kimp, bean, pregut, frobeets, scunchy, cody, qonk, otaco, lumpy, skunk, 
     tonka, puddle, plop, wurton, blublub, pwanko, slarzard, oreo, hoonfunk, toespink];
 
   // create students
@@ -97,6 +98,8 @@ async function seed() {
     categoryId: preschooler.id , age: 3, groupId: cotsC.id,
     imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler2.png", schoolId:cots4tots.id }),
     Student.create({ firstName: 'wompum', lastName: 'spee', userId: skunk.id,
+    categoryId: infant.id, age: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
+    Student.create({ firstName: 'slurgpum', lastName: 'spee', userId: skunk.id,
     categoryId: infant.id, age: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     Student.create({ firstName: 'bumpy', lastName: 'spee', userId: skunk.id,
     categoryId: toddler.id, age: 2, schoolId:cots4tots.id, groupId: cotsB.id }),

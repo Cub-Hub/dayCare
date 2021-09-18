@@ -261,6 +261,18 @@ form div {
   border-style: none;
 }
 
+#checkMark {
+  color: green
+}
+
+#warningMark {
+  color: goldenrod
+}
+
+#dangerMark {
+  color: firebrick
+}
+
 .basicFlexColumn {
   display: flex;
   flex-direction: column;
@@ -268,10 +280,26 @@ form div {
   align-items: center;
 }
 
-.centerSmall {
-  align-self: center;
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
 }
 
+.centerSmallSuccess {
+  align-self: center;
+  color: green
+}
+
+.centerSmallDanger {
+  align-self: center;
+  color: red
+}
+
+#centeredColumn {
+  text-align: center;
+  width: 40%
+}
 
 /* EMPLOYEE LANDING */
 .carousel-wrapper {

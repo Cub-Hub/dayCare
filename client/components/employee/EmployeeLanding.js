@@ -71,7 +71,7 @@ class EmployeeLanding extends Component {
         <div className="col2">
           <div className="block sidepanel">
             <div>
-              <h2>Hi, Teacher {this.props.username}</h2>
+              <h2>Hi, {this.props.username}</h2>
               <Clockin />
               <br /><br />
               <p>You are at</p>
