@@ -142,7 +142,7 @@ class EmployeeLanding extends Component {
                       <label>Details</label>
                       <input type="text" name="ate" onChange={this.handleChange} />
                     </div>
-                    <button id="submit">Update Activity</button>
+                    <button id="submit" className="button">Update Activity</button>
                   </form>
                   <button onClick={this.closeFeedingNote}>Close Modal</button>
                 </Modal>
@@ -166,7 +166,7 @@ class EmployeeLanding extends Component {
                       <label>Details</label>
                       <input type="text" name="ate" onChange={this.handleChange} />
                     </div>
-                    <button id="submit">Update Activity</button>
+                    <button id="submit" className="button">Update Activity</button>
                   </form>
                   <button onClick={this.closeNappingNote}>Close Modal</button>
                 </Modal>
@@ -190,7 +190,7 @@ class EmployeeLanding extends Component {
                       <label>Details</label>
                       <input type="text" name="ate" onChange={this.handleChange} />
                     </div>
-                    <button id="submit">Update Activity</button>
+                    <button id="submit" className="button">Update Activity</button>
                   </form>
                   <button onClick={this.closePoopingNote}>Close Modal</button>
                 </Modal>
