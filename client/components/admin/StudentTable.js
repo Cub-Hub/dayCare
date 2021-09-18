@@ -5,7 +5,6 @@ import Ratios from "./studentTable/Ratios";
 
 const StudentTable = (props) => {
   const [modal, setModal] = useState(() => false);
-  const [checked, setChecked] = useState(() => []);
   const [selectedStudents, setSelectedStudents] = useState(() => false);
   const [pages, setPages] = useState(() => false)
 

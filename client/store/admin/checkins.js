@@ -22,7 +22,6 @@ export const fetchDailyCheckin = () => async dispatch => {
 
   // console.log('this is checkin store data~~ ', data)
 
-
   const checkins = data.filter((checkin) => {
     return checkin.date === todayStr
   })

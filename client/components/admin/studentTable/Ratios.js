@@ -1,217 +1,123 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchDailyCheckin, getStudents } from "../../../store";
+import { getUsers, fetchDailyCheckin } from "../../../store";
 
 /**
  * COMPONENT
  */
 const Ratios = (props) => {
+
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
 
+  const checkins = props.checkins.map((check) => check.studentId);
 
-  useEffect(() => {
-    props.fetchDailyCheckin();
-  }, []);
-  
-  useEffect(() => {
-    props.getStudents();
-  }, []);
+  const checkedStudents = props.students.filter((student) =>
+    checkins.includes(student.id)
+  );
+
+  const activeEmployees = props.users.filter((user) => user.isActive);
+
+  console.log("this activeEmployees~~ ", props);
 
   return (
     <div className="table-responsive">
-              <table className="table table-borderless align-middle">
-                <thead>
-                  <tr>
-                    <th className="p-0 w-50px"></th>
-                    <th className="p-0 min-w-200px"></th>
-                    <th className="p-0 min-w-100px"></th>
-                    <th className="p-0 min-w-40px"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px me-3">
-                        <span className="symbol-label bg-light-success"></span>
+      <div className="flexBetween">
+        <span className="text-dark me-2 fs-6 fw-bolder" id="centeredColumn">
+          Group
+        </span>
+        <span className="text-dark me-2 fs-6 fw-bolder">
+          Status & Student/Employee Ratio
+        </span>
+      </div>
+      <table className="table table-borderless align-middle">
+        <thead>
+          <tr>
+            <th className="p-0 w-50px"></th>
+            <th className="p-0 min-w-200px"></th>
+            <th className="p-0 min-w-100px"></th>
+            <th className="p-0 min-w-40px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.groups.map((group) => {
+            const activeEmp = group.users.filter(
+              (user) => user.isActive
+            ).length;
+            const checkedStu = group.students.filter((student) =>
+              checkins.includes(student.id)
+            ).length;
+            const curRatio =
+              checkedStu / (activeEmp * (group.category.id * 2 + 2));
+            return (
+              <tr key={group.id}>
+                <th className="ps-0 py-3">
+                  <div className="symbol symbol-65px me-3">
+                    <span className="symbol-label bg-light-success"></span>
+                  </div>
+                </th>
+                <td className="ps-0">
+                  <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                    {group.name}
+                  </a>
+                  <span className="text-muted fw-bold d-block mt-1">
+                    {group.category.name} (Max per Employee:{" "}
+                    {group.category.id * 2 + 2})
+                  </span>
+                </td>
+                <td>
+                  <div className="d-flex flex-column w-100 me-3">
+                    <div className="d-flex align-items-center">
+                      <div>
+                        {curRatio > 1 ? (
+                          <i
+                            className="fa fa-window-close"
+                            id="dangerMark"
+                            aria-hidden="true"
+                          ></i>
+                        ) : curRatio > 0.90 ? (
+                          <i
+                            className="fa fa-exclamation-triangle"
+                            id="warningMark"
+                            aria-hidden="true"
+                          ></i>
+                        ) : (
+                          <i
+                            className="fa fa-check"
+                            id="checkMark"
+                            color="tomato"
+                            aria-hidden="true"
+                          ></i>
+                        )}
                       </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        New Users
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
+                      <span className="text-muted fs-7 fw-bold ps-3">
+                        {checkedStu} / {activeEmp}
                       </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-success">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "53%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            53%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px me-3">
-                        <span className="symbol-label bg-light-danger"></span>
-                      </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Weekly Bestsellers
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-danger">
-                            <div
-                              className="progress-bar bg-danger"
-                              role="progressbar"
-                              style={{ width: "110%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            92%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px me-3">
-                        <span className="symbol-label bg-light-primary"></span>
-                      </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Top Authors
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-primary">
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "46%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            46%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="ps-0 py-3">
-                      <div className="symbol symbol-65px me-3">
-                        <span className="symbol-label bg-light-warning"></span>
-                      </div>
-                    </td>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Popular Authors
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML, VueJS, Laravel
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-warning">
-                            <div
-                              className="progress-bar bg-warning"
-                              role="progressbar"
-                              style={{ width: "87%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            87%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                    </div>
+                  </div>
+                </td>
+                <td className="text-end pe-0">
+                  <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
+                </td>
+              </tr>
+            );
+          })}
+
+          {/*~~~~~~~~~~~~~~~~~~~~end of table row~~~~~~~~~~~~~~~~~ */}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
 const mapState = (state) => {
-    return state
-  };
-  
-  const mapDispatch = {
-    fetchDailyCheckin,
-    getStudents,
-  };
-  
-  export default connect(mapState, mapDispatch)(Ratios);
+  return state;
+};
+
+const mapDispatch = {
+  fetchDailyCheckin,
+  getUsers,
+};
+
+export default connect(mapState, mapDispatch)(Ratios);
