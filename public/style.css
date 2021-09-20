@@ -154,7 +154,13 @@ nav a:hover {
   margin: 10px
 }
 
+#clockinIcon {
+  color:forestgreen
+}
 
+#clockoutIcon {
+  color:red
+}
 
 .react-calendar {
   width: 350px;

@@ -30,9 +30,6 @@ const Clockin = (props) => {
     props.getUsers()
   };
 
-  console.log("clockin in the props~~~ ", props.clockin);
-  console.log("props for clockin component~~~ ", props);
-
   const curClockin = props.clockin[0]
     ? props.clockin.sort((a, b) => b.id - a.id)[0]
     : false;
@@ -47,7 +44,7 @@ const Clockin = (props) => {
             {/* begin::Text */}
             {curClockin ? (
               curClockin.clockedin ? (
-                <small className="centerSmallSuccess">You are clocked in</small>
+                <small className="centerSmallSuccess">You clocked in at {curClockin.time}</small>
               ) : (
                 <small className="centerSmallDanger">You are clocked out</small>
               )
@@ -69,6 +66,7 @@ const Clockin = (props) => {
                     onClick={() => handleClockout(props.userId)}
                   >
                     <i
+                      id='clockoutIcon'
                       className="fa fa-window-close fa-5x"
                       aria-hidden="true"
                     ></i>
@@ -78,7 +76,7 @@ const Clockin = (props) => {
                     className="blankBtn"
                     onClick={() => handleClockin(props.userId)}
                   >
-                    <i className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+                    <i id='clockinIcon' className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
                   </button>
                 )
               ) : (

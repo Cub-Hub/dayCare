@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {Button, Modal} from 'react-bootstrap'
 import Ratios from "./studentTable/Ratios";
+import GroupStatus from "./studentTable/GroupStatus";
 
 const StudentTable = (props) => {
   const [modal, setModal] = useState(() => false);
@@ -64,9 +65,6 @@ const StudentTable = (props) => {
     if(type === 'next') setPages([pages[3]+1, pages[3]+2, pages[3]+3, pages[3]+4 ])
     if(type === 'prev') setPages([pages[0]-4, pages[0]-3, pages[0]-2, pages[0]-1 ])
   }
-
-
-  console.log("props of tablewidget~~~~~~~~~: ", props );
 
   return (
     <div className={`card ${className}`}>
@@ -408,188 +406,7 @@ const StudentTable = (props) => {
             aria-labelledby="kt_tab_pane_1_1"
           >
             {/* <!--begin::Table--> */}
-            <div className="table-responsive">
-              <table className="table table-borderless align-middle">
-                <thead>
-                  <tr>
-                    <th className="p-0 w-50px"></th>
-                    <th className="p-0 min-w-200px"></th>
-                    <th className="p-0 min-w-100px"></th>
-                    <th className="p-0 min-w-40px"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="ps-0 py-3">
-                      <div className="symbol symbol-65px bg-light-warning me-3">
-                        <span className="symbol-label"></span>
-                      </div>
-                    </td>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Popular Authors
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML, VueJS, Laravel
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-warning">
-                            <div
-                              className="progress-bar bg-warning"
-                              role="progressbar"
-                              style={{ width: "87%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            87%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px bg-light-success me-3">
-                        <span className="symbol-label"></span>
-                      </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        New Users
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-success">
-                            <div
-                              className="progress-bar bg-success"
-                              role="progressbar"
-                              style={{ width: "53%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            53%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px bg-light-primary me-3">
-                        <span className="symbol-label"></span>
-                      </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Top Authors
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-primary">
-                            <div
-                              className="progress-bar bg-primary"
-                              role="progressbar"
-                              style={{ width: "46%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            46%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ps-0 py-3">
-                      <div className="symbol symbol-65px bg-light-danger me-3">
-                        <span className="symbol-label"></span>
-                      </div>
-                    </th>
-                    <td className="ps-0">
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Weekly Bestsellers
-                      </a>
-                      <span className="text-muted fw-bold d-block mt-1">
-                        HTML/CSS/JS, Python
-                      </span>
-                    </td>
-                    <td>
-                      <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
-                          <span className="text-dark me-2 fs-6 fw-bolder">
-                            Progress
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center">
-                          <div className="progress h-6px  w-100 bg-light-danger">
-                            <div
-                              className="progress-bar bg-danger"
-                              role="progressbar"
-                              style={{ width: "92%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                          <span className="text-muted fs-7 fw-bold ps-3">
-                            92%
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-end pe-0">
-                      <a className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <GroupStatus />
             {/* <!--end::Table--> */}
           </div>
           {/* <!--end::Tap pane--> */}
