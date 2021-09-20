@@ -13,6 +13,7 @@ import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 import EmployeeLanding from './components/employee/EmployeeLanding';
 import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
+import GroupStatus from './components/employee/GroupStatus';
 
 
 
@@ -59,6 +60,7 @@ class Routes extends Component {
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
                 <Route path="/calendar" component={Calendar} />
+                <Route path="/status" component={GroupStatus} />
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
                 <Redirect to="/home" />

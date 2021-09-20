@@ -10,6 +10,9 @@ const Clockin = db.define('clockin', {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
         allowNull: false
+    },
+    time: {
+        type: Sequelize.STRING,
     }
 })
 

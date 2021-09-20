@@ -16,9 +16,6 @@ class AdminDashboard extends Component {
     await this.props.getStudents();
     await this.props.getUsers();
     await this.props.fetchDailyCheckin();
-
-    // this.setState({ users: this.props.users });
-    // this.setState({ students: this.props.students })
   }
 
   render() {

@@ -210,7 +210,13 @@ nav a:hover {
   font-size: 14px!important;
 }
 
+#clockinIcon {
+  color:forestgreen
+}
 
+#clockoutIcon {
+  color:red
+}
 
 .react-calendar {
   width: 350px;
