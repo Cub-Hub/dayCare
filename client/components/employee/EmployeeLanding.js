@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Modal from 'react-modal';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom'
-=======
 import Clockin from './Clockin';
 // import { Button, Modal } from 'react-bootstrap'
->>>>>>> 72e532086aaf6c5a069926ee292a970b60ea04fc
 
 import { getStudents } from '../../store';
 
