@@ -4,13 +4,15 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
 import Calendar from './components/Calendar';
-import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups  } from './store'
+
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 import EmployeeLanding from './components/employee/EmployeeLanding';
+import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
 import GroupStatus from './components/employee/GroupStatus';
 
 
@@ -39,6 +41,7 @@ class Routes extends Component {
               <Route path="/admin-dashboard" component={AdminDashboard} />
               <Route path="/employee-landing" component={EmployeeLanding} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
+              <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
               <Redirect to="/home" />
             </Switch>
             :
@@ -50,6 +53,7 @@ class Routes extends Component {
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
+                <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
               :

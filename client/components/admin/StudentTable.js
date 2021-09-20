@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {Button, Modal} from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import Ratios from "./studentTable/Ratios";
 import GroupStatus from "./studentTable/GroupStatus";
 
@@ -52,7 +52,7 @@ const StudentTable = (props) => {
 
   const handleModal = (type) => {
     if (!modal) {
-      if(!pages) {setPages([0, 1, 2, 3])}
+      if (!pages) { setPages([0, 1, 2, 3]) }
       setSelectedStudents(type)
       setModal(true);
     } else {
@@ -62,22 +62,23 @@ const StudentTable = (props) => {
   };
 
   const handlePage = (type) => {
-    if(type === 'next') setPages([pages[3]+1, pages[3]+2, pages[3]+3, pages[3]+4 ])
-    if(type === 'prev') setPages([pages[0]-4, pages[0]-3, pages[0]-2, pages[0]-1 ])
+    if (type === 'next') setPages([pages[3] + 1, pages[3] + 2, pages[3] + 3, pages[3] + 4])
+    if (type === 'prev') setPages([pages[0] - 4, pages[0] - 3, pages[0] - 2, pages[0] - 1])
   }
 
+  // console.log("props of tablewidget~~~~~~~~~: ", props );
+
+
   return (
-    <div className={`card ${className}`}>
+    <div className="block">
       {/* <!--begin::Header--> */}
-      <div className={`card-header border-0 pt-5 ${innerPadding}`}>
-        <h3 className="card-title align-items-start flex-column">
-          <span className="card-label fw-bolder text-dark fs-3">
-            Student Data
-          </span>
+      <div className="col2">
+        <h3 className="block-title sidepanel align-items-start flex-column">
+          Student Data
         </h3>
         <div className="card-toolbar">
-          <ul className="nav nav-pills nav-pills-sm nav-light">
-            <li className="nav-item">
+          <ul id="tabs-wrapper" className="nav nav-pills nav-pills-sm nav-light">
+            <li id="tab-item-link" className="nav-item tab-item">
               <a
                 className="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2 active"
                 data-bs-toggle="tab"
@@ -86,7 +87,7 @@ const StudentTable = (props) => {
                 Daily Attendance
               </a>
             </li>
-            <li className="nav-item">
+            <li id="tab-item-link" className="nav-item tab-item">
               <a
                 className="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2"
                 data-bs-toggle="tab"
@@ -95,7 +96,7 @@ const StudentTable = (props) => {
                 Room Ratios
               </a>
             </li>
-            <li className="nav-item">
+            <li id="tab-item-link" className="nav-item tab-item">
               <a
                 className="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder"
                 data-bs-toggle="tab"
@@ -113,45 +114,45 @@ const StudentTable = (props) => {
         change class from display none to display absolute. Z index(layering)
       */}
 
-      <Modal show={modal}> 
-      <Modal.Header>Checked In Students</Modal.Header>
-      <Modal.Body>
-        <div className='basicFlexColumn'>
-          { selectedStudents[pages[0]] ? <img className='childPic' src={selectedStudents[pages[0]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[0]] ? `${selectedStudents[pages[0]].firstName}  ${selectedStudents[pages[0]].lastName}` 
-          : ''}</p>
+      <Modal show={modal}>
+        <Modal.Header>Checked In Students</Modal.Header>
+        <Modal.Body>
+          <div className='basicFlexColumn'>
+            {selectedStudents[pages[0]] ? <img className='childPic' src={selectedStudents[pages[0]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[0]] ? `${selectedStudents[pages[0]].firstName}  ${selectedStudents[pages[0]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[1]] ? <img className='childPic' src={selectedStudents[pages[1]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[1]] ? `${selectedStudents[pages[1]].firstName}  ${selectedStudents[pages[1]].lastName}` 
-          : ''}</p>
+            {selectedStudents[pages[1]] ? <img className='childPic' src={selectedStudents[pages[1]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[1]] ? `${selectedStudents[pages[1]].firstName}  ${selectedStudents[pages[1]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[2]] ? <img className='childPic' src={selectedStudents[pages[2]].imgURL}></img> : ''}   
-          <p>{selectedStudents[pages[2]] ? `${selectedStudents[pages[2]].firstName}  ${selectedStudents[pages[2]].lastName}` 
-          : ''}</p>
+            {selectedStudents[pages[2]] ? <img className='childPic' src={selectedStudents[pages[2]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[2]] ? `${selectedStudents[pages[2]].firstName}  ${selectedStudents[pages[2]].lastName}`
+              : ''}</p>
 
-          { selectedStudents[pages[3]] ? <img className='childPic' src={selectedStudents[pages[3]].imgURL}></img> : ''}
-          <p>{selectedStudents[pages[3]] ? `${selectedStudents[pages[3]].firstName}  ${selectedStudents[pages[3]].lastName}` 
-          : ''}</p>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-      {pages ? 
-      pages[0] === 0 ? 
-      <button className='btn btn-secondary'>Prev</button> 
-      : 
-      <Button onClick={()=> {handlePage('prev')}}>Prev</Button>
-      : ''}
+            {selectedStudents[pages[3]] ? <img className='childPic' src={selectedStudents[pages[3]].imgURL}></img> : ''}
+            <p>{selectedStudents[pages[3]] ? `${selectedStudents[pages[3]].firstName}  ${selectedStudents[pages[3]].lastName}`
+              : ''}</p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          {pages ?
+            pages[0] === 0 ?
+              <button className='btn btn-secondary'>Prev</button>
+              :
+              <Button onClick={() => { handlePage('prev') }}>Prev</Button>
+            : ''}
 
-      <Button className='btn btn-success' onClick={handleModal}>Close</Button>
+          <Button className='btn btn-success' onClick={handleModal}>Close</Button>
 
-      {pages ? 
-      selectedStudents[pages[3]+1] ? 
-      <Button onClick={() => handlePage('next')}>Next</Button>
-      : 
-      <button className='btn btn-secondary'>Next</button>
-      : ''}
+          {pages ?
+            selectedStudents[pages[3] + 1] ?
+              <Button onClick={() => handlePage('next')}>Next</Button>
+              :
+              <button className='btn btn-secondary'>Next</button>
+            : ''}
 
-      </Modal.Footer>
+        </Modal.Footer>
       </Modal>
 
       {/* <!--end::Header--> */}
@@ -184,21 +185,21 @@ const StudentTable = (props) => {
                         <span className="symbol-label bg-light-success"></span>
                       </div>
                     </th>
-                    <td className="ps-0">
+                    <td id="data-legend" className="ps-0">
                       {/*~~~~~~~~~~~~MODAL~~~~~~~~~~~~~ */}
                       <button className='blankBtn' onClick={() => handleModal(checkedInfants)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Infants
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Infants
                       </a>
                       </button>
                       {/*~~~~~~~~~~~~~~~~~~MODAL END~~~~~~~~~~~~~ */}
                       <span className="text-muted fw-bold d-block mt-1">
-                        (Less than 1 yr olds)
+                        Less than 1 yr olds
                       </span>
                     </td>
                     <td>
                       <div className="d-flex flex-column w-100 me-3">
-                        <div className="d-flex align-items-center justify-content-between mb-2">
+                        <div id="data-legend" className="d-flex align-items-center justify-content-between mb-2">
                           <span className="text-dark me-2 fs-6 fw-bolder">
                             Check in Count
                           </span>
@@ -209,10 +210,9 @@ const StudentTable = (props) => {
                               className="progress-bar bg-primary"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedInfants.length / infantList.length) *
+                                width: `${(checkedInfants.length / infantList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -235,18 +235,18 @@ const StudentTable = (props) => {
                         <span className="symbol-label bg-light-warning"></span>
                       </div>
                     </td>
-                    <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedToddlers)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Toddlers
+                    <td id="data-legend" className="ps-0">
+                      <button className='blankBtn' onClick={() => handleModal(checkedToddlers)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Toddlers
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
-                        (1 - 2 yr olds)
+                        1 - 2 yr olds
                       </span>
                     </td>
                     <td>
-                      <div className="d-flex flex-column w-100 me-3">
+                      <div id="data-legend" className="d-flex flex-column w-100 me-3">
                         <div className="d-flex align-items-center justify-content-between mb-2">
                           <span className="text-dark me-2 fs-6 fw-bolder">
                             Check in Count
@@ -258,11 +258,10 @@ const StudentTable = (props) => {
                               className="progress-bar bg-warning"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedToddlers.length /
-                                    toddlerList.length) *
+                                width: `${(checkedToddlers.length /
+                                  toddlerList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -285,18 +284,18 @@ const StudentTable = (props) => {
                         <span className="symbol-label bg-light-success "></span>
                       </div>
                     </th>
-                    <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedPreschoolers)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Preschoolers
+                    <td id="data-legend" className="ps-0">
+                      <button className='blankBtn' onClick={() => handleModal(checkedPreschoolers)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Preschoolers
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
-                        (3 to 5 yr olds)
+                        3 to 5 yr olds
                       </span>
                     </td>
                     <td>
-                      <div className="d-flex flex-column w-100 me-3">
+                      <div id="data-legend" className="d-flex flex-column w-100 me-3">
                         <div className="d-flex align-items-center justify-content-between mb-2">
                           <span className="text-dark me-2 fs-6 fw-bolder">
                             Check in Count
@@ -308,11 +307,10 @@ const StudentTable = (props) => {
                               className="progress-bar bg-success"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedPreschoolers.length /
-                                    preschoolerList.length) *
+                                width: `${(checkedPreschoolers.length /
+                                  preschoolerList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -335,18 +333,18 @@ const StudentTable = (props) => {
                         <span className="symbol-label bg-light-danger"></span>
                       </div>
                     </th>
-                    <td className="ps-0">
-                    <button className='blankBtn' onClick={() => handleModal(checkedKinders)}>
-                      <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                        Kindergarteners
+                    <td id="data-legend" className="ps-0">
+                      <button className='blankBtn' onClick={() => handleModal(checkedKinders)}>
+                        <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                          Kindergarteners
                       </a>
                       </button>
                       <span className="text-muted fw-bold d-block mt-1">
-                        (5 - 6 yr olds)
+                        5 - 6 yr olds
                       </span>
                     </td>
                     <td>
-                      <div className="d-flex flex-column w-100 me-3">
+                      <div id="data-legend" className="d-flex flex-column w-100 me-3">
                         <div className="d-flex align-items-center justify-content-between mb-2">
                           <span className="text-dark me-2 fs-6 fw-bolder">
                             Check in Count
@@ -358,10 +356,9 @@ const StudentTable = (props) => {
                               className="progress-bar bg-danger"
                               role="progressbar"
                               style={{
-                                width: `${
-                                  (checkedKinders.length / kinderList.length) *
+                                width: `${(checkedKinders.length / kinderList.length) *
                                   100
-                                }%`,
+                                  }%`,
                               }}
                               aria-valuenow={50}
                               aria-valuemin={0}
@@ -393,7 +390,7 @@ const StudentTable = (props) => {
             aria-labelledby="kt_tab_pane_1_1"
           >
             {/* <!--begin::Table--> */}
-              <Ratios />
+            <Ratios />
             {/* <!--end::Table--> */}
           </div>
           {/* <!--end::Tap pane--> */}
