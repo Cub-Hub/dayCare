@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import Clockin from './Clockin';
 // import { Button, Modal } from 'react-bootstrap'
@@ -12,7 +13,6 @@ import { getStudents } from '../../store';
 class EmployeeLanding extends Component {
   constructor(props) {
     super(props)
-    console.log('CONSTRUCTOR PROPS', props)
 
     this.state = {
       showFeedingNote: false
@@ -25,8 +25,8 @@ class EmployeeLanding extends Component {
 
   async componentDidMount() {
     await this.props.getStudents();
-
   }
+
   // eachStudentFeedingNote() {
   //   const form = document.getElementById('feeding-update-form');
   //   const studentsList = this.props.students
@@ -52,6 +52,7 @@ class EmployeeLanding extends Component {
   //     }
   //   }
   // }
+
   openFeedingNote(student) {
     console.log(this)
     this.setState({ showFeedingNote: true, currentStudent: student });
@@ -62,7 +63,7 @@ class EmployeeLanding extends Component {
   }
 
   render() {
-    console.log('RENDER STATE', this.state)
+    const myGroup = this.props.groups.filter((group) => group.id === this.props.groupId)[0]
     return (
       <div id="admindashboard">
         {/* <div id="header" className="block">
@@ -74,20 +75,25 @@ class EmployeeLanding extends Component {
               <h2>Hi, {this.props.username}</h2>
               <Clockin />
               <br /><br />
-              <p>You are at</p>
+              <p>Your school:</p>
               <h3>
-                School Name<br />
-                Location<br />
-                _____ class
+                {myGroup? myGroup.school.name : ''}<br />
+                _____ {myGroup ? myGroup.name : ''}
               </h3>
             </div>
             <br /><br />
-            <div className="col2">
-              <p>Total {this.props.students.length} Students</p>
+            <div>
+              <p>Total Students: {this.props.students.length}</p>
               <a href="">Manage</a>
             </div>
+            <br />
+            <div>
+              <div>Group Status:</div>
+              <div>{myGroup ? myGroup.status : ''}</div>
+            </div>
             <br /><br />
-            <div className="button"><p>Message Center</p></div>
+
+            <div className="button"><Link to='/status'>Set Group Status</Link></div>
             <div className="button"><p>Incident Report</p></div>
           </div>
           <div>
@@ -152,7 +158,9 @@ class EmployeeLanding extends Component {
 const mapStateToProps = state => {
   return {
     username: state.auth.username,
-    students: state.students
+    students: state.students,
+    groupId: state.auth.groupId,
+    groups: state.groups
   }
 }
 

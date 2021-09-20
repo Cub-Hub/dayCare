@@ -21,8 +21,6 @@ export const fetchClockinStatus = (id) => async dispatch => {
     const dateObj = new Date()
     const todayStr = dateObj.toDateString()
 
-    console.log('the clockin data from store ~~~~', data)
-
   let clockin = data.filter((clockin) => {
     return  clockin.userId === id && clockin.date === todayStr
   })
