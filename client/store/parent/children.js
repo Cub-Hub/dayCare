@@ -16,7 +16,6 @@ const setChildren = children => ({type: SET_CHILDREN, children})
  */
 export const fetchChildren = (parentId) => async dispatch => {
     const res = await axios.get(`/api/parents/children/${parentId}`)
-    console.log('heres the data: ~~', res)
     return dispatch(setChildren(res.data))
 }
 

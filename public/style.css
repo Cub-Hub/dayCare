@@ -1,19 +1,28 @@
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-
-
 /* GLOBAL */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
 * {
   margin: 0;
   padding:0;
   box-sizing: border-box;
 }
 body {
-  font-family: sans-serif;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  color: #999;
+  font-size: 14px;
 }
 p {
   margin: 0!important;
 }
+h2.block-title, h3.block-title, span.block-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+span {
+  font-size: inherit;
+}
+
 a {
   text-decoration: none;
 }
@@ -35,11 +44,43 @@ form div {
   border: 1px solid #d1d1d1;
   border-radius: 7px;
   margin: 0.5em 0;
+  color: #222;
 }
 .button:hover {
-  background-color: #ddd;
+  background-color: #f7f7f7;
   cursor:pointer;
+  border: 1px solid #222;
 }
+.page-title {
+  font-size: 2em;
+  text-align:center;
+  padding: 2em 0;
+  color: #222;
+}
+
+
+#tabs-wrapper {
+  justify-content: flex-end;
+}
+#tab-item-link a{
+  color: #999;
+  font-size: 1em;
+  font-weight: 500!important;
+}
+#tab-item-link a:hover{
+  color:#222;
+}
+#tab-item-link a.active{
+  color:#222;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
+
+
+
+/* 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link
+ */
 
 
 
@@ -50,12 +91,13 @@ form div {
 #navbar {
   width:100%;
   padding: 2.5em 2.5em 0 2.5em;
+  background-color: #fbf9f6;
 }
 #navbar > div {
   width: 100%;
   display: flex;
   padding: 0 2em;
-  border: 1px solid #ddd;
+  background-color:#fff;
   border-radius: 1em;
   justify-content: space-between;
   align-items: center;
@@ -133,13 +175,13 @@ nav a:hover {
 
 /* Admin Dashboard */
 #admindashboard {
-  background-color: #fff;
+  background-color: #fbf9f6;
   min-height:100vh;
   padding: 0.5em 2em 2em 2em;
 }
 .block {
   padding: 2em;
-  border: 1px solid #ddd;
+  background-color:#fff;
   border-radius: 15px;
   margin: 0.5em;
 }
@@ -150,16 +192,31 @@ nav a:hover {
 .col2 > * {
   width:100%
 }
-.col2 > div.sidepanel {
-  width: 50%;
+.col2 > .sidepanel {
+  width: 30%;
 }
 
 .childPic{
   height: 80px;
   margin: 10px
 }
+#data-legend a {
+  font-weight: 500!important;
+  color: #222;
+}
+#data-legend span {
+  font-weight: 400!important;
+  color:#999!important;
+  font-size: 14px!important;
+}
 
+#clockinIcon {
+  color:forestgreen
+}
 
+#clockoutIcon {
+  color:red
+}
 
 .react-calendar {
   width: 350px;
@@ -299,6 +356,7 @@ nav a:hover {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
 .failure {
   color: firebrick;
 }
@@ -308,6 +366,18 @@ nav a:hover {
   border-style: none;
 }
 
+#checkMark {
+  color: green
+}
+
+#warningMark {
+  color: goldenrod
+}
+
+#dangerMark {
+  color: firebrick
+}
+
 .basicFlexColumn {
   display: flex;
   flex-direction: column;
@@ -315,7 +385,26 @@ nav a:hover {
   align-items: center;
 }
 
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
 
+.centerSmallSuccess {
+  align-self: center;
+  color: green
+}
+
+.centerSmallDanger {
+  align-self: center;
+  color: red
+}
+
+#centeredColumn {
+  text-align: center;
+  width: 40%
+}
 
 
 
@@ -370,4 +459,17 @@ nav a:hover {
   width: 500px;
   margin: 0 auto;
   border-radius: 25px!important;
+}
+
+
+/* Calendar page */
+#calendarpage {
+  background-color: #fbf9f6;
+  min-height:100vh;
+  padding: 2em 2.5em;
+}
+#calendarpage > div {
+  background-color:#fff;
+  border-radius: 1.5em;
+  padding:2em;
 }

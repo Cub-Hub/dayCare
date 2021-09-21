@@ -16,12 +16,11 @@ const setCheckins = checkins => ({ type: SET_CHECKINS, checkins })
  */
 export const fetchDailyCheckin = () => async dispatch => {
 
-    const {data} = await axios.get(`/api/students/checkins`)
-    const dateObj = new Date()
-    const todayStr = dateObj.toDateString()
+  const { data } = await axios.get(`/api/students/checkins`)
+  const dateObj = new Date()
+  const todayStr = dateObj.toDateString()
 
-    console.log('this is checkin store data~~ ', data)
-
+  // console.log('this is checkin store data~~ ', data)
 
   const checkins = data.filter((checkin) => {
     return checkin.date === todayStr

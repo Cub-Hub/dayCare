@@ -18,15 +18,15 @@ const Ratios = (props) => {
   );
 
   const activeEmployees = props.users.filter((user) => user.isActive);
-
+    console.log('group status props: ', props)
   return (
-    <div className="table-responsive block">
+    <div className="table-responsive">
       <div className="flexBetween">
         <span className="text-dark me-2 fs-6 fw-bolder" id="centeredColumn">
           Group
         </span>
         <span className="text-dark me-2 fs-6 fw-bolder">
-          Status & Student/Employee Ratio
+          Current Activity
         </span>
       </div>
       <table className="table table-borderless align-middle">
@@ -40,14 +40,6 @@ const Ratios = (props) => {
         </thead>
         <tbody>
           {props.groups.map((group) => {
-            const activeEmp = group.users.filter(
-              (user) => user.isActive
-            ).length;
-            const checkedStu = group.students.filter((student) =>
-              checkins.includes(student.id)
-            ).length;
-            const curRatio =
-              checkedStu / (activeEmp * (group.category.id * 2 + 2));
             return (
               <tr key={group.id}>
                 <th className="ps-0 py-3">
@@ -60,37 +52,16 @@ const Ratios = (props) => {
                     {group.name}
                   </a>
                   <span className="text-muted fw-bold d-block mt-1">
-                    {group.category.name} (Max per Employee:{" "}
-                    {group.category.id * 2 + 2})
+                    {group.users.map((employee) => employee.username).join(', ')}
                   </span>
                 </td>
                 <td>
                   <div className="d-flex flex-column w-100 me-3">
                     <div className="d-flex align-items-center">
                       <div>
-                        {curRatio > 1 ? (
-                          <i
-                            className="fa fa-window-close"
-                            id="dangerMark"
-                            aria-hidden="true"
-                          ></i>
-                        ) : curRatio > 0.90 ? (
-                          <i
-                            className="fa fa-exclamation-triangle"
-                            id="warningMark"
-                            aria-hidden="true"
-                          ></i>
-                        ) : (
-                              <i
-                                className="fa fa-check"
-                                id="checkMark"
-                                color="tomato"
-                                aria-hidden="true"
-                              ></i>
-                            )}
                       </div>
                       <span className="text-muted fs-7 fw-bold ps-3">
-                        {checkedStu} / {activeEmp}
+                          {group.status}
                       </span>
                     </div>
                   </div>
