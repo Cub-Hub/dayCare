@@ -12,6 +12,7 @@ import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 import EmployeeLanding from './components/employee/EmployeeLanding';
+import MailchimpFormContainer from './components/MailChimpFormContainer';
 import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
 import GroupStatus from './components/employee/GroupStatus';
 
@@ -67,7 +68,8 @@ class Routes extends Component {
               </Switch>
         ) : (
             <Switch>
-              <Route path='/' exact component={Login} />
+              {/*<Route path='/' exact component={Login} />*/}
+              <Route path='/' exact component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
             </Switch>
