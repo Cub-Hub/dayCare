@@ -33,7 +33,7 @@ router.post('/subscription', cors(), async (req, res, next)=>{
     });
     console.log('SUBSCIPTION SESSION--->', session)
     //res.redirect(303, session.url)
-    res.json({ "url": session.url })
+    res.json({ "url": session.url, "sessionId": session.id })
   } catch (err){
     console.log('STRIPE SUBSCRIPTION Err--->', err)
   }

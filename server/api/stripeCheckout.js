@@ -31,7 +31,7 @@ router.post('/', cors(), async (req, res, next)=>{
       success_url: `${YOUR_DOMAIN}/checkout/success`,
       cancel_url: `${YOUR_DOMAIN}/checkout/canceled`,
     });
-    console.log('SESSION SINGLE PAYMENT--->', session)
+    //console.log('SESSION SINGLE PAYMENT--->', session)
     res.json({ "url": session.url })
 
   } catch (err){
