@@ -17,6 +17,7 @@ import MailchimpFormContainer from './components/MailChimpFormContainer';
 import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
 import GroupStatus from './components/employee/GroupStatus';
 import AllStudents from './components/admin/AllStudents';
+import SingleStudent from './components/admin/SingleStudent';
 import StripeSuccess from './components/parent/StripeSuccess';
 import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
@@ -67,6 +68,7 @@ class Routes extends Component {
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
                 <Route path="/students" component={AllStudents} />
+                <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
