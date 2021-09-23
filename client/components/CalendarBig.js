@@ -1,86 +1,30 @@
-import React, {useState} from 'react'
-import Calendar from 'react-calendar'
+import React from 'react'
 import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
-import CalendarMini from './CalendarMini'
-
-
-// Code based on example code in: https://www.npmjs.com/package/react-google-calendar-api
- 
-/**
- * COMPONENT
- */
-// Thanks to Anthony W Jones: https://stackoverflow.com/questions/563406/add-days-to-javascript-date
-
-  Date.prototype.addDays = function(days) {
-    var date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-  }
-  
-  
 
 class CalendarPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventName: '',
-      startDateTime: '',
-      endDateTime: '',
-      listItems: {},
-      value: new Date(),
-      message: new Date(),
-      message2: new Date() 
-    }
-    //this.authorizeClick = this.authorizeClick.bind(this);
-    this.addItemClick = this.addItemClick.bind(this)
-      this.listItemsClick = this.listItemsClick.bind(this)
-      this.displayDate = this.displayDate.bind(this)
-  }
+    constructor(props) {
+      super(props);
+      this.state = {
+         month: '01',
+         day1: '01',
+         year: '2021',
+         startHour: '00',
+         startMinute: '00',
+         endHour: '00',
+         endMinute: '00',
+         summary:'Event Name'
+      }
+      this.authorizeClick = this.authorizeClick.bind(this);
+      this.addItemClick = this.addItemClick.bind(this)
+  }  
 
-  myChangeHandlerEventName = (event) => {
-    event.persist()
-    this.setState({eventName: event.target.value})
-    console.log(this.state)
-  }
-  
-    myChangeHandlerStartDateTime = (event) => {
-    event.persist()
-    this.setState({startDateTime: event.target.value})
-  }
-  
-    myChangeHandlerEndDateTime = (event) => {
-    event.persist()
-    this.setState({endDateTime: event.target.value})
-  }
-  
   authorizeClick() {
-  //  ApiCalendar.handleAUthClick();
-    
     ApiCalendar.handleAuthClick();
-    console.log("authroize")
   }
   
   signoutClick() {
     ApiCalendar.handleSignoutClick();
-    console.log("signout")
-  }
-  
-
-
-  async listItemsClick() {
-    
-    
-    
-    let rawResult = await ApiCalendar.listEvents({
-      timeMin: (this.state.message.addDays(0)).toISOString(),
-      timeMax: (this.state.message.addDays(1)).toISOString(),
-      showDeleted: true,
-      maxResults: 10,
-      orderBy: "updated"
-    })
-    await this.setState({listItems: rawResult.result.items})
-    console.log(this.state)
   }
   
   setCalendarClick() {
@@ -88,56 +32,197 @@ class CalendarPage extends React.Component {
   }
   
   async addItemClick() {
-    let eventObject = {summary: "Test Appointment", start: {date: '2021-09-09'}, end: {date: '2021-09-09'}}
-    await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
-
-    
-  }
-
-  displayDate() {
-    console.log(this.state.value)
-    console.log('hi')
-
+    let startString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.startHour + ':' + this.state.startMinute + ':00.000Z'
+    let endString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.endHour + ':' + this.state.endMinute + ':00.000Z'
+    await ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+    await ApiCalendar.createEvent({summary: this.state.summary, start: {dateTime: startString}, end: {dateTime: endString}})
+        document.getElementById('FullCalendar3').src = document.getElementById('FullCalendar3').src
   }
   
-  callbackFunction = async(childData) => {
-    await this.setState({message: childData})
-    
-    console.log('message = ' + this.state.message.addDays(1))
-
-  }
-
-  
-  
-  
-  render() {
+  render(){
     return (
-      <div>
+      <div id='calendarContainer'>
       <script async defer src="https://apis.google.com/js/api.js"></script>
       <h3></h3>
-      <iframe id = "FullCalendar" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=czR2Y3NsZjMwZzkxZzkycXU2ZjRzcWE3NGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D81B60&mode=WEEK&showTz=0&showCalendars=0&showTabs=1&showPrint=0&showDate=1&showNav=1&showTitle=0" style="border:solid 1px #777" width="2000" height="800" frameborder="0" scrolling="yes" style={{border: 0, frameborder:0, scrolling:"yes"}}></iframe>
-
-
-    
-        
+      <div>
+      </div>
+      <div>
+      <h3>Add Event</h3>
+      <input value = {this.state.summary} onChange={(e)=>{console.log(e.target.value);
+        this.setState({summary: e.target.value})
+      }}></input><br/>
       
-
-          
-    {/*<pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>*/}
-    
-
-    
+      <select value={this.state.month} onChange={(e)=>{console.log(e.target.value);
+        this.setState({month: e.target.value})
+      }}>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      
+      <select value={this.state.day1} onChange={(e)=>{console.log(e.target.value);
+        this.setState({day1: e.target.value})
+      }}>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+      </select>
+      
+      <select value={this.state.year} onChange={(e)=>{console.log(e.target.value);
+        this.setState({year: e.target.value})
+      }}>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+      
+      <br></br>
+      {" "}H{" "}
+      <select value={this.state.startHour} onChange={(e)=>{console.log(e.target.value);
+        this.setState({startHour: e.target.value})
+      }}>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+      </select>
+      {" "}M{" "}
+      <select value={this.state.startMinute} onChange={(e)=>{console.log(e.target.value);
+        this.setState({startMinute: e.target.value})
+      }}>
+        <option value="00">00</option>
+        <option value="05">05</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <option value="55">55</option>
+      </select>
+        <br></br>
+      {" "}H{" "}
+      <select value={this.state.endHour} onChange={(e)=>{console.log(e.target.value);
+        this.setState({endHour: e.target.value})
+      }}>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+      </select>
+      {" "}M{" "}
+      
+      <select value={this.state.endMinute} onChange={(e)=>{console.log(e.target.value);
+        this.setState({endMinute: e.target.value})
+      }}>
+        <option value="00">00</option>
+        <option value="05">05</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <option value="55">55</option>
+      </select>
+    <br/><br/>
+     <button onClick = {this.authorizeClick}>Authorize</button><br/>
+          <button onClick = {this.signoutClick}>Sign-Out</button><br/>
+          <button onClick = {this.addItemClick}>Add Event</button>
+  </div>
+  <div id='bigCalendarRight'>
+      <center><iframe id = "FullCalendar3" src="calendar.html" width = '1600' height = '700' scrolling = 'yes'></iframe></center>
+    </div>
     </div>
     )
   }
 }
 
-
-
-
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     username: state.username
