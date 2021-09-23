@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
 module.exports = app
@@ -9,6 +10,10 @@ app.use(morgan('dev'))
 
 // body parsing middleware
 app.use(express.json())
+
+//middleware for stripe
+app.use(cors())
+
 
 // auth and api routes
 app.use('/auth', require('./auth'))
