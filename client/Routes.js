@@ -15,6 +15,7 @@ import EmployeeLanding from './components/employee/EmployeeLanding';
 import MailchimpFormContainer from './components/MailChimpFormContainer';
 import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
 import GroupStatus from './components/employee/GroupStatus';
+import AllStudents from './components/admin/AllStudents';
 
 
 
@@ -54,6 +55,7 @@ class Routes extends Component {
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
+                <Route path="/students" component={AllStudents} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
