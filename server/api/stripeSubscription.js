@@ -4,7 +4,6 @@ process.env.STRIPE_SECRET_API = env.STRIPE_SECRET_API
 process.env.STRIPE_PUBLISHABLE_API = env.STRIPE_PUBLISHABLE_API
 
 const router = require('express').Router()
-const { models: { User }} = require('../db')
 module.exports = router
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
@@ -31,7 +30,7 @@ router.post('/subscription', cors(), async (req, res, next)=>{
       success_url: `${YOUR_DOMAIN}/checkout/subscriptionsuccess`,
       cancel_url: `${YOUR_DOMAIN}/checkout/subscriptioncanceled`,
     });
-    console.log('SUBSCIPTION SESSION--->', session)
+    //console.log('SUBSCIPTION SESSION--->', session)
     //res.redirect(303, session.url)
     res.json({ "url": session.url, "sessionId": session.id })
   } catch (err){
