@@ -40,60 +40,48 @@ const Clockin = (props) => {
     <div>
       <div>
         {/* begin::Body */}
-        <div className={`card-body pb-0 ${innerPadding}`}>
+        <div>
           {/* begin::Wrapper */}
-          <div className="d-flex flex-column h-100">
+          <button className={`button width100 ${curClockin.clockedin ? 'clockedOutBtn' : 'clockedInBtn'}`} onClick={() => curClockin.clockedin ? handleClockout(props.userId) : handleClockin(props.userId)}>
             {/* begin::Text */}
             {curClockin ? (
               curClockin.clockedin ? (
-                <small className="centerSmallSuccess">You clocked in at {curClockin.time}</small>
+                <small>You clocked in at {curClockin.time}</small>
               ) : (
-                  <small className="centerSmallDanger">You are clocked out</small>
+                  <small>You are clocked out</small>
                 )
             ) : (
-                <small className="centerSmallDanger">You are clocked out</small>
+                <small>You are clocked out</small>
               )}
-            <h3 className="text-dark text-center fs-1 fw-bolder pt-12 lh-lg">
-              {curClockin
-                ? curClockin.clockedin
-                  ? "Clock Out"
-                  : "Clock In"
-                : "Clock in"}
-            </h3>
-            <div className="text-center pt-7">
-              {curClockin ? (
-                curClockin.clockedin ? (
-                  <button
-                    className="blankBtn"
-                    onClick={() => handleClockout(props.userId)}
-                  >
+            <div className="button-with-icon">
+              <span className="text-center pt-7">
+                {curClockin ? (
+                  curClockin.clockedin ? (
                     <i
                       id='clockoutIcon'
-                      className="fa fa-window-close fa-5x"
+                      className="fa fa-times-circle button-icon"
                       aria-hidden="true"
                     ></i>
-                  </button>
+                  ) : (
+                      <i className="fa fa-clock-o button-icon" aria-hidden="true"></i>
+                    )
                 ) : (
-                    <button
-                      className="blankBtn"
-                      onClick={() => handleClockin(props.userId)}
-                    >
-                      <i className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
-                    </button>
-                  )
-              ) : (
-                  <button
-                    className="blankBtn"
-                    onClick={() => handleClockin(props.userId)}
-                  >
-                    <i id='clockinIcon' className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
-                  </button>
-                )}
+                    <i id='clockinIcon' className="fa fa-clock-o button-icon" aria-hidden="true"></i>
+                  )}
+              </span>
+              <p className="block-title">
+                {curClockin
+                  ? curClockin.clockedin
+                    ? "Clock Out"
+                    : "Clock In"
+                  : "Clock in"}
+              </p>
+              {/* <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div> */}
+
             </div>
-            <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}
-          </div>
+          </button>
           {/* end::Wrapper */}
         </div>
         {/* end::Body */}
