@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
+import { Link } from "react-router-dom";
 
 import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
 
@@ -25,7 +26,7 @@ class AdminDashboard extends Component {
           header
         </div>
         <div className="col2">
-          <div className="block sidepanel">
+          <div className="block sidepanel"> 
             <h2>School Name</h2>
             <form>
               <label>school location</label>
@@ -43,7 +44,7 @@ class AdminDashboard extends Component {
             </div>
             <div className="col2">
               <p>{this.props.students.length} Students</p>
-              <a href="">Manage</a>
+              <Link to='/students'>Manage</Link>
             </div>
             <br /><br />
             <h2>Billings</h2>

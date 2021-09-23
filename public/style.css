@@ -119,6 +119,11 @@ form div {
   color:red
 }
 
+#studentCard {
+  width: 18rem;
+  margin: 10px
+}
+
 .react-calendar {
   width: 350px;
   max-width: 100%;
@@ -291,6 +296,14 @@ form div {
   justify-content: space-between;
   width: 100%
 }
+
+.flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%
+}
+
 
 .centerSmallSuccess {
   align-self: center;
