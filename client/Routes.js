@@ -4,7 +4,11 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
 
+import CalendarBig from './components/CalendarBig';
+
+
 import Calendar from './components/Calendar';
+
 
 import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
 
@@ -43,7 +47,7 @@ class Routes extends Component {
           userType === 3 ?
             <Switch>
               <Route path="/home" component={ParentLanding} />
-              <Route path="/calendar" component={Calendar} />
+              <Route path="/calendar" component={CalendarBig} />
               {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
               <Route path="/admin-dashboard" component={AdminDashboard} />
               <Route path="/employee-landing" component={EmployeeLanding} />
@@ -62,7 +66,7 @@ class Routes extends Component {
             userType === 2 ?
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
-                <Route path="/calendar" component={Calendar} />
+                <Route path="/calendar" component={CalendarBig} />
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
@@ -75,8 +79,11 @@ class Routes extends Component {
               :
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
-                <Route path="/calendar" component={Calendar} />
+
+                <Route path="/calendar" component={CalendarBig} />
+
                 <Route path="/status" component={GroupStatus} />
+
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
                 <Redirect to="/home" />

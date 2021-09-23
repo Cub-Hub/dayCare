@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
+
+import Calendar from '../Calendar'
+
+
 import { Link } from "react-router-dom";
 
 import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
+
 
 /**
  * COMPONENT
@@ -54,8 +59,10 @@ class AdminDashboard extends Component {
             <div className="button"><p>Parents</p></div>
           </div>
           <div>
+
             <div className="block">
               calendar
+
             </div>
             <StudentTable />
           </div>
