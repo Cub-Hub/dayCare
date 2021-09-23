@@ -20,7 +20,7 @@ const Ratios = (props) => {
   const activeEmployees = props.users.filter((user) => user.isActive);
 
   return (
-    <div className="table-responsive">
+    <div className="table-responsive block">
       <div className="flexBetween">
         <span className="text-dark me-2 fs-6 fw-bolder" id="centeredColumn">
           Group
@@ -81,13 +81,13 @@ const Ratios = (props) => {
                             aria-hidden="true"
                           ></i>
                         ) : (
-                          <i
-                            className="fa fa-check"
-                            id="checkMark"
-                            color="tomato"
-                            aria-hidden="true"
-                          ></i>
-                        )}
+                              <i
+                                className="fa fa-check"
+                                id="checkMark"
+                                color="tomato"
+                                aria-hidden="true"
+                              ></i>
+                            )}
                       </div>
                       <span className="text-muted fs-7 fw-bold ps-3">
                         {checkedStu} / {activeEmp}

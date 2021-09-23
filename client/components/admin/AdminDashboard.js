@@ -22,22 +22,11 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div id="admindashboard">
-        <div id="header" className="block">
-          header
-        </div>
         <div className="col2">
-          <div className="block sidepanel"> 
-            <h2>School Name</h2>
-            <form>
-              <label>school location</label>
-              <select>
-                <option>location 1</option>
-                <option>location 2</option>
-                <option>location 3</option>
-              </select>
-            </form>
+          <div className="block sidepanel">
+            <h2 className="block-title">School Name</h2>
             <br /><br />
-            <h2>Total</h2>
+            <h2 className="block-title">Total</h2>
             <div className="col2">
               <p>{this.props.users.length} Teachers</p>
               <a href="">Manage</a>
@@ -47,7 +36,7 @@ class AdminDashboard extends Component {
               <Link to='/students'>Manage</Link>
             </div>
             <br /><br />
-            <h2>Billings</h2>
+            <h2 className="block-title">Billings</h2>
             <div className="col2">
               <p>2 Delayed</p>
               <a href="">Manage</a>
@@ -59,7 +48,7 @@ class AdminDashboard extends Component {
             <br /><br />
             <hr />
             <br /><br />
-            <h2>Reports</h2>
+            <h2 className="block-title">Reports</h2>
             <div className="button"><p>Teachers</p></div>
             <div className="button"><p>Children</p></div>
             <div className="button"><p>Parents</p></div>
@@ -93,7 +82,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getStudents,
   getUsers,
-  fetchDailyCheckin 
+  fetchDailyCheckin
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)

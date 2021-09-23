@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,6 +8,7 @@ import { fetchClockinStatus, getUsers } from "../../store";
 /**
  * COMPONENT
  */
+
 const Clockin = (props) => {
   useEffect(() => {
     props.fetchClockinStatus(props.userId);
@@ -46,11 +48,11 @@ const Clockin = (props) => {
               curClockin.clockedin ? (
                 <small className="centerSmallSuccess">You clocked in at {curClockin.time}</small>
               ) : (
-                <small className="centerSmallDanger">You are clocked out</small>
-              )
+                  <small className="centerSmallDanger">You are clocked out</small>
+                )
             ) : (
-              <small className="centerSmallDanger">You are clocked out</small>
-            )}
+                <small className="centerSmallDanger">You are clocked out</small>
+              )}
             <h3 className="text-dark text-center fs-1 fw-bolder pt-12 lh-lg">
               {curClockin
                 ? curClockin.clockedin
@@ -72,21 +74,21 @@ const Clockin = (props) => {
                     ></i>
                   </button>
                 ) : (
+                    <button
+                      className="blankBtn"
+                      onClick={() => handleClockin(props.userId)}
+                    >
+                      <i className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+                    </button>
+                  )
+              ) : (
                   <button
                     className="blankBtn"
                     onClick={() => handleClockin(props.userId)}
                   >
                     <i id='clockinIcon' className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
                   </button>
-                )
-              ) : (
-                <button
-                  className="blankBtn"
-                  onClick={() => handleClockin(props.userId)}
-                >
-                  <i className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
-                </button>
-              )}
+                )}
             </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 

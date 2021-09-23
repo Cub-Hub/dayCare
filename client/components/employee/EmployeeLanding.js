@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom'
 import Clockin from './Clockin';
 // import { Button, Modal } from 'react-bootstrap'
 
@@ -15,12 +16,19 @@ class EmployeeLanding extends Component {
     super(props)
 
     this.state = {
-      showFeedingNote: false
+      showFeedingNote: false,
+      showNappingNote: false,
+      showPoopingNote: false,
+      currentStudent: {}
     }
 
     this.openFeedingNote = this.openFeedingNote.bind(this);
     this.closeFeedingNote = this.closeFeedingNote.bind(this);
-    // this.eachStudentFeedingNote = this.eachStudentFeedingNote.bind(this);
+    this.openNappingNote = this.openNappingNote.bind(this);
+    this.closeNappingNote = this.closeNappingNote.bind(this);
+    this.openPoopingNote = this.openPoopingNote.bind(this);
+    this.closePoopingNote = this.closePoopingNote.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -54,21 +62,37 @@ class EmployeeLanding extends Component {
   // }
 
   openFeedingNote(student) {
-    console.log(this)
     this.setState({ showFeedingNote: true, currentStudent: student });
   }
-
   closeFeedingNote() {
     this.setState({ showFeedingNote: false });
   }
 
+  openNappingNote(student) {
+    this.setState({ showNappingNote: true, currentStudent: student });
+  }
+  closeNappingNote() {
+    this.setState({ showNappingNote: false });
+  }
+
+  openPoopingNote(student) {
+    this.setState({ showPoopingNote: true, currentStudent: student });
+  }
+  closePoopingNote() {
+    this.setState({ showPoopingNote: false });
+  }
+
+
+  handleChange() {
+    console.log('changed')
+  }
+
   render() {
+    console.log('RENDER STATE!!', this.state)
     const myGroup = this.props.groups.filter((group) => group.id === this.props.groupId)[0]
+
     return (
       <div id="admindashboard">
-        {/* <div id="header" className="block">
-          header
-        </div> */}
         <div className="col2">
           <div className="block sidepanel">
             <div>
@@ -120,18 +144,20 @@ class EmployeeLanding extends Component {
             </div>
             <div className="block scroll-content-wrapper">
               <h3>Student Daily Tracker</h3>
+              <Link to="/students-activity-monitor">View Details</Link>
+
               <div className="scroll-content">
                 {this.props.students.map(student => {
                   return (
                     <div key={student.id}>
                       <div>{student.firstName}</div>
                       <div onClick={() => this.openFeedingNote(student)}>Ate<br />{Math.round(Math.random() * 10)} times</div>
-
-                      <div>Nap<br />{Math.round(Math.random() * 10)} times</div>
-                      <div>Poop<br />{Math.round(Math.random() * 10)} times</div>
+                      <div onClick={() => this.openNappingNote(student)}>Nap<br />{Math.round(Math.random() * 10)} times</div>
+                      <div onClick={() => this.openPoopingNote(student)}>Poop<br />{Math.round(Math.random() * 10)} times</div>
                     </div>
                   )
                 })}
+
                 <Modal
                   isOpen={this.state.showFeedingNote}
                   ariaHideApp={false}
@@ -139,9 +165,69 @@ class EmployeeLanding extends Component {
                   onRequestClose={this.closeFeedingNote}
                   className=""
                 >
-                  <h2>Feeding Activity Update</h2>
-                  {/* <div id="feeding-update-form">{this.state.}</div> */}
+                  <p>Feeding Activity Update</p>
+                  <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+
+                  <form id="feeding-update-form">
+                    <div>
+                      <label>Ate</label>
+                      <input name="ate" value="2" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                      <label>Details</label>
+                      <input type="text" name="ate" onChange={this.handleChange} />
+                    </div>
+                    <button id="submit" className="button">Update Activity</button>
+                  </form>
                   <button onClick={this.closeFeedingNote}>Close Modal</button>
+                </Modal>
+
+                <Modal
+                  isOpen={this.state.showNappingNote}
+                  ariaHideApp={false}
+                  contentLabel="Feeding Activity Update"
+                  onRequestClose={this.closeNappingNote}
+                  className=""
+                >
+                  <p>Napping Activity Update</p>
+                  <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+
+                  <form id="feeding-update-form">
+                    <div>
+                      <label>Nap</label>
+                      <input name="ate" value="2" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                      <label>Details</label>
+                      <input type="text" name="ate" onChange={this.handleChange} />
+                    </div>
+                    <button id="submit" className="button">Update Activity</button>
+                  </form>
+                  <button onClick={this.closeNappingNote}>Close Modal</button>
+                </Modal>
+
+                <Modal
+                  isOpen={this.state.showPoopingNote}
+                  ariaHideApp={false}
+                  contentLabel="Feeding Activity Update"
+                  onRequestClose={this.closePoopingNote}
+                  className=""
+                >
+                  <p>Pooping Activity Update</p>
+                  <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+
+                  <form id="feeding-update-form">
+                    <div>
+                      <label>Pooped</label>
+                      <input name="ate" value="2" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                      <label>Details</label>
+                      <input type="text" name="ate" onChange={this.handleChange} />
+                    </div>
+                    <button id="submit" className="button">Update Activity</button>
+                  </form>
+                  <button onClick={this.closePoopingNote}>Close Modal</button>
                 </Modal>
               </div>
             </div>
