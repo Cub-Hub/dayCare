@@ -14,7 +14,7 @@ body {
 p {
   margin: 0!important;
 }
-h2.block-title, h3.block-title, span.block-title {
+h2.block-title, h3.block-title, span.block-title, p.block-title, div.block-title {
   font-size: 18px;
   font-weight: 600;
   color: #222;
@@ -30,6 +30,9 @@ a {
 label {
   display: block;
 }
+.width100 {
+  width:100%;
+}
 
 
 
@@ -38,6 +41,14 @@ form div {
   display: inline-block;
 }
 
+.button-with-icon {
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
+.button-with-icon > * {
+  width: fit-content;
+}
 .button {
   padding: 0.5em 1em;
   text-align:center;
@@ -45,11 +56,17 @@ form div {
   border-radius: 7px;
   margin: 0.5em 0;
   color: #222;
+  text-align:center;
 }
 .button:hover {
   background-color: #f7f7f7;
   cursor:pointer;
   border: 1px solid #222;
+}
+i.button-icon {
+  font-size: 1.5em;
+  padding-right: 5px;
+  line-height:1.2em;
 }
 .page-title {
   font-size: 2em;
@@ -75,14 +92,6 @@ form div {
   background-color: #f7f7f7;
   border-radius: 10px;
 }
-
-
-
-/* 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link
- */
-
-
 
 
 
@@ -168,6 +177,32 @@ nav a:hover {
 }
 
 
+
+/*  */
+/* LOGIN / SIGNUP PAGE */
+#loginSignupPage {
+  width:100%;
+  padding: 2.5em;
+  background-color: #fbf9f6;
+  min-height: calc(100vh - 112px);
+}
+#loginSignupPage > div {
+  height: calc(100vh - 190px);
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#loginSignupPage form > div{
+  display: block;
+  width: 25vw;
+}
+#loginSignupPage form input {
+  width: 100%;
+  padding: 0.5em 1em;
+}
 
 
 
@@ -391,16 +426,6 @@ nav a:hover {
   width: 100%
 }
 
-.centerSmallSuccess {
-  align-self: center;
-  color: green
-}
-
-.centerSmallDanger {
-  align-self: center;
-  color: red
-}
-
 #centeredColumn {
   text-align: center;
   width: 40%
@@ -413,6 +438,17 @@ nav a:hover {
 
 
 /* EMPLOYEE LANDING */
+.clockedInBtn {
+  border-color: green!important;
+  background-color: #eff9ef!important;
+}
+.clockedInBtn i{
+  color: green!important;
+}
+.clockedOutBtn {
+  border-color: red!important;
+  background-color: #fff4f4!important;
+}
 .carousel-wrapper {
   display: flex;
   width:100%;
@@ -437,7 +473,7 @@ nav a:hover {
 
 .scroll-content-wrapper {
   height: 450px;
-  width: calc(70vw - 2em);
+  width: calc(70vw - 1em);
 }
 .scroll-content {
   display: flex; 
