@@ -46,12 +46,12 @@ const Clockin = (props) => {
             {/* begin::Text */}
             {curClockin ? (
               curClockin.clockedin ? (
-                <small className="centerSmallSuccess">You clocked in at {curClockin.time}</small>
+                <small>You clocked in at {curClockin.time}</small>
               ) : (
-                  <small className="centerSmallDanger">You are clocked out</small>
+                  <small>You are clocked out</small>
                 )
             ) : (
-                <small className="centerSmallDanger">You are clocked out</small>
+                <small>You are clocked out</small>
               )}
             <div className="button-with-icon">
               <span className="text-center pt-7">

@@ -14,7 +14,7 @@ const AllStudents = (props) => {
     <div className='flexWrap'>
       {props.students.map((student) => {
         return (
-          <div className="card" id="studentCard">
+          <Link to={`/student/${student.id}`}><div className="card" id="studentCard">
             <img className="card-img-top" src={`${student.imgURL}`} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">{student.firstName} {student.lastName}</h5>
@@ -25,12 +25,10 @@ const AllStudents = (props) => {
                 Go to Profile
           </a>
             </div>
-          </div>
+          </div></Link>
         )
       })}
     </div>
-
-
   );
 };
 
@@ -42,5 +40,4 @@ const mapDispatch = {
   fetchDailyCheckin,
   getUsers,
 };
-
 export default connect(mapState, mapDispatch)(AllStudents);
