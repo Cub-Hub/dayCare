@@ -7,13 +7,17 @@ import children from './parent/children'
 import users from './users'
 import students from './students'
 import checkins from './admin/checkins'
+import clockin from './employee/clockin'
+import groups from './admin/groups'
 
 const reducer = combineReducers({
   auth,
   users,
   students,
   children,
-  checkins
+  checkins,
+  clockin,
+  groups
 })
 
 
@@ -25,7 +29,9 @@ const store = createStore(reducer, middleware)
 export default store
 export * from './auth'
 export * from './admin/checkins'
+export * from './admin/groups'
 export * from './students'
 export * from './users'
 export * from './parent/children'
+export * from './employee/clockin'
 

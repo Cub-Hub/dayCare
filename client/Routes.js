@@ -3,18 +3,31 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
+
 import CalendarBig from './components/CalendarBig';
 
 
-import { me } from './store'
+import Calendar from './components/Calendar';
+
+
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
+
 // import { QrGenerator } from './components/QrGenerator';
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
 import EmployeeLanding from './components/employee/EmployeeLanding';
-
-
-
+import MailchimpFormContainer from './components/MailChimpFormContainer';
+import StudentsActivityMonitor from './components/employee/StudentsActivityMonitor'
+import GroupStatus from './components/employee/GroupStatus';
+import AllStudents from './components/admin/AllStudents';
+import SingleStudent from './components/admin/SingleStudent';
+import StripeSuccess from './components/parent/StripeSuccess';
+import StripeCanceled from './components/parent/StripeCanceled';
+import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
+import TermsOfService from './components/parent/TermsOfService';
+import PrivacyPolicy from './components/parent/PrivacyPolicy';
+import Invoices from './components/parent/Invoices'
 
 /**
  * COMPONENT
@@ -39,6 +52,14 @@ class Routes extends Component {
               <Route path="/admin-dashboard" component={AdminDashboard} />
               <Route path="/employee-landing" component={EmployeeLanding} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
+              <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+              <Route path='/invoices' component={ Invoices } />
+              <Route path='/checkout/success' component={ StripeSuccess } />
+              <Route path='/checkout/canceled' component={ StripeCanceled } />
+              <Route path='/checkout/subscriptionsuccess' component={ StripeSubscriptionSuccess } />
+              <Route path='/checkout/subscriptioncanceled' component={ StripeCanceled } />
+              <Route path='/termsofservice' component={TermsOfService} />
+              <Route path='/privacypolicy' component={PrivacyPolicy} />
               <Redirect to="/home" />
             </Switch>
             :
@@ -50,19 +71,27 @@ class Routes extends Component {
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
+                <Route path="/students" component={AllStudents} />
+                <Route path="/student/:id" component={SingleStudent} />
+                <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
               :
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
+
                 <Route path="/calendar" component={CalendarBig} />
+
+                <Route path="/status" component={GroupStatus} />
+
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
                 <Redirect to="/home" />
               </Switch>
         ) : (
             <Switch>
-              <Route path='/' exact component={Login} />
+              {/*<Route path='/' exact component={Login} />*/}
+              <Route path='/' exact component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
             </Switch>
@@ -88,6 +117,10 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(fetchDailyCheckin())
+      dispatch(getStudents())
+      dispatch(getUsers())
+      dispatch(fetchGroups())
     }
   }
 }

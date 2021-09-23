@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
+
 import Calendar from '../Calendar'
-import { getStudents, getUsers } from '../../store';
+
+
+import { Link } from "react-router-dom";
+
+import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
+
 
 /**
  * COMPONENT
@@ -15,40 +21,27 @@ class AdminDashboard extends Component {
   async componentDidMount() {
     await this.props.getStudents();
     await this.props.getUsers();
-
-    // this.setState({ users: this.props.users });
-    // this.setState({ students: this.props.students })
+    await this.props.fetchDailyCheckin();
   }
 
   render() {
     return (
       <div id="admindashboard">
-        <div id="header" className="block">
-          header
-        </div>
         <div className="col2">
           <div className="block sidepanel">
-            <h2>School Name</h2>
-            <form>
-              <label>school location</label>
-              <select>
-                <option>location 1</option>
-                <option>location 2</option>
-                <option>location 3</option>
-              </select>
-            </form>
+            <h2 className="block-title">School Name</h2>
             <br /><br />
-            <h2>Total</h2>
+            <h2 className="block-title">Total</h2>
             <div className="col2">
               <p>{this.props.users.length} Teachers</p>
               <a href="">Manage</a>
             </div>
             <div className="col2">
               <p>{this.props.students.length} Students</p>
-              <a href="">Manage</a>
+              <Link to='/students'>Manage</Link>
             </div>
             <br /><br />
-            <h2>Billings</h2>
+            <h2 className="block-title">Billings</h2>
             <div className="col2">
               <p>2 Delayed</p>
               <a href="">Manage</a>
@@ -57,20 +50,21 @@ class AdminDashboard extends Component {
               <p>4 Credited</p>
               <a href="">Manage</a>
             </div>
+            <br /><br />
+            <hr />
+            <br /><br />
+            <h2 className="block-title">Reports</h2>
+            <div className="button"><p>Teachers</p></div>
+            <div className="button"><p>Children</p></div>
+            <div className="button"><p>Parents</p></div>
           </div>
           <div>
-            <div className="col2">
-              <div className="block sidepanel">
-                <h2>Reports</h2>
-                <div className="button"><p>Teachers</p></div>
-                <div className="button"><p>Children</p></div>
-                <div className="button"><p>Parents</p></div>
-              </div>
-              <div className="block">
-                <Calendar />
-              </div>
+
+            <div className="block">
+              calendar
+
             </div>
-              <StudentTable/>
+            <StudentTable />
           </div>
         </div>
       </div>
@@ -95,6 +89,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getStudents,
   getUsers,
+  fetchDailyCheckin
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)

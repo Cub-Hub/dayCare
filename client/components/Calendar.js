@@ -12,11 +12,14 @@ import axios from 'axios'
  */
 // Thanks to Anthony W Jones: https://stackoverflow.com/questions/563406/add-days-to-javascript-date
 
+
 Date.prototype.addDays = function(days) {
+
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);
   return date;
 }
+
 
 class CalendarPage extends React.Component {
     constructor(props) {
@@ -54,10 +57,12 @@ class CalendarPage extends React.Component {
       this.setState({ startDateTime: event.target.value })
     }
 
+
     myChangeHandlerEndDateTime = (event) => {
       event.persist()
       this.setState({ endDateTime: event.target.value })
     }
+
 
     authorizeClick() {
       ApiCalendar.handleAuthClick();
@@ -71,19 +76,23 @@ class CalendarPage extends React.Component {
       console.log(ApiCalendar.isAuthorized)
     }
 
+
     setCalendarClick() {
       ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
     }
+
 
     async addItemClick() {
       let eventObject = { summary: "Test Appointment", start: { date: '2021-09-09' }, end: { date: '2021-09-09' } }
       await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
     }
 
+
     displayDate() {
       console.log(this.state.value)
       console.log('hi')
     }
+
 
     callbackFunction = async(childData) => {
       // Get date from mini-calendar
@@ -171,6 +180,7 @@ class CalendarPage extends React.Component {
       </div>
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     </div>
+
     )
   }
 }

@@ -23,7 +23,10 @@ const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+  },
+  isActive: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
