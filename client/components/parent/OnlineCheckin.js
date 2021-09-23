@@ -4,11 +4,13 @@ import { fetchChildren } from "../../store";
 import Radar from 'radar-sdk-js';
 import axios from 'axios'
 
+
 /**
  * COMPONENT
  */
 
 const OnlineCheckin = (props) => {
+
   Radar.initialize('prj_test_pk_8780a4d87931b921a94a02b7c5beda44cbc271c1');
   const [childList, setChildList] = useState(() => []);
   const [alert, setAlert] = useState(() => false);
@@ -110,6 +112,7 @@ const OnlineCheckin = (props) => {
           <button className="btn btn-primary" onClick={handleAll}>Checkin All Children</button>
           }
         </div>
+
         <div className="card-header align-items-center border-0 mt-5">
           <h3 className="card-title align-items-start flex-column">
             <span className="fw-bolder text-dark fs-3">Select Students to Checkin</span>
@@ -193,6 +196,7 @@ const OnlineCheckin = (props) => {
           </table>
         </div>
         {/* end::Table*/}
+
         </div>
         {/* end: Card Body*/}
       </div>

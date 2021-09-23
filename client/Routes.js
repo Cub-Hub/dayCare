@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
+
 import Calendar from './components/Calendar';
 
 import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
@@ -17,9 +18,12 @@ import StudentsActivityMonitor from './components/employee/StudentsActivityMonit
 import GroupStatus from './components/employee/GroupStatus';
 import AllStudents from './components/admin/AllStudents';
 import SingleStudent from './components/admin/SingleStudent';
-
-
-
+import StripeSuccess from './components/parent/StripeSuccess';
+import StripeCanceled from './components/parent/StripeCanceled';
+import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
+import TermsOfService from './components/parent/TermsOfService';
+import PrivacyPolicy from './components/parent/PrivacyPolicy';
+import Invoices from './components/parent/Invoices'
 
 /**
  * COMPONENT
@@ -45,6 +49,13 @@ class Routes extends Component {
               <Route path="/employee-landing" component={EmployeeLanding} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
               <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+              <Route path='/invoices' component={ Invoices } />
+              <Route path='/checkout/success' component={ StripeSuccess } />
+              <Route path='/checkout/canceled' component={ StripeCanceled } />
+              <Route path='/checkout/subscriptionsuccess' component={ StripeSubscriptionSuccess } />
+              <Route path='/checkout/subscriptioncanceled' component={ StripeCanceled } />
+              <Route path='/termsofservice' component={TermsOfService} />
+              <Route path='/privacypolicy' component={PrivacyPolicy} />
               <Redirect to="/home" />
             </Switch>
             :

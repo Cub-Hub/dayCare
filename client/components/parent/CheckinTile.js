@@ -21,6 +21,7 @@ export const ParentCheckin = (props) => {
               Online Checkin
             </h3>
             <div className="text-center pt-7">
+
             <Link to='/onlineCheckin' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
                 Checkin Now
             </Link>
