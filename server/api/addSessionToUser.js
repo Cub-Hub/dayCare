@@ -3,7 +3,7 @@ const { models: { Subscription }} = require('../db')
 module.exports = router
 
 router.post('/:userId/:sessionId', async (req, res, next)=>{
-  const userId = req.params.userId*1
+  const userId = req.params.userId
   const sessionId = req.params.sessionId
   try {
     await Subscription.create({ userId, sessionId })

@@ -22,6 +22,7 @@ import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
+import Invoices from './components/parent/Invoices'
 
 /**
  * COMPONENT

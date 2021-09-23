@@ -19,6 +19,7 @@ const Checkin = require('./models/Checkin')
 const School = require('./models/School')
 const Group = require('./models/Group')
 const Clockin = require('./models/Clockin')
+const Subscription = require('./models/Subscription')
 
 
 //associations
