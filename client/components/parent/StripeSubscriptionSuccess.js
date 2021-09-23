@@ -11,6 +11,7 @@ const StripeSubscriptionSuccess = (props) =>{
     async function getSessionId (){
       const session = (await axios.get(`/api/getsessionid/${auth.id}`)).data[0]
       console.log('SESSION ID FOUND--->', session.sessionId)
+      console.log('API SESSION ID TYPE--->', typeof sessionId)
       setSessionId(session.sessionId)
     }
     getSessionId()
@@ -18,7 +19,11 @@ const StripeSubscriptionSuccess = (props) =>{
 
   const handleSubmit = async (evt) =>{
     evt.preventDefault()
-    //await axios.post(checkout-and-portal-button)
+    const id = evt.target.session_id.value
+    console.log('API SESSION ID--->', sessionId)
+    console.log('API SESSION ID TYPE--->', typeof sessionId)
+    const { data } = await axios.post(`/api/create-portal-session/${sessionId}`)
+    window.location = data.url
   }
 
   return (

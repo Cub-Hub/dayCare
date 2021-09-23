@@ -12,6 +12,8 @@ import OnlineCheckin from './components/parent/OnlineCheckin';
 import StripeSuccess from './components/parent/StripeSuccess';
 import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
+import TermsOfService from './components/parent/TermsOfService';
+import PrivacyPolicy from './components/parent/PrivacyPolicy';
 
 /**
  * COMPONENT
@@ -44,6 +46,8 @@ class Routes extends Component {
               <Route path='/checkout/canceled' component={ StripeCanceled } />
               <Route path='/checkout/subscriptionsuccess' component={ StripeSubscriptionSuccess } />
               <Route path='/checkout/subscriptioncanceled' component={ StripeCanceled } />
+              <Route path='/termsofservice' component={TermsOfService} />
+              <Route path='/privacypolicy' component={PrivacyPolicy} />
               <Redirect to="/home" />
             </Switch>
         ) : (
