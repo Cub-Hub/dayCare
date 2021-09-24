@@ -224,6 +224,13 @@ mark {
   color: #20247b;
 }
 
+.statusDot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 /* NAVBAR */
 #navbar {
@@ -305,7 +312,15 @@ nav a:hover {
   width: 100%;
 }
 
+.avatarContainer {
+  height: 15rem;
+  margin: 20%;
+}
 
+.avatarContainer > img {
+  align-self: center;
+  height: 100%
+}
 
 /*  */
 /* LOGIN / SIGNUP PAGE */
@@ -382,9 +397,14 @@ nav a:hover {
   color:red
 }
 
-#studentCard {
-  width: 18rem;
-  margin: 10px
+.studentCard {
+  width: 21rem;
+  margin: 10px;
+  border-style: solid;
+  border-color: lightgray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
@@ -532,7 +552,7 @@ nav a:hover {
 }
 
 .blankBtn {
-  background-color: white;
+  background-color: none;
   border-style: none;
 }
 
