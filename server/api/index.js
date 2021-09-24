@@ -7,6 +7,7 @@ router.use('/create-checkout-session', require('./stripeSubscription'))
 router.use('/addsession', require('./addSessionToUser'))
 router.use('/getsessionid', require('./getSessionId'))
 router.use('/create-portal-session', require('./manageSubscription'))
+router.use('/webhook', require('./stripeWebhooks'))
 
 router.use('/students', require('./students'))
 
