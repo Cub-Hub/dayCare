@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getUsers, fetchDailyCheckin } from "../../store";
 
 /**
@@ -10,90 +10,105 @@ const SingleStudent = (props) => {
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
 
+  const {id} = useParams()
+
+  const curStudent = props.students.find(student => student.id === id)
+
+  const curCheckin = props.checkins.filter((checkin) => checkin.studentId === id)
+
+  console.log('heres id: ', props)
+
   return (
-    <section class="section about-section gray-bg" id="about">
-    <div class="singleStuContainer">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                <div class="about-text go-to">
-                    <h3 class="dark-color">About Me</h3>
-                    <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
-                    <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
-                    <div class="row about-list">
-                        <div class="col-md-6">
-                            <div class="media">
+    <section className="section about-section gray-bg" id="about">
+    {curStudent ?
+    <div className="singleStuContainer">
+        <div className="row align-items-center flex-row-reverse">
+            <Link to='/students'><button className='blankBtn'><i className="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i> Back</button></Link>
+            <div className="col-lg-6">
+                <div className="about-text go-to" style={{margin:'20px'}}>
+                    <h3 className="dark-color">Student Details</h3>
+                    <hr style={{width: '70%'}}/>
+                    
+                    <div className="row about-list">
+                        <div className="col-md-6">
+                            <div className="media">
                                 <label>Birthday</label>
-                                <p>4th april 1998</p>
+                                <p>4th april {2021 - curStudent.age}</p>
                             </div>
-                            <div class="media">
+                            <div className="media">
                                 <label>Age</label>
-                                <p>22 Yr</p>
+                                <p>{curStudent.age} Yr</p>
                             </div>
-                            <div class="media">
-                                <label>Residence</label>
-                                <p>Canada</p>
+                            <div className="media">
+                                <label>Parent</label>
+                                <p>{curStudent.user.username} {curStudent.lastName}</p>
                             </div>
-                            <div class="media">
+                            <div className="media">
                                 <label>Address</label>
                                 <p>California, USA</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="media">
-                                <label>E-mail</label>
+                        <div className="col-md-6">
+                            <div className="media">
+                                <label>Parent<br/>E-mail</label>
                                 <p>info@domain.com</p>
                             </div>
-                            <div class="media">
-                                <label>Phone</label>
+                            <div className="media">
+                                <label>Parent<br/>Phone</label>
                                 <p>820-885-3321</p>
                             </div>
-                            <div class="media">
-                                <label>Skype</label>
-                                <p>skype.0404</p>
+                            <div className="media">
+                                <label>Type</label>
+                                <p>{curStudent.category.name}</p>
                             </div>
-                            <div class="media">
-                                <label>Freelance</label>
-                                <p>Available</p>
+                            <div className="media">
+                                <label>Daycare</label>
+                                <p>{curStudent.school.name}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="about-avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="" />
+            <div className="col-lg-6">
+                <div className="avatarContainer">
+                    <img src={`${curStudent.imgURL}`} title="" alt="" />
                 </div>
             </div>
         </div>
-        <div class="counter">
-            <div class="row">
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="500" data-speed="500">500</h6>
-                        <p class="m-0px font-w-600">Happy Clients</p>
+        <div className="counter">
+            <div className="row">
+                <div className="col-6 col-lg-3">
+                    <div className="count-data text-center">
+                        <h6 className="count h2" data-to="150" data-speed="150">{curStudent.firstName}</h6>
+                        <p className="m-0px font-w-600">First Name</p>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                        <p class="m-0px font-w-600">Project Completed</p>
+                <div className="col-6 col-lg-3">
+                    <div className="count-data text-center">
+                        <h6 className="count h2" data-to="850" data-speed="850">{curStudent.lastName}</h6>
+                        <p className="m-0px font-w-600">Last Name</p>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                        <p class="m-0px font-w-600">Photo Capture</p>
+                <div className="col-6 col-lg-3">
+                    <div className="count-data text-center">
+                        <h6 className="count h2" data-to="190" data-speed="190">{curStudent.group ? curStudent.group.name : 'Unassigned'}</h6>
+                        <p className="m-0px font-w-600">Group Assigment</p>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                        <p class="m-0px font-w-600">Telephonic Talk</p>
+                <div className="col-6 col-lg-3">
+                    <div className="count-data text-center">
+                    {curCheckin[0] ?
+                        <h4 style={{color:'green'}} className="count h2">Checked In</h4>
+                        :
+                        <h6 style={{color:'red'}} className="count h2" data-to="500" data-speed="500">Checked Out</h6>
+                    }
+                        <p className="m-0px font-w-600">Current Status</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    : ''}
 </section>
   )
 }
