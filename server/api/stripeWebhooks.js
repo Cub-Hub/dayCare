@@ -3,13 +3,14 @@ const cors = require('cors')
 process.env.STRIPE_SECRET_API = env.STRIPE_SECRET_API
 process.env.STRIPE_PUBLISHABLE_API = env.STRIPE_PUBLISHABLE_API
 process.env.END_POINT_SECRET = env.END_POINT_SECRET
+
 const express = require("express")
 const router = require('express').Router()
 module.exports = router
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
-const YOUR_DOMAIN = 'http://localhost:8080'
+const YOUR_DOMAIN = process.env.DOMAIN || 'http://localhost:8080'
 //express.json({type: 'application/json'})
 
 router.post('/', express.raw({type: 'application/json'}), (request, response) => {

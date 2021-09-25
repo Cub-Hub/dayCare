@@ -8,7 +8,7 @@ module.exports = router
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
-const YOUR_DOMAIN = 'http://localhost:8080'
+const YOUR_DOMAIN = process.env.DOMAIN || 'http://localhost:8080'
 
 router.post('/subscription', cors(), async (req, res, next)=>{
   try {
