@@ -7,11 +7,13 @@ const Checkout = (props) =>{
 
   const handleSingleSubmit = async (evt) =>{
     const { data } = await axios.post('/api/create-checkout-session/')
+    console.log('REDIRECT SINGLE PAY URL--->', data.url)
     window.location = data.url
   }
   const handleSubscriptionSubmit = async () =>{
     const { data } = await axios.post('/api/create-checkout-session/subscription', {lookup_keys: '1subscription'})
     await axios.post(`/api/addsession/${auth.id}/${data.sessionId}`)
+    console.log('REDIRECT SUBSCRIPTION URL--->', data.url)
     window.location = data.url
   }
   
