@@ -2,6 +2,7 @@ const env = require('../env')
 const cors = require('cors')
 process.env.STRIPE_SECRET_API = env.STRIPE_SECRET_API
 process.env.STRIPE_PUBLISHABLE_API = env.STRIPE_PUBLISHABLE_API
+process.env.END_POINT_SECRET = env.END_POINT_SECRET
 const express = require("express")
 const router = require('express').Router()
 module.exports = router
@@ -10,7 +11,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
 const YOUR_DOMAIN = 'http://localhost:8080'
 //express.json({type: 'application/json'})
-const endpointSecret = "whsec_bxl6gs5uArFJkHY5LVNCAxJUhlHBEQyN";
 
 router.post('/', express.raw({type: 'application/json'}), (request, response) => {
   const sig = request.headers['stripe-signature'];
@@ -18,7 +18,7 @@ router.post('/', express.raw({type: 'application/json'}), (request, response) =>
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(request.body, sig, process.env.END_POINT_SECRET);
   } catch (err) {
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
