@@ -47,7 +47,7 @@ class CalendarPage extends React.Component {
       <div>
       </div>
       <div>
-      <h3>Add Event!</h3>
+      <h3>Add Event!!</h3>
       <input value = {this.state.summary} onChange={(e)=>{console.log(e.target.value);
         this.setState({summary: e.target.value})
       }}></input><br/>
