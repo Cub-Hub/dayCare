@@ -11,24 +11,67 @@ const AuthForm = props => {
   return (
     <div id="loginSignupPage">
       <div>
-        <form onSubmit={handleSubmit} name={name}>
-          <div>
-            <label htmlFor="username">
-              <small>Username</small>
-            </label>
-            <input name="username" type="text" />
-          </div>
-          <div>
-            <label htmlFor="password">
-              <small>Password</small>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <div>
-            <button type="submit" className="button">{displayName}</button>
-          </div>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
+        {name === 'login' ?
+          // Login form
+          <form onSubmit={handleSubmit} name={name}>
+            <div>
+              <label htmlFor="username">
+                <small>Username</small>
+              </label>
+              <input name="username" type="text" />
+            </div>
+            <div>
+              <label htmlFor="password">
+                <small>Password</small>
+              </label>
+              <input name="password" type="password" />
+            </div>
+            <div>
+              <button type="submit" className="button">{displayName}</button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+          </form>
+          :
+          // Signup form
+          <form onSubmit={handleSubmit} name={name}>
+            <div>
+              <label htmlFor="username">
+                <small>Username</small>
+              </label>
+              <input name="username" type="text" />
+            </div>
+            <div>
+              <label htmlFor="typeId">
+                <small>Parent</small>
+              </label>
+              <input name="typeId" type="radio" value="3" />
+            </div>
+            <div>
+              <label htmlFor="typeId">
+                <small>Employee</small>
+              </label>
+              <input name="typeId" type="radio" value="1" />
+            </div>
+            <div>
+              <label htmlFor="password">
+                <small>Password</small>
+              </label>
+              <input name="password" type="password" />
+            </div>
+            <div>
+              <label htmlFor="confirmpassword">
+                <small>Confirm Password</small>
+              </label>
+              <input name="confirmpassword" type="password" />
+            </div>
+            <div>
+              <button type="submit" className="button">{displayName}</button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+          </form>
+        }
+
+
       </div>
 
     </div>
@@ -62,10 +105,25 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const formName = evt.target.name
-      const username = evt.target.username.value
-      const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
+      if (evt.target.name === 'login' || evt.target.password.value === evt.target.confirmpassword.value) {
+        const formName = evt.target.name
+        const username = evt.target.username.value
+        const password = evt.target.password.value
+        dispatch(authenticate(username, password, formName))
+      } else if (evt.target.name === 'signup') {
+        const formName = evt.target.name
+        const username = evt.target.username.value
+        const password = evt.target.password.value
+        const typeId = evt.target.typeId ? evt.target.typeId.value * 1 : ''
+        dispatch(authenticate(username, password, formName, typeId))
+      }
+      else {
+        alert('passwords do not match - please correct and submit again')
+        evt.target.password.value = '';
+        evt.target.confirmpassword.value = '';
+        evt.target.password.focus();
+      }
+
     }
   }
 }
