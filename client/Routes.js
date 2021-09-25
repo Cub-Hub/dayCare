@@ -39,7 +39,7 @@ class Routes extends Component {
     return (
       <div>
         {isLoggedIn ? (
-
+          // parent
           userType === 3 ?
             <Switch>
               <Route path="/home" component={ParentLanding} />
@@ -49,16 +49,17 @@ class Routes extends Component {
               <Route path="/employee-landing" component={EmployeeLanding} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
               <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
-              <Route path='/invoices' component={ Invoices } />
-              <Route path='/checkout/success' component={ StripeSuccess } />
-              <Route path='/checkout/canceled' component={ StripeCanceled } />
-              <Route path='/checkout/subscriptionsuccess' component={ StripeSubscriptionSuccess } />
-              <Route path='/checkout/subscriptioncanceled' component={ StripeCanceled } />
+              <Route path='/invoices' component={Invoices} />
+              <Route path='/checkout/success' component={StripeSuccess} />
+              <Route path='/checkout/canceled' component={StripeCanceled} />
+              <Route path='/checkout/subscriptionsuccess' component={StripeSubscriptionSuccess} />
+              <Route path='/checkout/subscriptioncanceled' component={StripeCanceled} />
               <Route path='/termsofservice' component={TermsOfService} />
               <Route path='/privacypolicy' component={PrivacyPolicy} />
               <Redirect to="/home" />
             </Switch>
             :
+            // admin
             userType === 2 ?
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
@@ -73,15 +74,18 @@ class Routes extends Component {
                 <Redirect to="/home" />
               </Switch>
               :
+              //employee
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
                 <Route path="/calendar" component={Calendar} />
                 <Route path="/status" component={GroupStatus} />
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
+                <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
         ) : (
+            // not logedin
             <Switch>
               {/*<Route path='/' exact component={Login} />*/}
               <Route path='/' exact component={MailchimpFormContainer} />
