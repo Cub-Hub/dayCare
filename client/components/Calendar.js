@@ -132,7 +132,7 @@ class CalendarPage extends React.Component {
       // Use the date to get events from Google REST
       await this.getEvents()
     }
-    
+     
     async getEvents() {
       //Get events from google
       let dateString2 = await this.state.dateString
