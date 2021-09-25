@@ -8,7 +8,7 @@ module.exports = router
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
-const YOUR_DOMAIN = process.env.DOMAIN || 'http://localhost:8080'
+const YOUR_DOMAIN = process.env.DOMAIN || 'http://localhost:8080/'
 
 router.post('/subscription', cors(), async (req, res, next)=>{
   try {
@@ -27,8 +27,8 @@ router.post('/subscription', cors(), async (req, res, next)=>{
         },
       ],
       mode: 'subscription',
-      success_url: `${YOUR_DOMAIN}/checkout/subscriptionsuccess`,
-      cancel_url: `${YOUR_DOMAIN}/checkout/subscriptioncanceled`,
+      success_url: `${YOUR_DOMAIN}checkout/subscriptionsuccess`,
+      cancel_url: `${YOUR_DOMAIN}checkout/subscriptioncanceled`,
     });
     console.log('SUBSCIPTION SESSION--->', session)
     //res.redirect(303, session.url)
