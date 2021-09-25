@@ -61,7 +61,7 @@ class AdminDashboard extends Component {
           <div>
 
             <div className="block">
-              calendar
+              <Calendar />
 
             </div>
             <StudentTable />
