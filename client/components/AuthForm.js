@@ -105,12 +105,12 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      if (evt.target.name === 'login' || evt.target.password.value === evt.target.confirmpassword.value) {
+      if (evt.target.name === 'login') {
         const formName = evt.target.name
         const username = evt.target.username.value
         const password = evt.target.password.value
         dispatch(authenticate(username, password, formName))
-      } else if (evt.target.name === 'signup') {
+      } else if (evt.target.name === 'signup' && evt.target.password.value === evt.target.confirmpassword.value) {
         const formName = evt.target.name
         const username = evt.target.username.value
         const password = evt.target.password.value
