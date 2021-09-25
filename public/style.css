@@ -41,6 +41,17 @@ label {
   top: 2em;
   right: 2em;
 }
+.radioWrapper {
+   width: fit-content!important;
+   display: inline-block!important;
+}
+.radioWrapper > *{
+  width: fit-content!important;
+  display: inline-block;
+}
+.radioWrapper input {
+  width: 25px!important;
+}
 
 
 

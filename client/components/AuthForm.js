@@ -40,17 +40,17 @@ const AuthForm = props => {
               </label>
               <input name="username" type="text" />
             </div>
-            <div>
+            <div className="radioWrapper">
+              <input name="typeId" type="radio" value="3" />
               <label htmlFor="typeId">
                 <small>Parent</small>
               </label>
-              <input name="typeId" type="radio" value="3" />
             </div>
-            <div>
+            <div className="radioWrapper">
+              <input name="typeId" type="radio" value="1" />
               <label htmlFor="typeId">
                 <small>Employee</small>
               </label>
-              <input name="typeId" type="radio" value="1" />
             </div>
             <div>
               <label htmlFor="password">
