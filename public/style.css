@@ -133,6 +133,37 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+
+/*  */
+/* HOME */
+#home {
+  padding: 2.5em;
+  background-color:#fbf9f6;
+}
+#home > div {
+  position: relative;
+  border-radius: 1.5em;
+  min-height: calc(100vh - 112px - 5em);
+  background-image: url('/imgs/hero.jpg');
+  background-position-y: 15%;
+  background-size: cover;
+}
+#home .heroImg {
+  position: absolute;
+  top:0;
+}
+#home h1 {
+  /* width:100%; */
+  text-align:center;
+  padding: 1em 0;
+  color: #0d4a91;
+}
+
+
+
+
+
+
 /* About Me 
 ---------------------*/
 .about-text h3 {
