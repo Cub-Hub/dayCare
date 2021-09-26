@@ -13,6 +13,7 @@ import Calendar from './components/Calendar';
 import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
+import Home from './components/Home'
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
@@ -95,7 +96,8 @@ class Routes extends Component {
             // not logedin
             <Switch>
               {/*<Route path='/' exact component={Login} />*/}
-              <Route path='/' exact component={MailchimpFormContainer} />
+              <Route path='/' exact component={Home} />
+              <Route path="/newsletter" component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
             </Switch>
