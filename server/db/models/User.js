@@ -30,7 +30,7 @@ const User = db.define('user', {
   isActive: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
-  }
+  },
 })
 
 module.exports = User

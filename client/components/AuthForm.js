@@ -71,7 +71,6 @@ const AuthForm = props => {
           </form>
         }
 
-
       </div>
 
     </div>
@@ -115,7 +114,7 @@ const mapDispatch = dispatch => {
         const username = evt.target.username.value
         const password = evt.target.password.value
         const typeId = evt.target.typeId ? evt.target.typeId.value * 1 : ''
-        dispatch(authenticate(username, password, formName, typeId))
+        dispatch(authenticate(username, password, formName, typeId)) 
       }
       else {
         alert('passwords do not match - please correct and submit again')
