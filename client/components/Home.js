@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Home = ({ handleClick, isLoggedIn }) => (
   <div id="navbar">
     <div>
       <Link to="/home"><h1><img id="navbar-logo" src="/cubhub.png" alt="cubhub logo" />Cub-Hub</h1></Link>
@@ -48,4 +48,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(Home)
