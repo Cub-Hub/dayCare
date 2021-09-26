@@ -4,29 +4,12 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 
 
-const Home = ({ handleClick, isLoggedIn }) => (
-  <div id="navbar">
+const Home = () => (
+  <div id="home">
+
     <div>
-      <Link to="/home"><h1><img id="navbar-logo" src="/cubhub.png" alt="cubhub logo" />Cub-Hub</h1></Link>
-      <nav>
-        {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/calendar">Calendar</Link>
-            <Link to='/billing'>Billing</Link>
-            <a href="#" onClick={handleClick}>
-              Logout
-          </a>
-          </div>
-        ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/newsletter">Newsletter Signup</Link>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Register</Link>
-            </div>
-          )}
-      </nav>
+      {/* <img src="/imgs/hero.jpg" alt="" className="heroImg" /> */}
+      <h1>Experience childcare as it should be</h1>
     </div>
   </div>
 )
