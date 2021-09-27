@@ -40,8 +40,8 @@
   }
 
   #calendar {
-    max-height: 100px;
-    
+    height: 2000px;
+    width: 1000px;
 
   }
 
@@ -60,6 +60,10 @@
         right: 'agendaWeek,month,listYear'
       },
 	defaultView: 'agendaWeek',
+	minTime: "06:00:00",
+  maxTime: "23:00:00",
+  height: 900,
+
 
 	
 
@@ -75,7 +79,20 @@
 
       eventClick: function(event) {
         // opens events in a popup window
-        window.open(event.url, '_blank', 'width=800,height=500');
+        
+        var popup = window.open(event.url, '', "width=800, height=500");
+        
+        //window.open(event.url, '_blank', 'width=800,height=500');
+        console.log('hello')
+        
+        var popupTick = setInterval(function() {
+        if (popup.closed) {
+        clearInterval(popupTick);
+        console.log('window closed!');
+        window.location.reload()
+        }
+        }, 500);
+
         return false;
       }
 
@@ -93,6 +110,7 @@
 </div>
 
   <div id='calendar'></div>
+
 </body>
 
 </html>

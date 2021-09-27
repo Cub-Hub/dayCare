@@ -109,6 +109,7 @@ class CalendarPage extends React.Component {
     
     nextButton = async() => {
       // Get date from mini-calendar
+
       await this.setState({ message: this.state.message.addDays(1) })
       console.log(this.state)
       let year = (this.state.message.addDays(0)).getUTCFullYear()
@@ -118,6 +119,10 @@ class CalendarPage extends React.Component {
       await this.setState({ dateString: concat })
       // Use the date to get events from Google REST
       await this.getEvents()
+      console.log(this.state)
+      
+      
+      
     }
   
     previousButton = async() => {
@@ -148,10 +153,16 @@ class CalendarPage extends React.Component {
     }
 
     render() {
-        //  ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+
         return (
             <div>
+            
+   
+             <h2 className="block-title">Student Calendar</h2>
+            
+            
           <div id = "CalendarBox">
+          <div id = "calendarSpace"></div>
             <div id = "Previous">
             
             
@@ -167,19 +178,20 @@ class CalendarPage extends React.Component {
                 {this.state.today.toDateString() === this.state.message.toDateString() ? 'Today' : this.state.message.toDateString()}
               </span></center>
         </h3>
-            <ul>
-            {this.state.events.sort((a,b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x=><li><div id='eventListing'>{x.start.dateTime.slice(11,16)}<br/>{x.summary}</div></li>)}
+            <ul id='calendarEvents'>
+            {this.state.events.sort((a,b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x=><li class='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11,16)}{' '}{' '}{x.summary}</div></li>)}
             </ul>
             </div>
             <div id = "Next">
             <button className = 'calendarButtons' onClick = {this.nextButton}>{' >> '}</button>
             </div>
             <div id = "CalendarRight">
-            <CalendarMini parentCallback = {this.callbackFunction}/>
+            <CalendarMini  parentCallback = {this.callbackFunction}/>
             </div>
       </div>
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     </div>
+    
 
     )
   }
