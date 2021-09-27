@@ -13,6 +13,7 @@ import Calendar from './components/Calendar';
 import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
+import Home from './components/Home'
 import AdminDashboard from './components/admin/AdminDashboard'
 import ParentLanding from './components/parent/ParentLanding';
 import OnlineCheckin from './components/parent/OnlineCheckin';
@@ -43,7 +44,7 @@ class Routes extends Component {
     return (
       <div>
         {isLoggedIn ? (
-
+          // parent
           userType === 3 ?
             <Switch>
               <Route path="/home" component={ParentLanding} />
@@ -53,16 +54,17 @@ class Routes extends Component {
               <Route path="/employee-landing" component={EmployeeLanding} />
               <Route path="/onlineCheckin" component={OnlineCheckin} />
               <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
-              <Route path='/invoices' component={ Invoices } />
-              <Route path='/checkout/success' component={ StripeSuccess } />
-              <Route path='/checkout/canceled' component={ StripeCanceled } />
-              <Route path='/checkout/subscriptionsuccess' component={ StripeSubscriptionSuccess } />
-              <Route path='/checkout/subscriptioncanceled' component={ StripeCanceled } />
+              <Route path='/invoices' component={Invoices} />
+              <Route path='/checkout/success' component={StripeSuccess} />
+              <Route path='/checkout/canceled' component={StripeCanceled} />
+              <Route path='/checkout/subscriptionsuccess' component={StripeSubscriptionSuccess} />
+              <Route path='/checkout/subscriptioncanceled' component={StripeCanceled} />
               <Route path='/termsofservice' component={TermsOfService} />
               <Route path='/privacypolicy' component={PrivacyPolicy} />
               <Redirect to="/home" />
             </Switch>
             :
+            // admin
             userType === 2 ?
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
@@ -77,6 +79,7 @@ class Routes extends Component {
                 <Redirect to="/home" />
               </Switch>
               :
+              //employee
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
 
@@ -86,12 +89,15 @@ class Routes extends Component {
 
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
+                <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Redirect to="/home" />
               </Switch>
         ) : (
+            // not logedin
             <Switch>
               {/*<Route path='/' exact component={Login} />*/}
-              <Route path='/' exact component={MailchimpFormContainer} />
+              <Route path='/' exact component={Home} />
+              <Route path="/newsletter" component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
             </Switch>

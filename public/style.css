@@ -33,6 +33,25 @@ label {
 .width100 {
   width:100%;
 }
+.position-relative {
+  position: relative;
+}
+.position-r-t {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+.radioWrapper {
+   width: fit-content!important;
+   display: inline-block!important;
+}
+.radioWrapper > *{
+  width: fit-content!important;
+  display: inline-block;
+}
+.radioWrapper input {
+  width: 25px!important;
+}
 
 
 
@@ -100,10 +119,6 @@ i.button-icon {
  */
 
 
- body{
-  color: #6F8BA4;
-  margin-top:20px;
-}
 .section {
   padding: 100px 0;
   position: relative;
@@ -118,6 +133,37 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+
+/*  */
+/* HOME */
+#home {
+  padding: 2.5em;
+  background-color:#fbf9f6;
+}
+#home > div {
+  position: relative;
+  border-radius: 1.5em;
+  min-height: calc(100vh - 112px - 5em);
+  background-image: url('/imgs/hero.jpg');
+  background-position-y: 15%;
+  background-size: cover;
+}
+#home .heroImg {
+  position: absolute;
+  top:0;
+}
+#home h1 {
+  /* width:100%; */
+  text-align:center;
+  padding: 1em 0;
+  color: #0d4a91;
+}
+
+
+
+
+
+
 /* About Me 
 ---------------------*/
 .about-text h3 {
@@ -728,6 +774,7 @@ padding: .1rem;
 }
 
 #bigCalendarRight {
+
   height: 1000;
 }
   
@@ -746,6 +793,7 @@ padding: .1rem;
 }
   
 
+
 .ReactModalPortal > div {
   background-color: rgba(0, 0, 0, 0.5)!important
 }
@@ -754,8 +802,4 @@ padding: .1rem;
   width: 500px;
   margin: 0 auto;
   border-radius: 25px!important;
-}
-
-
-
 }
