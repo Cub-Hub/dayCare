@@ -407,6 +407,7 @@ nav a:hover {
   align-items: center;
 }
 
+/* react calendar */
 
 .react-calendar {
   width: 350px;
@@ -686,15 +687,27 @@ nav a:hover {
 
 }
 
+/* Calendar Dashboard */
+#calendarDashboard {
+  background-color: #fbf9f6;
+  min-height:70vh;
+  padding: 0.5em 2em 2em 2em;
+  width: 100%;
+  display: flex;
+}
+
+
 .calendarButtons {
   display: flex;
   justify-content: center;
   border-style: solid;
+  border-color:white;
   background-color: white;
   color: black;
+  font-size: large;
   font-weight: bold;
   padding: 3px;
-  margin:3px;
+  margin: 0px 20px;
 }
 
 #calendarContainer {
@@ -704,8 +717,34 @@ nav a:hover {
   padding: 10px;
 }
 
+#calendarDashboard > div > input {
+margin: .2rem;
+padding: .1rem;
+}
+
+#calendarDashboard > div > select {
+margin: .2rem;
+padding: .1rem;
+}
+
 #bigCalendarRight {
-  max-height:500;
+  height: 1000;
+}
+  
+#calendarEvents {
+  list-style-image: url('bar.png');
+}
+  
+#calendarSpace {
+  width:100px;
+}  
+  
+  
+.calendarEventLine {
+
+
+}
+  
 
 .ReactModalPortal > div {
   background-color: rgba(0, 0, 0, 0.5)!important

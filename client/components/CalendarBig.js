@@ -5,25 +5,32 @@ import ApiCalendar from 'react-google-calendar-api'
 class CalendarPage extends React.Component {
     constructor(props) {
       super(props);
+      let todaysDate = new Date()
+      let todayYear = todaysDate.getFullYear()
+      let todayMonth = ('0' + (todaysDate.getMonth() * 1 + 1)).slice(-2)
+      let todayDate = ('0' + todaysDate.getDate()).slice(-2)
+      console.log(todayMonth)
       this.state = {
-         month: '01',
-         day1: '01',
-         year: '2021',
+         month: todayMonth,
+         day1: todayDate,
+         year: todayYear,
          startHour: '00',
          startMinute: '00',
          endHour: '00',
          endMinute: '00',
-         summary:'Event Name'
+         summary:''
       }
       this.authorizeClick = this.authorizeClick.bind(this);
       this.addItemClick = this.addItemClick.bind(this)
   }  
 
   authorizeClick() {
+       //console.log(ApiCalendar.sign)
     ApiCalendar.handleAuthClick();
   }
   
   signoutClick() {
+    //    console.log(ApiCalendar.sign)
     ApiCalendar.handleSignoutClick();
   }
   
@@ -32,8 +39,13 @@ class CalendarPage extends React.Component {
   }
   
   async addItemClick() {
-    let startString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.startHour + ':' + this.state.startMinute + ':00.000Z'
-    let endString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.endHour + ':' + this.state.endMinute + ':00.000Z'
+    
+    if(ApiCalendar.sign === false) {await this.authorizeClick()}
+    
+    await console.log(ApiCalendar.sign)
+    
+    let startString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.startHour + ':' + this.state.startMinute + ':00.000-0400'
+    let endString = this.state.year + '-' + this.state.month + '-' + this.state.day1 + 'T' + this.state.endHour + ':' + this.state.endMinute + ':00.000-0400'
     await ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
     await ApiCalendar.createEvent({summary: this.state.summary, start: {dateTime: startString}, end: {dateTime: endString}})
         document.getElementById('FullCalendar3').src = document.getElementById('FullCalendar3').src
@@ -41,13 +53,13 @@ class CalendarPage extends React.Component {
   
   render(){
     return (
-      <div id='calendarContainer'>
+
+      <div id='calendarDashboard'>
       <script async defer src="https://apis.google.com/js/api.js"></script>
-      <h3></h3>
-      <div>
-      </div>
-      <div>
-      <h3>Add Event</h3>
+   
+
+      <div className = 'block'>
+             <h2 className="block-title">Student Calendar</h2>
       <input value = {this.state.summary} onChange={(e)=>{console.log(e.target.value);
         this.setState({summary: e.target.value})
       }}></input><br/>
@@ -211,13 +223,17 @@ class CalendarPage extends React.Component {
         <option value="55">55</option>
       </select>
     <br/><br/>
-     <button onClick = {this.authorizeClick}>Authorize</button><br/>
-          <button onClick = {this.signoutClick}>Sign-Out</button><br/>
+     {/*<button onClick = {this.authorizeClick}>Authorize</button><br/>
+          <button onClick = {this.signoutClick}>Sign-Out</button><br/>*/}
           <button onClick = {this.addItemClick}>Add Event</button>
   </div>
-  <div id='bigCalendarRight'>
+  
+  
+  
+  <div id='bigCalendarRight' class = 'block'>
       <center><iframe id = "FullCalendar3" src="calendar.html" width = '1600' height = '700' scrolling = 'yes'></iframe></center>
     </div>
+  
     </div>
     )
   }
