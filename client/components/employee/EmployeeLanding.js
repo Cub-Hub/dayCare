@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import Clockin from './Clockin';
+import Carousel from '../Carousel'
 // import { Button, Modal } from 'react-bootstrap'
 
 import { getStudents } from '../../store';
@@ -103,15 +104,17 @@ class EmployeeLanding extends Component {
               </div>
               <div className="block">
                 <div className="carousel-wrapper">
-                  <div className="carousel-arrow-left">Arrow Left</div>
+                  
                   <div>
-                    <h3 className="block-title">Today's Lesson Plan</h3>
+                    <Carousel />
+                    {/*<h3 className="block-title">Today's Lesson Plan</h3>
                     <ol>
                       <li>12:00 – Color match</li>
                       <li>13:30 – Clay play</li>
                     </ol>
+                    */}
                   </div>
-                  <div className="carousel-arrow-right">Arrow Right</div>
+               
                 </div>
               </div>
             </div>

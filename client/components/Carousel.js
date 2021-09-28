@@ -40,7 +40,6 @@ class CalendarPage extends React.Component {
         message2: new Date(),
         events: [],
         dateString: ''
-    
       }
       this.addItemClick = this.addItemClick.bind(this)
       this.displayDate = this.displayDate.bind(this)
@@ -49,7 +48,7 @@ class CalendarPage extends React.Component {
     }
 
     async componentDidMount() {
-      await ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+      ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
       await this.setState({ message: this.state.message.addDays(0) })
       console.log(this.state)
       let year = (this.state.message.addDays(0)).getUTCFullYear()
@@ -61,6 +60,7 @@ class CalendarPage extends React.Component {
       await this.getEvents()
       console.log(this.state)
       
+  
     }
 
     myChangeHandlerEventName = (event) => {
@@ -186,9 +186,9 @@ class CalendarPage extends React.Component {
             
             
             
+    
             
-            
-              <button className = 'calendarButtons' onClick = {this.previousButton}>{' << '}</button>
+              <div className = 'carousel-arrow-left' onClick = {this.previousButton}></div>
             </div>
             <div id = "CalendarLeft">
               <h3 className="card-title align-items-start flex-column">
@@ -201,15 +201,9 @@ class CalendarPage extends React.Component {
             </ul>
             </div>
             <div id = "Next">
-            <button className = 'calendarButtons' onClick = {this.nextButton}>{' >> '}</button>
+            <div className = 'carousel-arrow-right' onClick = {this.nextButton}></div>
             </div>
-            <div id = "CalendarRight">
-            <CalendarMini  y={this.state.message.getUTCFullYear()*1} 
-              m={this.state.message.getMonth()} d={this.state.message.getDate()} />
-            
-
-            
-            </div>
+           
       </div>
     <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
     </div>

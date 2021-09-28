@@ -24,6 +24,10 @@ class CalendarPage extends React.Component {
       this.addItemClick = this.addItemClick.bind(this)
   }  
 
+  componentDidMount() {
+    console.log(this.props.state.auth.typeId)
+  }
+
   authorizeClick() {
        //console.log(ApiCalendar.sign)
     ApiCalendar.handleAuthClick();
@@ -39,7 +43,7 @@ class CalendarPage extends React.Component {
   }
   
   async addItemClick() {
-    
+    await console.log(this.props)
     if(ApiCalendar.sign === false) {await this.authorizeClick()}
     
     await console.log(ApiCalendar.sign)
@@ -53,12 +57,13 @@ class CalendarPage extends React.Component {
   
   render(){
     return (
-
       <div id='calendarDashboard'>
+    
       <script async defer src="https://apis.google.com/js/api.js"></script>
    
 
-      <div className = 'block'>
+      {this.props.state.auth.typeId === undefined || this.props.state.auth.typeId !== 2 ? <div></div> : <div className = 'block'>
+      
              <h2 className="block-title">Student Calendar</h2>
       <input value = {this.state.summary} onChange={(e)=>{console.log(e.target.value);
         this.setState({summary: e.target.value})
@@ -226,7 +231,7 @@ class CalendarPage extends React.Component {
      {/*<button onClick = {this.authorizeClick}>Authorize</button><br/>
           <button onClick = {this.signoutClick}>Sign-Out</button><br/>*/}
           <button onClick = {this.addItemClick}>Add Event</button>
-  </div>
+  </div>}
   
   
   
@@ -241,7 +246,7 @@ class CalendarPage extends React.Component {
 
 const mapState = state => {
   return {
-    username: state.username
+    state
   }
 }
 
