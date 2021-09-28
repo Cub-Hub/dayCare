@@ -14,7 +14,7 @@ body {
 p {
   margin: 0!important;
 }
-h2.block-title, h3.block-title, span.block-title, p.block-title, div.block-title {
+h2.block-title, h3.block-title, span.block-title, p.block-title, div.block-title, h3.mc__title {
   font-size: 18px;
   font-weight: 600;
   color: #222;
@@ -68,7 +68,7 @@ form div {
 .button-with-icon > * {
   width: fit-content;
 }
-.button {
+.button, .primaryBtn {
   padding: 0.5em 1em;
   text-align:center;
   border: 1px solid #d1d1d1;
@@ -77,7 +77,7 @@ form div {
   color: #222;
   text-align:center;
 }
-.button:hover {
+.button:hover, .primaryBtn:hover {
   background-color: #f7f7f7;
   cursor:pointer;
   border: 1px solid #222;
@@ -161,6 +161,42 @@ img {
 
 
 
+/*  */
+/* Email Signup Page */
+#emailSignupPage {
+  padding: 2.5em;
+  background-color: #fbf9f6;
+  min-height: calc(100vh - 112px);
+}
+#emailSignupPage > div {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  height: calc(100vh - 112px - 5em);
+  background-image: url('/imgs/emailSignup.jpg');
+  background-size: cover;
+  background-position-y: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+form.mc__form {
+  background-color:#fff;
+  padding: 2em;
+  width: fit-content;
+  height:fit-content;
+}
+input.inputField__field {
+  display: block;
+  padding: 0.5em 1em;
+  margin-bottom: 1.5em;
+  width: 20vw;
+  min-width: 245px;
+}
+.mc__field-container {
+  display:block;
+  margin: 1em 0;
+}
 
 
 
@@ -729,9 +765,6 @@ nav a:hover {
 
 }
 
-#eventListing {
-
-}
 
 /* Calendar Dashboard */
 #calendarDashboard {
@@ -786,11 +819,6 @@ padding: .1rem;
   width:100px;
 }  
   
-  
-.calendarEventLine {
-
-
-}
   
 
 
