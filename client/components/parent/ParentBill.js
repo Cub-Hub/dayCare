@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -10,21 +10,19 @@ export const ParentBill = (props) => {
   const innerPadding = "";
 
   return (
-    <div className="col-xl-4">
-      <div className={`card ${className}`}>
+    <div>
+      <div className="parentShortcuts">
         {/* begin::Body */}
-        <div className={`card-body pb-0 ${innerPadding}`}>
+        <div>
           {/* begin::Wrapper */}
           <div className="d-flex flex-column h-100">
             {/* begin::Text */}
-            <h3 className="text-dark text-center fs-1 fw-bolder pt-15 lh-lg">
-              Bill Management
+            <h3 className="block-title">
+              Bill management
             </h3>
-              <div className="text-center pt-7">
-                <Link to='/invoices' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
-                    Review Invoices
+            <Link to='/invoices' className="button">
+              Review invoices
                 </Link>
-              </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}
