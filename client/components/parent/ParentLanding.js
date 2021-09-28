@@ -19,10 +19,12 @@ export const ParentLanding = (props) => {
   //console.log('parent landing props: ', props)
 
   return (
-    <div className="row g-0 g-xl-5 g-xxl-8">
-      <ParentCheckin />
-      <ParentNotifications />
-      <ParentBill />
+    <div id="parentLandingPage">
+      <div className="parentShortcutsWrapper">
+        <ParentCheckin />
+        <ParentNotifications />
+        <ParentBill />
+      </div>
       <ParentChildren />
     </div>
   );

@@ -481,7 +481,10 @@ nav a:hover {
 
 .childPic{
   height: 80px;
-  margin: 10px
+  margin-bottom: 10px;
+  padding: 1em;
+  border-radius: 50%;
+  background-color: #f7f7f7;
 }
 #data-legend a {
   font-weight: 500!important;
@@ -632,9 +635,25 @@ nav a:hover {
   background-color: #e6e6e6;
 }
 
+
+
+
+/*  */
+/* Online Checkin */
+
+#onlineCheckinPage {
+  padding: 2.5em;
+  background-color: #fbf9f6;
+}
+#onlineCheckinPage > div {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+}
+.checkinAll {
+  margin-bottom: 2.5em;
+}
 .checkinHeader{
-  width:60%;
-  height: 100px;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -642,23 +661,23 @@ nav a:hover {
   align-items: center;
 }
 
-.checkinHeader button{
-  width: 60%;
-}
-
-.checkinHeader h3{
+.checkinHeader p{
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: normal;
+}
+.checkinHeader p strong{
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
-.failure {
-  color: firebrick;
+.failed {
+  color: #ea4646!important;
 }
-
-.blankBtn {
-  background-color: none;
-  border-style: none;
+.failed:before {
+  content: "\f06a";
+  font-family: 'fontawesome';
+  padding-right: 5px;
+  font-size: 1.2em;
 }
 
 #checkMark {
@@ -852,4 +871,63 @@ padding: .1rem;
   width: 500px;
   margin: 0 auto;
   border-radius: 25px!important;
+}
+
+
+
+
+
+
+
+
+
+/*  */
+/* Parent Landing Page */
+#parentLandingPage{
+  background-color:#fbf9f6;
+  padding: 2.5em;
+}
+#parentLandingPage > div {
+  display: flex;
+  justify-content: space-between;
+}
+.parentShortcutsWrapper {
+  padding-bottom: 2.5em;
+}
+.parentShortcuts {
+  background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+  width: calc(100vw / 3 - 3.5em);
+}
+#childrenTable {
+  flex-direction: column;
+  background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+}
+#childrenTable .block-title {
+  padding-bottom: 1em;
+}
+#childrenTable table {
+  width:100%;
+}
+#childrenTable tbody {
+  display: flex;
+  flex-wrap: wrap;
+}
+.childCard {
+  width: 20%;
+  padding: 0.5em;
+  display: flex;
+}
+.childCard td{
+  border: 1px solid #ededed;
+  border-radius: 0.5em;
+  text-align:center;
+  width: 100%;
+  padding: 2em 1em;
+}
+.childCard td:hover {
+  border: 1px solid #d1d1d1;
 }
