@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { authenticate } from '../store'
 
 
@@ -11,9 +12,11 @@ const AuthForm = props => {
   return (
     <div id="loginSignupPage">
       <div>
+
         {name === 'login' ?
           // Login form
           <form onSubmit={handleSubmit} name={name}>
+            <h2 className="block-title">Login</h2>
             <div>
               <label htmlFor="username">
                 <small>Username</small>
@@ -30,10 +33,15 @@ const AuthForm = props => {
               <button type="submit" className="button">{displayName}</button>
             </div>
             {error && error.response && <div> {error.response.data} </div>}
+
+            <div className="smallLink">
+              <Link to="/signup">Don't have an account yet? Click here.</Link>
+            </div>
           </form>
           :
           // Signup form
           <form onSubmit={handleSubmit} name={name}>
+            <h2 className="block-title">Sign up</h2>
             <div>
               <label htmlFor="username">
                 <small>Username</small>
@@ -68,12 +76,15 @@ const AuthForm = props => {
               <button type="submit" className="button">{displayName}</button>
             </div>
             {error && error.response && <div> {error.response.data} </div>}
+            <div className="smallLink">
+              <Link to="/login">Already have an account? Click here.</Link>
+            </div>
           </form>
         }
 
-      </div>
+      </div >
 
-    </div>
+    </div >
   )
 }
 
@@ -114,7 +125,7 @@ const mapDispatch = dispatch => {
         const username = evt.target.username.value
         const password = evt.target.password.value
         const typeId = evt.target.typeId ? evt.target.typeId.value * 1 : ''
-        dispatch(authenticate(username, password, formName, typeId)) 
+        dispatch(authenticate(username, password, formName, typeId))
       }
       else {
         alert('passwords do not match - please correct and submit again')
