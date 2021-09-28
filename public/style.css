@@ -145,17 +145,17 @@ img {
   border-radius: 1.5em;
   min-height: calc(100vh - 112px - 5em);
   background-image: url('/imgs/hero.jpg');
-  background-position-y: 15%;
+  background-position-y: 50%;
   background-size: cover;
 }
 #home .heroImg {
   position: absolute;
-  top:0;
+  bottom:0;
 }
 #home h1 {
   /* width:100%; */
   text-align:center;
-  padding: 1em 0;
+  padding: 1.5em 0;
   color: #0d4a91;
 }
 
@@ -420,6 +420,16 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('/imgs/waitingroom.jpg');
+  background-position-y:70%;
+  background-size: cover;
+}
+#loginSignupPage h2.block-title {
+  padding: 1em 0;
+  text-align:center;
+}
+#loginSignupPage form {
+  background-color:#fff;
 }
 #loginSignupPage form > div{
   display: block;
@@ -428,6 +438,18 @@ nav a:hover {
 #loginSignupPage form input {
   width: 100%;
   padding: 0.5em 1em;
+}
+#loginSignupPage .smallLink {
+  font-size: 0.8em;
+  text-align:center;
+  padding: 1em;
+}
+#loginSignupPage .smallLink a {
+  color: #999;
+}
+#loginSignupPage .smallLink:hover a {
+  color: #0a58ca;
+  border-bottom: 3px solid #fccc27
 }
 
 
