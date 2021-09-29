@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { connect } from "react-redux";
 
-class Car extends React.Component {
+class Cal extends React.Component {
   
   render() {
     return <div>
@@ -14,32 +14,10 @@ class Car extends React.Component {
 }
 
 
-
-
-const myApp = (props) => {
-const [value, onChange] = useState(new Date());
-
-console.log('props = ' + this.state)
-  return (
-    
-    
-    
-    <div>
-      <Calendar
-        calendarType = 'US'
-    
-        onChange={onChange}
-        value={value}
-        
-      />
-    </div>
-  );
-}
-
 const mapState = (state) => {
   return {
   value: state.value
   };
 };
 
-export default connect(mapState)(Car);
+export default connect(mapState)(Cal);
