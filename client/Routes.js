@@ -23,6 +23,7 @@ import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuc
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
 import Invoices from './components/parent/Invoices'
+import financialSnapshot from './components/admin/financialSnapshot';
 
 /**
  * COMPONENT
@@ -68,6 +69,7 @@ class Routes extends Component {
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
                 <Route path="/students" component={AllStudents} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+                <Route path="/financial-snapshot" component={financialSnapshot} />
                 <Redirect to="/home" />
               </Switch>
               :

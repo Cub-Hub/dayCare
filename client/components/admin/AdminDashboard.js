@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
 
@@ -18,8 +19,17 @@ class AdminDashboard extends Component {
     await this.props.getUsers();
     await this.props.fetchDailyCheckin();
   }
-
+  // runReport = async()=>{
+  //   const { id } = (await axios.post('/api/v1/reporting/report_runs')).data
+  //   const dataTwo = await axios.get(`/api/v1/reporting/report_runs/${id}`)
+  //   const { data } = (await axios.get('/api/v1/reporting/report_runs')).data
+  //   const report = data.find( report => report.status === 'succeeded')
+  //   const balance = (await axios.post('/api/openreport', { stripeUrl: report.result.url })).data
+  //   console.log('balance---->', balance)
+  // }
+  
   render() {
+    console.log('props--->', this.props.history)
     return (
       <div id="admindashboard">
         <div className="col2">
@@ -52,6 +62,7 @@ class AdminDashboard extends Component {
             <div className="button"><p>Teachers</p></div>
             <div className="button"><p>Children</p></div>
             <div className="button"><p>Parents</p></div>
+            <div className="button" onClick={ ()=> this.props.history.push('/financial-snapshot')}><p>Financial Summary</p></div>
           </div>
           <div>
             <div className="block">
@@ -69,11 +80,12 @@ class AdminDashboard extends Component {
    * CONTAINER
    */
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, otherProps) => {
   return {
     // username: state.auth.username
     users: state.users,
-    students: state.students
+    students: state.students,
+    otherProps
     // state
   }
 }
@@ -82,7 +94,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getStudents,
   getUsers,
-  fetchDailyCheckin
+  fetchDailyCheckin,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)

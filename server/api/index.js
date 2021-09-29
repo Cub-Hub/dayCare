@@ -8,6 +8,10 @@ router.use('/addsession', require('./addSessionToUser'))
 router.use('/getsessionid', require('./getSessionId'))
 router.use('/create-portal-session', require('./manageSubscription'))
 router.use('/webhook', require('./stripeWebhooks'))
+router.use('/v1/reporting/report_runs', require('./reportingRun'))
+router.use('/v1/reporting/report_runs', require('./reportingRunId'))
+router.use('/v1/reporting/report_runs', require('./reportingGetFile'))
+router.use('/openreport', require('./openReport'))
 
 router.use('/students', require('./students'))
 
