@@ -118,10 +118,10 @@ class EmployeeLanding extends Component {
                 </div>
               </div>
             </div>
-            <div className="block scroll-content-wrapper">
+            <div className="block scroll-content-wrapper position-relative">
               <h3 className="block-title">Student Daily Tracker</h3>
-              <Link to="/students-activity-monitor">View Details</Link>
-
+              <Link to="/students-activity-monitor" className="position-r-t">View Details</Link>
+              <br />
               <div className="scroll-content">
                 {this.props.students.map(student => {
                   return (
