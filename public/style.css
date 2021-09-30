@@ -625,7 +625,29 @@ nav a:hover {
 .flexBetween {
   display: flex;
   justify-content: space-between;
-  width: 100%
+  width: 100%;
+}
+
+.flexEmployee{
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left:22%;
+  margin:0 auto;
+  border-style: solid;
+  border-color: black;
+  padding: 2rem
+}
+
+.flexEmployee > div{
+  width: 45%
+}
+
+.employeeHR {
+  width:40%;
+  margin: auto;
+  background-color: black;
 }
 
 .flexWrap {
@@ -650,10 +672,17 @@ nav a:hover {
   width: 40%
 }
 
+.employeeText {
+  font-size: 1.5rem;
+  text-align: center;
+}
 
-
-
-
+.employeeTitle {
+  font-size: 2rem;
+  text-align: center;
+  color: black;
+  margin-top: 4rem;
+}
 
 
 /* EMPLOYEE LANDING */

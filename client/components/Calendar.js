@@ -179,7 +179,7 @@ class CalendarPage extends React.Component {
               </span></center>
         </h3>
             <ul id='calendarEvents'>
-            {this.state.events.sort((a,b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x=><li class='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11,16)}{' '}{' '}{x.summary}</div></li>)}
+            {this.state.events.sort((a,b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x=><li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11,16)}{' '}{' '}{x.summary}</div></li>)}
             </ul>
             </div>
             <div id = "Next">
