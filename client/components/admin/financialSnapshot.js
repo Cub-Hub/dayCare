@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 const financialSnapshot = () => {
-  const [report, setReport] = useState(()=>'')
+  const [finalReport, setFinalReport] = useState(()=>[])
   
   useEffect(()=>{
     const runReport = async()=>{
@@ -12,10 +12,15 @@ const financialSnapshot = () => {
       const report = data.find( report => report.status === 'succeeded')
       const balances = (await axios.post('/api/openreport', { stripeUrl: report.result.url })).data
       console.log('balance---->', balances)
-      setReport(balances)
+      const adjReport = balances.slice(1)
+      setFinalReport(adjReport) 
     }
     runReport()
   },[])
+
+  useEffect(()=>{
+    console.log('REPORT--->', finalReport)
+  }, [finalReport])
 
   return (
     <div>
@@ -28,12 +33,23 @@ const financialSnapshot = () => {
             <th>Net Amount</th>
             <th>Currency</th>
           </tr>
-          <tr>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Net Amount</th>
-            <th>Currency</th>
-          </tr>
+          {
+            finalReport.map( row =>{
+              return (
+                <tr key={row.id}>
+                  <>
+                    {
+                      row.map( info =>{
+                        return (
+                          <td key={info.id}>{info}</td>
+                        )
+                      })
+                    }
+                  </>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
     </div>

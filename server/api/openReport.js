@@ -1,5 +1,6 @@
 const env = require('../env')
 const axios = require('axios')
+const parse = require('csv-parse')
 process.env.STRIPE_SECRET_API = env.STRIPE_SECRET_API
 process.env.STRIPE_PUBLISHABLE_API = env.STRIPE_PUBLISHABLE_API
 
@@ -17,8 +18,11 @@ router.post('/', async(req, res, next)=>{
         'Authorization': `Bearer ${process.env.STRIPE_SECRET_API}`
       } 
     })
-    console.log('AHHHHHH----->>', data)
-    res.send(data)
+    parse(data, {}, (err, _data)=>{
+      console.log(_data)
+      res.send(_data)
+    })
+    
   } catch(err){
     console.log('opening-->', err)
   }
