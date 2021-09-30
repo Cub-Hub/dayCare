@@ -11,16 +11,11 @@ const financialSnapshot = () => {
       const { data } = (await axios.get('/api/v1/reporting/report_runs')).data
       const report = data.find( report => report.status === 'succeeded')
       const balances = (await axios.post('/api/openreport', { stripeUrl: report.result.url })).data
-      console.log('balance---->', balances)
       const adjReport = balances.slice(1)
       setFinalReport(adjReport) 
     }
     runReport()
   },[])
-
-  useEffect(()=>{
-    console.log('REPORT--->', finalReport)
-  }, [finalReport])
 
   return (
     <div>
@@ -34,14 +29,14 @@ const financialSnapshot = () => {
             <th>Currency</th>
           </tr>
           {
-            finalReport.map( row =>{
+            finalReport.map( (row, idx)=>{
               return (
-                <tr key={row.id}>
+                <tr key={idx}>
                   <>
                     {
-                      row.map( info =>{
+                      row.map( (info, idx) =>{
                         return (
-                          <td key={info.id}>{info}</td>
+                          <td key={idx}>{info}</td>
                         )
                       })
                     }
