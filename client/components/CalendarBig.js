@@ -235,7 +235,7 @@ class CalendarPage extends React.Component {
   
   
   
-  <div id='bigCalendarRight' class = 'block'>
+  <div id='bigCalendarRight' className = 'block'>
       <center><iframe id = "FullCalendar3" src="calendar.html" width = '1600' height = '700' scrolling = 'yes'></iframe></center>
     </div>
   

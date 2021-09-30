@@ -21,7 +21,7 @@ const AllStudents = (props) => {
           <div className="studentCard" key={student.id}>
             <div className="allImgContainer">
             <Link to={`/student/${student.id}`}>
-            <img  src={`${student.imgURL}`} alt="Card image cap" />
+              <img  src={`${student.imgURL}`}/>
             </Link>
             </div>
             <div className="card-body">
@@ -32,15 +32,14 @@ const AllStudents = (props) => {
                 :
                 <div style={{backgroundColor:'red'}} className='statusDot'></div>
               }
-                
               </div>
               <h5 className="card-title">{student.firstName} {student.lastName}</h5>
               <div>
               <Link to={`/student/${student.id}`}>
               <button href="#" className="btn btn-primary">
                 Profile
-          </button>
-          </Link>
+              </button>
+              </Link>
           </div>
             </div>
           </div>

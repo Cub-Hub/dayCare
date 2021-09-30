@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { Group, Student, User, Category, School } } = require('../db')
+const { models: { Group, Student, User, Category, School, Clockin } } = require('../db')
 module.exports = router
 
 router.get('/groups', async (req, res, next) => {
@@ -13,3 +13,11 @@ router.get('/groups', async (req, res, next) => {
   }
 })
 
+router.get("/clockins", async (req, res, next) => {
+  try {
+    const clockins = await Clockin.findAll({});
+    res.send(clockins);
+  } catch (err) {
+    next(err);
+  }
+});

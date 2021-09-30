@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchClockinStatus, getUsers } from "../../store";
 
@@ -10,25 +10,31 @@ import { fetchClockinStatus, getUsers } from "../../store";
  */
 
 const Clockin = (props) => {
+
+  const paramsId = useParams().id
+
   useEffect(() => {
-    props.fetchClockinStatus(props.userId);
+    
+    const fetchId = paramsId || props.userId
+    props.fetchClockinStatus(fetchId);
   }, []);
 
-  const { username } = props;
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
 
   const handleClockin = async (id) => {
+    const fetchId = paramsId || props.userId
     await axios.post("/api/employees/clockin", { id });
     await axios.put("/api/employees/activate", { id });
-    props.fetchClockinStatus(props.userId);
+    props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
 
   const handleClockout = async (id) => {
+    const fetchId = paramsId || props.userId
     await axios.post("/api/employees/clockout", { id });
     await axios.put("/api/employees/deactivate", { id });
-    props.fetchClockinStatus(props.userId);
+    props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
 
@@ -36,22 +42,24 @@ const Clockin = (props) => {
     ? props.clockin.sort((a, b) => b.id - a.id)[0]
     : false;
 
+  const handleId = paramsId || props.userId
+
   return (
     <div>
       <div>
         {/* begin::Body */}
         <div>
           {/* begin::Wrapper */}
-          <button className={`button width100 ${curClockin.clockedin ? 'clockedOutBtn' : 'clockedInBtn'}`} onClick={() => curClockin.clockedin ? handleClockout(props.userId) : handleClockin(props.userId)}>
+          <button className={`button width100 ${curClockin.clockedin ? 'clockedInBtn' : 'clockedOutBtn'}`} onClick={() => curClockin.clockedin ? handleClockout(handleId) : handleClockin(handleId)}>
             {/* begin::Text */}
             {curClockin ? (
               curClockin.clockedin ? (
-                <small>You clocked in at {curClockin.time}</small>
+                <small>Clocked in at: {curClockin.time}</small>
               ) : (
-                  <small>You are clocked out</small>
+                  <small>Currently Clocked Out</small>
                 )
             ) : (
-                <small>You are clocked out</small>
+                <small>Currently Clocked Out</small>
               )}
             <div className="button-with-icon">
               <span className="text-center pt-7">
