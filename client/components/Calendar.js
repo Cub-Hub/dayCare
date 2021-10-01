@@ -31,7 +31,6 @@ class CalendarPage extends React.Component {
       message2: new Date(),
       events: [],
       dateString: ''
-
     }
     this.addItemClick = this.addItemClick.bind(this)
     this.displayDate = this.displayDate.bind(this)
@@ -55,7 +54,11 @@ class CalendarPage extends React.Component {
   myChangeHandlerEventName = (event) => {
     event.persist()
     this.setState({ eventName: event.target.value })
+  }
 
+  myChangeHandlerEndDateTime = (event) => {
+    event.persist()
+    this.setState({ endDateTime: event.target.value })
   }
 
   myChangeHandlerStartDateTime = (event) => {
@@ -82,6 +85,10 @@ class CalendarPage extends React.Component {
     console.log(ApiCalendar.isAuthorized)
   }
 
+  //   async addItemClick() {
+  //     let eventObject = { summary: "Test Appointment", start: { date: '2021-09-09' }, end: { date: '2021-09-09' } }
+  //     await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
+  //   }
 
   setCalendarClick() {
     ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
@@ -189,8 +196,6 @@ class CalendarPage extends React.Component {
         </div>
         <pre id="content" style={{ whiteSpace: "pre-wrap" }}></pre>
       </div>
-
-
     )
   }
 }
