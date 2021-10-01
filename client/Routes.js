@@ -10,7 +10,7 @@ import CalendarBig from './components/CalendarBig';
 import Calendar from './components/Calendar';
 
 
-import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
 import Home from './components/Home'
@@ -28,7 +28,9 @@ import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
-import Invoices from './components/parent/Invoices'
+import Invoices from './components/parent/Invoices';
+import AllEmployees from './components/admin/AllEmployees';
+import SingleEmployee from './components/admin/SingleEmployee';
 
 /**
  * COMPONENT
@@ -69,10 +71,11 @@ class Routes extends Component {
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
                 <Route path="/calendar" component={CalendarBig} />
-                {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
+                <Route path="/employees" component={AllEmployees} />
+                <Route path="/employee/:id" component={SingleEmployee} />
                 <Route path="/students" component={AllStudents} />
                 <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
@@ -127,6 +130,7 @@ const mapDispatch = dispatch => {
       dispatch(getStudents())
       dispatch(getUsers())
       dispatch(fetchGroups())
+      dispatch(fetchClockins())
     }
   }
 }

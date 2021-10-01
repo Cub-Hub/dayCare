@@ -52,7 +52,7 @@ class AdminDashboard extends Component {
             <h2 className="block-title">Total</h2>
             <div className="col2">
               <p>{this.props.users.length} Teachers</p>
-              <a href="">Manage</a>
+              <Link to='/employees'>Manage</Link>
             </div>
             <div className="col2">
               <p>{this.props.students.length} Students</p>

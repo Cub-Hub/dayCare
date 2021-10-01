@@ -31,8 +31,9 @@ router.post("/clockout", async (req, res, next) => {
     try {
       const today = new Date();
       const dateStr = today.toDateString();
+      const timeStamp = `${today.getHours()}:${today.getMinutes()}`
   
-      await Clockin.create({ date: dateStr, userId: req.body.id, clockedin: false });
+      await Clockin.create({ date: dateStr, userId: req.body.id, time: timeStamp, clockedin: false });
   
       res.send("checkout complete");
     } catch (err) {

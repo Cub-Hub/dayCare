@@ -2,20 +2,17 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { connect } from "react-redux";
 
-const myApp = (props) => {
-  const [value, onChange] = useState(new Date());
-  props.parentCallback(value)
-
-  return (
-    <div>
-      <Calendar
-        calendarType = 'US'
-        onChange={onChange}
-        value={value}
-      />
-    </div>
-  );
+class Cal extends React.Component {
+  
+  render() {
+    return <div>
+    <Calendar
+    calendarType = 'US'
+    value={new Date(this.props.y,this.props.m,this.props.d)}
+    /></div>;
+  }
 }
+
 
 const mapState = (state) => {
   return {
@@ -23,4 +20,4 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(myApp);
+export default connect(mapState)(Cal);
