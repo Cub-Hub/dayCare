@@ -4,17 +4,14 @@ import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
 import CalendarMini from './CalendarMini'
 import axios from 'axios'
-
 // Code based on example code in: https://www.npmjs.com/package/react-google-calendar-api
-
 /**
  * COMPONENT
  */
 // Thanks to Anthony W Jones: https://stackoverflow.com/questions/563406/add-days-to-javascript-date
 
 
-
-Date.prototype.addDays = function(days) {
+Date.prototype.addDays = function (days) {
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);
   return date;
@@ -34,22 +31,38 @@ class CalendarPage extends React.Component {
       message2: new Date(),
       events: [],
       dateString: ''
+
+    }
+    this.addItemClick = this.addItemClick.bind(this)
+    this.displayDate = this.displayDate.bind(this)
+    this.getEvents = this.getEvents.bind(this)
+    this.callbackFunction = this.callbackFunction.bind(this)
+  }
+
+  async componentDidMount() {
+    await ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+    await this.setState({ message: this.state.message.addDays(0) })
+    let year = (this.state.message.addDays(0)).getUTCFullYear()
+    let date = ('0' + this.state.message.getDate()).slice(-2)
+    let month = ('0' + (this.state.message.getMonth() * 1 + 1)).slice(-2)
+    let concat = year + '-' + month + '-' + date
+    await this.setState({ dateString: concat })
+    // Use the date to get events from Google REST
+    await this.getEvents()
+
   }
 
   myChangeHandlerEventName = (event) => {
     event.persist()
     this.setState({ eventName: event.target.value })
 
-
-  myChangeHandlerEndDateTime = (event) => {
-    event.persist()
-    this.setState({ endDateTime: event.target.value })
   }
 
   myChangeHandlerStartDateTime = (event) => {
     event.persist()
     this.setState({ startDateTime: event.target.value })
   }
+
 
   myChangeHandlerEndDateTime = (event) => {
     event.persist()
@@ -69,16 +82,10 @@ class CalendarPage extends React.Component {
     console.log(ApiCalendar.isAuthorized)
   }
 
-//   async addItemClick() {
-//     let eventObject = { summary: "Test Appointment", start: { date: '2021-09-09' }, end: { date: '2021-09-09' } }
-//     await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
-//   }
-
 
   setCalendarClick() {
     ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
   }
-
 
 
   async addItemClick() {
@@ -94,9 +101,10 @@ class CalendarPage extends React.Component {
   }
 
 
-  callbackFunction = async(childData) => {
+  callbackFunction = async (childData) => {
     // Get date from mini-calendar
     await this.setState({ message: childData.addDays(0) })
+
     let year = (this.state.message.addDays(0)).getUTCFullYear()
     let date = ('0' + this.state.message.getDate()).slice(-2)
     let month = ('0' + (this.state.message.getMonth() * 1 + 1)).slice(-2)
@@ -106,7 +114,7 @@ class CalendarPage extends React.Component {
     await this.getEvents()
   }
 
-  nextButton = async() => {
+  nextButton = async () => {
     // Get date from mini-calendar
 
     await this.setState({ message: this.state.message.addDays(1) })
@@ -124,8 +132,7 @@ class CalendarPage extends React.Component {
 
   }
 
-
-  previousButton = async() => {
+  previousButton = async () => {
     // Get date from mini-calendar
     await this.setState({ message: this.state.message.addDays(-1) })
     console.log(this.state)
@@ -153,51 +160,40 @@ class CalendarPage extends React.Component {
   }
 
   render() {
+
     return (
       <div>
-             <h2 className="block-title">Student Calendar</h2>
-          <div id = "CalendarBox">
-          <div id = "calendarSpace"></div>
-            <div id = "Previous">
-              <button className = 'calendarButtons' onClick = {this.previousButton}>{' << '}</button>
-            </div>
-            <div id = "CalendarLeft">
-              <h3 className="card-title align-items-start flex-column">
+        <h2 className="block-title">Student Calendar</h2>
+        <div id="CalendarBox">
+          <div id="calendarSpace"></div>
+          <div id="Previous">
+            <button className='calendarButtons' onClick={this.previousButton}>{' << '}</button>
+          </div>
+          <div id="CalendarLeft">
+            <h3 className="card-title align-items-start flex-column">
               <center><span className="card-label fw-bolder text-dark fs-3">
                 {this.state.today.toDateString() === this.state.message.toDateString() ? 'Today' : this.state.message.toDateString()}
               </span></center>
             </h3>
             <ul id='calendarEvents'>
-//               {this.state.events.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x => <li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11, 16)}{' '}{' '}{x.summary}</div></li>)}
-//             </ul>
-//           </div>
-//           <div id="Next">
-//             <button className='calendarButtons' onClick={this.nextButton}>{' >> '}</button>
-//           </div>
-//           <div id="CalendarRight">
-//             <CalendarMini parentCallback={this.callbackFunction} />
-//           </div>
-//         </div>
-//         <pre id="content" style={{ whiteSpace: "pre-wrap" }}></pre>
-//       </div>
-            {this.state.events.sort((a,b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x=><li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11,16)}{' '}{' '}{x.summary}</div></li>)}
+              {this.state.events.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x => <li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11, 16)}{' '}{' '}{x.summary}</div></li>)}
             </ul>
-            </div>
-            <div id = "Next">
-            <button className = 'calendarButtons' onClick = {this.nextButton}>{' >> '}</button>
-            </div>
-            <div id = "CalendarRight">
-            <CalendarMini  y={this.state.message.getUTCFullYear()*1} 
+          </div>
+          <div id="Next">
+            <button className='calendarButtons' onClick={this.nextButton}>{' >> '}</button>
+          </div>
+          <div id="CalendarRight">
+            <CalendarMini y={this.state.message.getUTCFullYear() * 1}
               m={this.state.message.getMonth()} d={this.state.message.getDate()} />
-            </div>
+          </div>
+        </div>
+        <pre id="content" style={{ whiteSpace: "pre-wrap" }}></pre>
       </div>
-    <pre id="content" style={{whiteSpace: "pre-wrap"}}></pre>
-    </div>
+
 
     )
   }
 }
-
 /**
  * CONTAINER
  */
@@ -206,5 +202,4 @@ const mapState = state => {
     state
   }
 }
-
 export default connect(mapState)(CalendarPage)
