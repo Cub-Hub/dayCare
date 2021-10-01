@@ -7,7 +7,7 @@ import Calendar from '../Calendar'
 
 import { Link } from "react-router-dom";
 
-import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
+import { getStudents, getUsers, fetchDailyCheckin, updateStudent } from '../../store';
 
 
 /**
@@ -16,15 +16,33 @@ import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
 class AdminDashboard extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      message: '',
+      pendingChildren: [],
+    }
+    this.approveChild = this.approveChild.bind(this)
   }
 
   async componentDidMount() {
     await this.props.getStudents();
     await this.props.getUsers();
     await this.props.fetchDailyCheckin();
+    this.setState({
+      pendingChildren: this.props.students.filter(student => student.isPending)
+    })
+  }
+
+  approveChild(updatedStudent) {
+    console.log(updatedStudent)
+    alert(`${updatedStudent.firstName} register is approved`)
+    this.props.updateStudent(updatedStudent);
+    const updatePendingChild = this.state.pendingChildren.filter(student => student.id !== updatedStudent.id)
+    this.setState({ pendingChildren: updatePendingChild })
   }
 
   render() {
+    console.log('FIND PENDING CHILD ', this.state.pendingChildren)
     return (
       <div id="admindashboard">
         <div className="col2">
@@ -50,6 +68,15 @@ class AdminDashboard extends Component {
               <p>4 Credited</p>
               <a href="">Manage</a>
             </div>
+            <br /><br />
+            <hr />
+            <br /><br />
+            <h2 className="block-title">Pending children</h2>
+            {
+              this.state.pendingChildren.map(student =>
+                <div key={student.id} className="button" onClick={() => this.approveChild(student)}><p>{student.firstName} {student.lastName}</p></div>
+              )
+            }
             <br /><br />
             <hr />
             <br /><br />
@@ -89,7 +116,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getStudents,
   getUsers,
-  fetchDailyCheckin
+  fetchDailyCheckin,
+  updateStudent
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)

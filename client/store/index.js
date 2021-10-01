@@ -6,6 +6,7 @@ import auth from './auth'
 import children from './parent/children'
 import users from './users'
 import students from './students'
+import schools from './schools'
 import checkins from './admin/checkins'
 import clockin from './employee/clockin'
 import groups from './admin/groups'
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   auth,
   users,
   students,
+  schools,
   children,
   checkins,
   clockin,
@@ -31,6 +33,7 @@ export * from './auth'
 export * from './admin/checkins'
 export * from './admin/groups'
 export * from './students'
+export * from './schools'
 export * from './users'
 export * from './parent/children'
 export * from './employee/clockin'
