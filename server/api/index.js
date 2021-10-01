@@ -10,6 +10,8 @@ router.use('/create-portal-session', require('./manageSubscription'))
 
 router.use('/students', require('./students'))
 
+router.use('/schools', require('./schools'))
+
 router.use('/parents', require('./parents'))
 
 router.use('/employees', require('./employees'))
