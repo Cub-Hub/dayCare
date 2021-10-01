@@ -4,14 +4,11 @@ import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
 import CalendarMini from './CalendarMini'
 import axios from 'axios'
-
 // Code based on example code in: https://www.npmjs.com/package/react-google-calendar-api
-
 /**
  * COMPONENT
  */
 // Thanks to Anthony W Jones: https://stackoverflow.com/questions/563406/add-days-to-javascript-date
-
 
 
 Date.prototype.addDays = function (days) {
@@ -35,6 +32,23 @@ class CalendarPage extends React.Component {
       events: [],
       dateString: ''
     }
+    this.addItemClick = this.addItemClick.bind(this)
+    this.displayDate = this.displayDate.bind(this)
+    this.getEvents = this.getEvents.bind(this)
+    this.callbackFunction = this.callbackFunction.bind(this)
+  }
+
+  async componentDidMount() {
+    await ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
+    await this.setState({ message: this.state.message.addDays(0) })
+    let year = (this.state.message.addDays(0)).getUTCFullYear()
+    let date = ('0' + this.state.message.getDate()).slice(-2)
+    let month = ('0' + (this.state.message.getMonth() * 1 + 1)).slice(-2)
+    let concat = year + '-' + month + '-' + date
+    await this.setState({ dateString: concat })
+    // Use the date to get events from Google REST
+    await this.getEvents()
+
   }
 
   myChangeHandlerEventName = (event) => {
@@ -51,6 +65,7 @@ class CalendarPage extends React.Component {
     event.persist()
     this.setState({ startDateTime: event.target.value })
   }
+
 
   myChangeHandlerEndDateTime = (event) => {
     event.persist()
@@ -75,11 +90,9 @@ class CalendarPage extends React.Component {
   //     await ApiCalendar.createEvent(eventObject, "483108818708-m1agqu1kajjsrdg8pr967j7220r5rng9.apps.googleusercontent.com", "none")
   //   }
 
-
   setCalendarClick() {
     ApiCalendar.setCalendar("s4vcslf30g91g92qu6f4sqa74c@group.calendar.google.com")
   }
-
 
 
   async addItemClick() {
@@ -98,6 +111,7 @@ class CalendarPage extends React.Component {
   callbackFunction = async (childData) => {
     // Get date from mini-calendar
     await this.setState({ message: childData.addDays(0) })
+
     let year = (this.state.message.addDays(0)).getUTCFullYear()
     let date = ('0' + this.state.message.getDate()).slice(-2)
     let month = ('0' + (this.state.message.getMonth() * 1 + 1)).slice(-2)
@@ -124,7 +138,6 @@ class CalendarPage extends React.Component {
 
 
   }
-
 
   previousButton = async () => {
     // Get date from mini-calendar
@@ -186,7 +199,6 @@ class CalendarPage extends React.Component {
     )
   }
 }
-
 /**
  * CONTAINER
  */
@@ -195,5 +207,4 @@ const mapState = state => {
     state
   }
 }
-
 export default connect(mapState)(CalendarPage)
