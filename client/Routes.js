@@ -28,10 +28,12 @@ import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
-import Invoices from './components/parent/Invoices';
+import Invoices from './components/parent/Invoices'
+import financialSnapshot from './components/admin/financialSnapshot';
 import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
 import ViewStudents from './components/employee/ViewStudents';
+import ForgotPassword from './components/ForgotPassword';
 
 /**
  * COMPONENT
@@ -80,6 +82,7 @@ class Routes extends Component {
                 <Route path="/students" component={AllStudents} />
                 <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+                <Route path="/financial-snapshot" component={financialSnapshot} />
                 <Redirect to="/home" />
               </Switch>
               :
@@ -108,6 +111,7 @@ class Routes extends Component {
               <Route path="/newsletter" component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/forgotpassword" component={ForgotPassword} />
             </Switch>
           )}
       </div>

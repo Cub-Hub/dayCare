@@ -33,6 +33,9 @@ a {
 label {
   display: block;
 }
+select {
+  padding: 0.5em 1em;
+}
 .width100 {
   width:100%;
 }
@@ -646,6 +649,10 @@ nav a:hover {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+#admindashboard button.blankBtn{
+  border: 0;
+  background-color:#fff;
+}
 
 
 
@@ -665,7 +672,8 @@ nav a:hover {
 .checkinAll {
   margin-bottom: 2.5em;
 }
-.checkinHeader{
+
+.checkinHeader, .addchildform{
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -673,7 +681,8 @@ nav a:hover {
   align-items: center;
 }
 
-.checkinHeader p{
+
+.checkinHeader p, .addchildform p{
   text-align: center;
   font-weight: normal;
 }
@@ -810,7 +819,7 @@ nav a:hover {
 
 .scroll-content-wrapper {
   height: 450px;
-  width: calc(70vw - 1em);
+  width: 75vw;
 }
 .scroll-content {
   display: flex; 
@@ -999,10 +1008,6 @@ margin: .2rem;
 padding: .1rem;
 }
 
-#bigCalendarRight {
-
-  height: 1000;
-}
   
 #calendarEvents {
   list-style-image: url('bar.png');
@@ -1038,14 +1043,54 @@ padding: .1rem;
 #parentLandingPage{
   background-color:#fbf9f6;
   padding: 2.5em;
+  min-height: calc(100vh - 112px);
 }
-#parentLandingPage > div {
+#parentLandingPage > div > div {
   display: flex;
   justify-content: space-between;
 }
 .parentShortcutsWrapper {
   padding-bottom: 2.5em;
 }
+.parentLandingEmptyWrapper {
+  background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+  flex-direction: column; 
+}
+.parentShortcutsWrapper-empty {
+  min-height: calc(100vh - 112px - 5em);
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  border-radius: 1.5em;
+  padding:2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parentLandingEmptyWrapper form > div{
+  display: block;
+  margin: 0.5em;
+}
+.addchildform {
+  background-color:#fff;
+  padding: 2em;
+  width: fit-content;
+}
+.addchildform form{
+  display: flex;
+  flex-direction: column;
+}
+.addchildform form > div {
+  margin: 1em 0;
+}
+.addchildform input[type="text"], .addchildform select {
+  max-width: 30vw;
+  min-width: 245px;
+  padding: 0.5em 1em;
+}
+
 .parentShortcuts {
   background-color:#fff;
   padding: 2em;
@@ -1082,4 +1127,73 @@ padding: .1rem;
 }
 .childCard td:hover {
   border: 1px solid #d1d1d1;
+}
+/* Parent invoices*/
+
+.invoices {
+  display: flex;
+  margin: 3rem;
+}
+#single-pay-btn {
+  margin: 3rem;
+}
+#subscribe-monthly-btn {
+  margin: 3rem;
+}
+
+#active-subs-title{
+  text-align: center;
+}
+.multi-subs-btns{
+  display: flex;
+  min-height: 30vh;
+}
+.multi-subs-btn{
+  margin: 3rem
+}
+.manage-subscription{
+  min-height: 100vh;
+}
+
+/* Stripe-Success */
+
+#subs-init {
+  text-align: center;
+  margin: 2rem
+}
+.subs-btns {
+  margin: 2rem;
+  padding: 1rem;
+  min-height: 100vh;
+}
+.home-btn {
+  margin: 2rem;
+}
+/* Stripe-Failed */
+#stripe-cancel-div{
+  margin: 2rem;
+}
+
+.pay-failed {
+  text-align: center;
+  margin: 3rem;
+  font-size:x-large
+}
+#stripe-cancel-redirect-btn {
+  margin: 2rem;
+}
+
+/* Financial Summary*/
+#fin-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#summary-title {
+  text-align: center;
+}
+.table-words {
+  font-size: 1.5rem;
+  padding: 1rem;
 }

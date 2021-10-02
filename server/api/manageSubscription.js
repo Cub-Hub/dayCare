@@ -8,11 +8,11 @@ module.exports = router
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
-const YOUR_DOMAIN = 'http://localhost:8080'
+const YOUR_DOMAIN = process.env.DOMAIN ||  'http://localhost:8080/'
 
 router.post('/:sessionId', cors(), async (req, res, next)=>{
   const { sessionId } = req.params
-  console.log('AT API SESSION ID--->', sessionId)
+  //console.log('AT API SESSION ID--->', sessionId)
   try {
       // For demonstration purposes, we're using the Checkout session to retrieve the customer ID.
       // Typically this is stored alongside the authenticated user in your database.
@@ -25,7 +25,6 @@ router.post('/:sessionId', cors(), async (req, res, next)=>{
         return_url: returnUrl,
       })
       res.json({ "url": portalSession.url })
-      // res.redirect(303, portalSession.url);
   } catch (err){
     console.log('MANAGE SUBSCRIPTION Err--->', err)
   }
