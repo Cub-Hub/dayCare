@@ -59,7 +59,7 @@ async function seed() {
 
   // Creating Users
 
-  const [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Frida, Rosemary, Victor, Viviana, Cooper, Molly, Harley, Darien,
+  const [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Frida, Rosemary, Victor, Viviana, Cooper, Molly, Harley, Admin,
     Lilianna, Javier, Terrell, Cordell, Maria, Sincere, Shayla, Lea, Amara, Gemma, Zoe, Derrick, Anabella] = await Promise.all([
       User.create({
         username: 'Khadijah', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Oneil',
@@ -117,7 +117,7 @@ async function seed() {
         username: 'Harley', password: '123', typeId: 1, schoolId: lidsNkids.id, groupId: lidsF.id, lastName: 'Bailey',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp14.jpeg', email: 'Harley@gmail.com', phone: '305-433-3992'
       }),
-      User.create({ username: 'Darien', password: '123', typeId: 2, schoolId: cots4tots.id, lastName: 'Hawkins', email: 'Darien@gmail.com', }),
+      User.create({ username: 'Admin', password: '123', typeId: 2, schoolId: cots4tots.id, lastName: 'Hawkins', email: 'Admin@gmail.com', }),
       User.create({ username: 'Lilianna', password: '123', typeId: 3, schoolId: cots4tots.id, lastName: 'Anderson', email: 'Lilianna@gmail.com', }),
       User.create({ username: 'Javier', password: '123', typeId: 3, schoolId: cots4tots.id, lastName: 'Coleman', email: 'Javier@gmail.com', }),
       User.create({ username: 'Terrell', password: '123', typeId: 3, schoolId: cots4tots.id, lastName: 'Scott', email: 'Terrell@gmail.com', }),

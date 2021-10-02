@@ -20,24 +20,24 @@ const Ratios = (props) => {
   const activeEmployees = props.users.filter((user) => user.isActive);
 
   return (
-    <div className="table-responsive block">
+    <div className="table-responsive">
       <div className="flexBetween">
-        <span className="text-dark me-2 fs-6 fw-bolder" id="centeredColumn">
+        <span>
           Group
         </span>
-        <span className="text-dark me-2 fs-6 fw-bolder">
+        <span>
           Status & Student/Employee Ratio
         </span>
       </div>
       <table className="table table-borderless align-middle">
-        <thead>
+        {/* <thead>
           <tr>
             <th className="p-0 w-50px"></th>
             <th className="p-0 min-w-200px"></th>
             <th className="p-0 min-w-100px"></th>
             <th className="p-0 min-w-40px"></th>
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           {props.groups.map((group) => {
             const activeEmp = group.users.filter(
@@ -50,16 +50,16 @@ const Ratios = (props) => {
               checkedStu / (activeEmp * (group.category.id * 2 + 2));
             return (
               <tr key={group.id}>
-                <th className="ps-0 py-3">
+                {/* <th className="ps-0 py-3">
                   <div className="symbol symbol-65px me-3">
                     <span className="symbol-label bg-light-success"></span>
                   </div>
-                </th>
-                <td className="ps-0">
-                  <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
-                    {group.name}
+                </th> */}
+                <td className="ps-0 data-legend">
+                  <a className="text-gray-800 text-hover-primary fs-6">
+                    Group: {group.name}
                   </a>
-                  <span className="text-muted fw-bold d-block mt-1">
+                  <span className="text-muted d-block">
                     {group.category.name} (Max per Employee:{" "}
                     {group.category.id * 2 + 2})
                   </span>

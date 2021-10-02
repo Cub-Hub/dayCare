@@ -28,15 +28,15 @@ const AuthForm = props => {
                 <small>Password</small>
               </label>
               <input name="password" type="password" />
-              <div className="smallLink">
-                <Link to="/forgotpassword">Forgot your password?</Link>
-              </div>
             </div>
             <div>
               <button type="submit" className="button">{displayName}</button>
             </div>
             {error && error.response && <div> {error.response.data} </div>}
 
+            <div className="smallLink">
+              <Link to="/forgotpassword">Forgot your password?</Link>
+            </div>
             <div className="smallLink">
               <Link to="/signup">Don't have an account yet? Click here.</Link>
             </div>

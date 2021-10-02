@@ -63,13 +63,15 @@ const TableWidget3 = (props) => {
                         <img
                           alt="icon"
                           src={`${child.imgURL}`}
-                          className="childPic"
+                          className='childPic'
                         />
                         <p>
+                          {child.isPending === true ? <span className="pendingChildLabel">PENDING<br /></span> : null}
                           {`${child.firstName} ${child.lastName}`}
                         </p>
                       </td>
                     </tr>
+
                   )
                 })
 

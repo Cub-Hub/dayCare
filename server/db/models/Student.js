@@ -19,7 +19,7 @@ const Student = db.define("student", {
   },
   imgURL: {
     type: Sequelize.STRING,
-    defaultValue: 'https://cub-hub.s3.us-east-2.amazonaws.com/generic.jpg',
+    defaultValue: "https://cub-hub.s3.us-east-2.amazonaws.com/boy-15.png",
   },
   isPending: {
     type: Sequelize.BOOLEAN,

@@ -18,40 +18,40 @@ const Ratios = (props) => {
   );
 
   const activeEmployees = props.users.filter((user) => user.isActive);
-    console.log('group status props: ', props)
+  console.log('group status props: ', props)
   return (
     <div className="table-responsive">
       <div className="flexBetween">
-        <span className="text-dark me-2 fs-6 fw-bolder" id="centeredColumn">
+        <span id="">
           Group
         </span>
-        <span className="text-dark me-2 fs-6 fw-bolder">
+        <span>
           Current Activity
         </span>
       </div>
       <table className="table table-borderless align-middle">
-        <thead>
+        {/* <thead>
           <tr>
             <th className="p-0 w-50px"></th>
             <th className="p-0 min-w-200px"></th>
             <th className="p-0 min-w-100px"></th>
             <th className="p-0 min-w-40px"></th>
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
           {props.groups.map((group) => {
             return (
               <tr key={group.id}>
-                <th className="ps-0 py-3">
+                {/* <th className="ps-0 py-3">
                   <div className="symbol symbol-65px me-3">
                     <span className="symbol-label bg-light-success"></span>
                   </div>
-                </th>
+                </th> */}
                 <td className="ps-0">
-                  <a className="text-gray-800 fw-bolder text-hover-primary fs-6">
+                  <a className="text-gray-800 text-hover-primary fs-6">
                     {group.name}
                   </a>
-                  <span className="text-muted fw-bold d-block mt-1">
+                  <span className="text-muted d-block mt-1">
                     {group.users.map((employee) => employee.username).join(', ')}
                   </span>
                 </td>
@@ -60,8 +60,8 @@ const Ratios = (props) => {
                     <div className="d-flex align-items-center">
                       <div>
                       </div>
-                      <span className="text-muted fs-7 fw-bold ps-3">
-                          {group.status}
+                      <span className="text-muted fs-7 ps-3">
+                        {group.status}
                       </span>
                     </div>
                   </div>
