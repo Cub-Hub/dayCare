@@ -7,6 +7,7 @@ import Calendar from '../Calendar'
 
 import { Link } from "react-router-dom";
 
+
 import { getStudents, getUsers, fetchDailyCheckin, updateStudent } from '../../store';
 
 
@@ -40,7 +41,7 @@ class AdminDashboard extends Component {
     const updatePendingChild = this.state.pendingChildren.filter(student => student.id !== updatedStudent.id)
     this.setState({ pendingChildren: updatePendingChild })
   }
-
+  
   render() {
     console.log('FIND PENDING CHILD ', this.state.pendingChildren)
     return (
@@ -84,6 +85,7 @@ class AdminDashboard extends Component {
             <div className="button"><p>Teachers</p></div>
             <div className="button"><p>Children</p></div>
             <div className="button"><p>Parents</p></div>
+            <div className="button" onClick={ ()=> this.props.history.push('/financial-snapshot')}><p>Financial Summary</p></div>
           </div>
           <div>
 
@@ -103,11 +105,12 @@ class AdminDashboard extends Component {
    * CONTAINER
    */
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, otherProps) => {
   return {
     // username: state.auth.username
     users: state.users,
-    students: state.students
+    students: state.students,
+    otherProps
     // state
   }
 }
@@ -117,7 +120,7 @@ const mapDispatchToProps = {
   getStudents,
   getUsers,
   fetchDailyCheckin,
-  updateStudent
+  updateStudent,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard)
