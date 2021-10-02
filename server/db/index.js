@@ -12,16 +12,24 @@ mailchimp.setConfig({
 
 const User = require('./models/User')
 const Type = require('./models/Type')
+
 const Student = require('./models/Student')
 const Category = require('./models/Category')
 const Checkin = require('./models/Checkin')
 const School = require('./models/School')
 const Group = require('./models/Group')
 const Clockin = require('./models/Clockin')
+const Subscription = require('./models/Subscription')
+const Activity = require('./models/Activity')
+
 
 //associations
 User.belongsTo(Type)
 Type.hasMany(User)
+
+
+Subscription.belongsTo(User)
+User.hasMany(Subscription)
 
 User.hasMany(Student)
 Student.belongsTo(User)
@@ -31,6 +39,9 @@ Category.hasMany(Student)
 
 Student.hasMany(Checkin)
 Checkin.belongsTo(Student)
+
+Student.hasMany(Activity)
+Activity.belongsTo(Student)
 
 School.hasMany(User)
 User.belongsTo(School)
@@ -47,6 +58,9 @@ Group.hasMany(User)
 Group.belongsTo(School)
 School.hasMany(Group)
 
+Group.hasMany(Activity)
+Activity.belongsTo(Group)
+
 Group.belongsTo(Category)
 Category.hasMany(Group)
 
@@ -54,16 +68,19 @@ Clockin.belongsTo(User)
 User.hasMany(Clockin)
 
 
+
 module.exports = {
   db,
   models: {
     User,
     Type,
+    Subscription,
     Category,
     Student,
     Checkin,
     School,
     Group,
-    Clockin
+    Clockin,
+    Activity
   },
 }

@@ -60,12 +60,11 @@ class StudentsActivityMonitor extends Component {
   }
 
   render() {
-    console.log('RENDER STATE!!', this.state)
     return (
       <div id="admindashboard">
         <div className="block scroll-content-wrapper">
-          <h3>Student Daily Tracker</h3>
-
+          <h3 className="block-title">Student Daily Tracker</h3>
+          <br />
           <div className="scroll-content">
             {this.props.students.map(student => {
               return (

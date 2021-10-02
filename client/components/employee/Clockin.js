@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchClockinStatus, getUsers } from "../../store";
 
@@ -10,25 +10,33 @@ import { fetchClockinStatus, getUsers } from "../../store";
  */
 
 const Clockin = (props) => {
+
+  const paramsId = useParams().id
+
   useEffect(() => {
-    props.fetchClockinStatus(props.userId);
+    
+    const fetchId = paramsId || props.userId
+    props.fetchClockinStatus(fetchId);
   }, []);
 
-  const { username } = props;
   const className = "card-stretch mb-5 mb-xxl-8";
   const innerPadding = "";
 
   const handleClockin = async (id) => {
-    await axios.post("/api/employees/clockin", { id });
-    await axios.put("/api/employees/activate", { id });
-    props.fetchClockinStatus(props.userId);
+    const fetchId = paramsId || props.userId
+    const adminChange = props.userType === 2 ? true : false
+    await axios.post("/api/employees/clockin", { id, adminChange  });
+    await axios.put("/api/employees/activate", { id, adminChange });
+    props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
 
   const handleClockout = async (id) => {
-    await axios.post("/api/employees/clockout", { id });
-    await axios.put("/api/employees/deactivate", { id });
-    props.fetchClockinStatus(props.userId);
+    const fetchId = paramsId || props.userId
+    const adminChange = props.userType === 2 ? true : false
+    await axios.post("/api/employees/clockout", { id, adminChange });
+    await axios.put("/api/employees/deactivate", { id, adminChange });
+    props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
 
@@ -36,64 +44,54 @@ const Clockin = (props) => {
     ? props.clockin.sort((a, b) => b.id - a.id)[0]
     : false;
 
+  const handleId = paramsId || props.userId
+
   return (
     <div>
       <div>
         {/* begin::Body */}
-        <div className={`card-body pb-0 ${innerPadding}`}>
+        <div>
           {/* begin::Wrapper */}
-          <div className="d-flex flex-column h-100">
+          <button className={`button width100 ${curClockin.clockedin ? 'clockedInBtn' : 'clockedOutBtn'}`} onClick={() => curClockin.clockedin ? handleClockout(handleId) : handleClockin(handleId)}>
             {/* begin::Text */}
             {curClockin ? (
               curClockin.clockedin ? (
-                <small className="centerSmallSuccess">You clocked in at {curClockin.time}</small>
+                <small>Clocked in at: {curClockin.time}</small>
               ) : (
-                  <small className="centerSmallDanger">You are clocked out</small>
+                  <small>Currently Clocked Out</small>
                 )
             ) : (
-                <small className="centerSmallDanger">You are clocked out</small>
+                <small>Currently Clocked Out</small>
               )}
-            <h3 className="text-dark text-center fs-1 fw-bolder pt-12 lh-lg">
-              {curClockin
-                ? curClockin.clockedin
-                  ? "Clock Out"
-                  : "Clock In"
-                : "Clock in"}
-            </h3>
-            <div className="text-center pt-7">
-              {curClockin ? (
-                curClockin.clockedin ? (
-                  <button
-                    className="blankBtn"
-                    onClick={() => handleClockout(props.userId)}
-                  >
+            <div className="button-with-icon">
+              <span className="text-center pt-7">
+                {curClockin ? (
+                  curClockin.clockedin ? (
                     <i
                       id='clockoutIcon'
-                      className="fa fa-window-close fa-5x"
+                      className="fa fa-times-circle button-icon"
                       aria-hidden="true"
                     ></i>
-                  </button>
+                  ) : (
+                      <i className="fa fa-clock-o button-icon" aria-hidden="true"></i>
+                    )
                 ) : (
-                    <button
-                      className="blankBtn"
-                      onClick={() => handleClockin(props.userId)}
-                    >
-                      <i className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
-                    </button>
-                  )
-              ) : (
-                  <button
-                    className="blankBtn"
-                    onClick={() => handleClockin(props.userId)}
-                  >
-                    <i id='clockinIcon' className="fa fa-clock-o fa-5x" aria-hidden="true"></i>
-                  </button>
-                )}
+                    <i id='clockinIcon' className="fa fa-clock-o button-icon" aria-hidden="true"></i>
+                  )}
+              </span>
+              <p className="block-title">
+                {curClockin
+                  ? curClockin.clockedin
+                    ? "Clock Out"
+                    : "Clock In"
+                  : "Clock in"}
+              </p>
+              {/* <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div> */}
+
             </div>
-            <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}
-          </div>
+          </button>
           {/* end::Wrapper */}
         </div>
         {/* end::Body */}
@@ -109,6 +107,7 @@ const mapState = (state) => {
   return {
     userId: state.auth.id,
     clockin: state.clockin,
+    userType: state.auth.typeId
   };
 };
 

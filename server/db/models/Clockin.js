@@ -13,6 +13,10 @@ const Clockin = db.define('clockin', {
     },
     time: {
         type: Sequelize.STRING,
+    },
+    adminChange: {
+        type: Sequelize.BOOLEAN,
+        defaultValue:false
     }
 })
 
