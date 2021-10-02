@@ -24,16 +24,18 @@ const Clockin = (props) => {
 
   const handleClockin = async (id) => {
     const fetchId = paramsId || props.userId
-    await axios.post("/api/employees/clockin", { id });
-    await axios.put("/api/employees/activate", { id });
+    const adminChange = props.userType === 2 ? true : false
+    await axios.post("/api/employees/clockin", { id, adminChange  });
+    await axios.put("/api/employees/activate", { id, adminChange });
     props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
 
   const handleClockout = async (id) => {
     const fetchId = paramsId || props.userId
-    await axios.post("/api/employees/clockout", { id });
-    await axios.put("/api/employees/deactivate", { id });
+    const adminChange = props.userType === 2 ? true : false
+    await axios.post("/api/employees/clockout", { id, adminChange });
+    await axios.put("/api/employees/deactivate", { id, adminChange });
     props.fetchClockinStatus(fetchId);
     props.getUsers()
   };
@@ -105,6 +107,7 @@ const mapState = (state) => {
   return {
     userId: state.auth.id,
     clockin: state.clockin,
+    userType: state.auth.typeId
   };
 };
 

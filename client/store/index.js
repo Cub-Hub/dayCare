@@ -10,6 +10,7 @@ import checkins from './admin/checkins'
 import clockin from './employee/clockin'
 import groups from './admin/groups'
 import employeeClockins from './admin/employeeClockins'
+import activities from './employee/activities'
 
 const reducer = combineReducers({
   auth,
@@ -19,7 +20,8 @@ const reducer = combineReducers({
   checkins,
   clockin,
   groups,
-  employeeClockins
+  employeeClockins,
+  activities
 })
 
 
@@ -37,4 +39,5 @@ export * from './users'
 export * from './parent/children'
 export * from './employee/clockin'
 export * from './admin/employeeClockins'
+export * from './employee/activities'
 

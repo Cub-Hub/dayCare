@@ -21,11 +21,11 @@ const SingleStudent = (props) => {
   return (
     <section className="section about-section gray-bg" id="about">
     {curStudent ?
-    <div className="singleStuContainer">
+    <div>
         <div className="row align-items-center flex-row-reverse">
-            <Link to='/students'><button className='blankBtn'><i className="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i> Back</button></Link>
+            <Link to='/students'><button style={{borderStyle:'none'}}><i className="fa fa-arrow-circle-left fa-3x" aria-hidden="true"></i> Back</button></Link>
             <div className="col-lg-6">
-                <div className="about-text go-to" style={{margin:'20px'}}>
+                <div className="about-text go-to">
                     <h3 className="dark-color">Student Details</h3>
                     <hr style={{width: '70%'}}/>
                     
@@ -44,8 +44,8 @@ const SingleStudent = (props) => {
                                 <p>{curStudent.user.username} {curStudent.lastName}</p>
                             </div>
                             <div className="media">
-                                <label>Address</label>
-                                <p>California, USA</p>
+                                <label>Daycare</label>
+                                <p>{curStudent.school.name}</p>
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -60,10 +60,6 @@ const SingleStudent = (props) => {
                             <div className="media">
                                 <label>Type</label>
                                 <p>{curStudent.category.name}</p>
-                            </div>
-                            <div className="media">
-                                <label>Daycare</label>
-                                <p>{curStudent.school.name}</p>
                             </div>
                         </div>
                     </div>
