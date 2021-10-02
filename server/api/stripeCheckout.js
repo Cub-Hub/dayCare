@@ -30,12 +30,12 @@ router.post('/', cors(), async (req, res, next)=>{
       payment_method_types: [ 'card' ],
       mode: 'payment',
       success_url: `${YOUR_DOMAIN}checkout/success`,
-      cancel_url: `${YOUR_DOMAIN}checkout/canceled`,
+      cancel_url: `${YOUR_DOMAIN}checkout/canceled`
     });
     //console.log('SESSION SINGLE PAYMENT--->', session)
     res.json({ "url": session.url })
-
   } catch (err){
     console.log('STRIPE POST Err--->', err)
   }
 })
+

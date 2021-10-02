@@ -59,6 +59,7 @@ async function seed() {
 
   // Creating Users
 
+
   const [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Frida, Rosemary, Victor, Viviana, Cooper, Molly, Harley, Admin,
     Lilianna, Javier, Terrell, Cordell, Maria, Sincere, Shayla, Lea, Amara, Gemma, Zoe, Derrick, Anabella] = await Promise.all([
       User.create({
@@ -66,7 +67,7 @@ async function seed() {
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp1.jpeg', email: 'Khadijah@gmail.com', phone: '305-781-2359'
       }),
       User.create({
-        username: 'Jayson', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Foster',
+        username: 'Jayson', password: '123', typeId: 3, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Foster',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp2.jpeg', email: 'Jayson@gmail.com', phone: '305-932-9572'
       }),
       User.create({
@@ -132,8 +133,9 @@ async function seed() {
       User.create({ username: 'Derrick', password: '123', typeId: 3, schoolId: lidsNkids.id, lastName: 'Peters', email: 'Derrick@gmail.com', }),
       User.create({ username: 'Anabella', password: '123', typeId: 3, schoolId: wildChilds.id, lastName: 'Francis', email: 'Anabella@gmail.com', }),
     ])
-  const users = [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Rosemary, Victor, Cooper, Molly, Harley, Darien, Viviana, Frida, Lilianna, Javier,
+  const users = [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Rosemary, Victor, Cooper, Molly, Harley, Admin, Viviana, Frida, Lilianna, Javier,
     Maria, Shayla, Lea, Amara, Gemma, Zoe, Terrell, Sincere, Cordell, Derrick, Anabella];
+
 
   // create students
   const students = await Promise.all([

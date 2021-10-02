@@ -20,6 +20,7 @@ const School = require('./models/School')
 const Group = require('./models/Group')
 const Clockin = require('./models/Clockin')
 const Subscription = require('./models/Subscription')
+const Activity = require('./models/Activity')
 
 
 //associations
@@ -39,6 +40,9 @@ Category.hasMany(Student)
 Student.hasMany(Checkin)
 Checkin.belongsTo(Student)
 
+Student.hasMany(Activity)
+Activity.belongsTo(Student)
+
 School.hasMany(User)
 User.belongsTo(School)
 
@@ -53,6 +57,9 @@ Group.hasMany(User)
 
 Group.belongsTo(School)
 School.hasMany(Group)
+
+Group.hasMany(Activity)
+Activity.belongsTo(Group)
 
 Group.belongsTo(Category)
 Category.hasMany(Group)
@@ -73,6 +80,7 @@ module.exports = {
     Checkin,
     School,
     Group,
-    Clockin
+    Clockin,
+    Activity
   },
 }

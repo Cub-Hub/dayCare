@@ -108,7 +108,7 @@ const OnlineCheckin = (props) => {
             'Checking your child in...'
             :
             success ?
-              <button className="button">Checkin Successful!</button>
+              <button style={{backgroundColor:'lightgreen'}} className="button">Checkin Successful!</button>
               :
               <button className="button" onClick={handleAll}>Checkin All Children</button>
           }
@@ -171,7 +171,7 @@ const OnlineCheckin = (props) => {
                             {childList ?
 
                               childList.includes(child.id) ?
-                                <button className="button" > {child.firstName} is checked in</button>
+                                <button style={{backgroundColor:'lightgreen'}} className="button" > {child.firstName} is checked in</button>
                                 :
                                 singleLoad ?
                                   'Checking in your child'

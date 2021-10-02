@@ -20,12 +20,23 @@ module.exports = {
         }
       },
       {
-        test: /\.(s*)css$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-            'style-loader',
-            'css-loader'
-          ]
-      }
-    ],
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ]
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },  
+    ]
+
   }
 }

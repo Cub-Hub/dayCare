@@ -25,9 +25,9 @@ const Ratios = (props) => {
         <span id="">
           Group
         </span>
-        <span>
+        <div style={{ width: '16rem' }} className="text-dark me-2 fs-6 fw-bolder">
           Current Activity
-        </span>
+        </div>
       </div>
       <table className="table table-borderless align-middle">
         {/* <thead>
@@ -51,9 +51,9 @@ const Ratios = (props) => {
                   <a className="text-gray-800 text-hover-primary fs-6">
                     {group.name}
                   </a>
-                  <span className="text-muted d-block mt-1">
-                    {group.users.map((employee) => employee.username).join(', ')}
-                  </span>
+                  <div className="text-muted fw-bold d-block mt-1">
+                    Assigned Employees: {group.users.map((employee) => employee.username).join(', ')}
+                  </div>
                 </td>
                 <td>
                   <div className="d-flex flex-column w-100 me-3">

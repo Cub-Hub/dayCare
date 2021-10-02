@@ -74,7 +74,7 @@ const StudentTable = (props) => {
       {/* <!--begin::Header--> */}
       <div className="col2">
         <h3 className="block-title sidepanel align-items-start flex-column">
-          Student Data
+          Daily Overview
         </h3>
         <div className="card-toolbar">
           <ul id="tabs-wrapper" className="nav nav-pills nav-pills-sm nav-light">
@@ -84,7 +84,7 @@ const StudentTable = (props) => {
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_1_1"
               >
-                Daily Attendance
+                Attendance
               </a>
             </li>
             <li id="tab-item-link" className="nav-item tab-item">
@@ -102,7 +102,7 @@ const StudentTable = (props) => {
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_1_3"
               >
-                Absent Students
+                Room Status
               </a>
             </li>
           </ul>

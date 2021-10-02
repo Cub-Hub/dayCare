@@ -64,6 +64,7 @@ class AdminDashboard extends Component {
             <div className="col2">
               <p>2 Delayed</p>
               <a href="" className="hyperlink">Manage</a>
+
             </div>
             <div className="col2">
               <p>4 Credited</p>
