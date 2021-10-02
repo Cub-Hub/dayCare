@@ -85,7 +85,7 @@ class StudentsActivityMonitor extends Component {
               className=""
             >
               <p>Feeding Activity Update</p>
-              <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+              <h2 className="block-title">{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
 
               <form id="feeding-update-form">
                 <div>
@@ -109,7 +109,7 @@ class StudentsActivityMonitor extends Component {
               className=""
             >
               <p>Napping Activity Update</p>
-              <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+              <h2 className="block-title">{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
 
               <form id="feeding-update-form">
                 <div>
@@ -133,7 +133,7 @@ class StudentsActivityMonitor extends Component {
               className=""
             >
               <p>Pooping Activity Update</p>
-              <h2>{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
+              <h2 className="block-title">{this.state.currentStudent.firstName} {this.state.currentStudent.lastName}</h2>
 
               <form id="feeding-update-form">
                 <div>

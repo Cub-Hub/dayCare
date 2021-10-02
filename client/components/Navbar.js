@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, typeId }) => (
+
   <div id="navbar">
 
     {isLoggedIn ? (
@@ -16,7 +17,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               {/* The navbar will show these links after you log in */}
               <Link to="/chat">Chat</Link>
               <Link to="/calendar">Calendar</Link>
-              <Link to='/billing'>Billing</Link>
+              {typeId === 2 ? <Link to='/billing'>Billing</Link> : null}
               <a href="#" onClick={handleClick}>
                 Logout
             </a>
@@ -46,8 +47,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
  * CONTAINER
  */
 const mapState = state => {
+  console.log('NAV BAR state ', state)
   return {
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    typeId: state.auth.typeId,
   }
 }
 
