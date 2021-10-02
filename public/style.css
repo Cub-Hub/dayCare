@@ -20,14 +20,27 @@ p {
 h2.block-title, h3.block-title, span.block-title, p.block-title, div.block-title, h3.mc__title {
   font-size: 18px;
   font-weight: 600;
-  color: #222;
+  color: #0d4a91;
 }
 span {
   font-size: inherit;
 }
-
 a {
   text-decoration: none;
+}
+.hyperlink {
+  text-decoration: underline;
+  color: #61bee2!important;
+  font-size: 10px!important;
+}
+.hyperlink:hover {
+  color: #0d4a91;
+}
+
+.smalltxt {
+  font-size: 12px;
+  color: #666;
+  font-weight:normal;
 }
 
 label {
@@ -77,21 +90,63 @@ form div {
 .button, .primaryBtn {
   padding: 0.5em 1em;
   text-align:center;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #fcce30;
   border-radius: 7px;
   margin: 0.5em 0;
-  color: #222;
+  color: #0d4a91;
   text-align:center;
+  background-color: #fff3c9;
+}
+.button-secondary {
+  padding: 0.5em 1em;
+  text-align:center;
+  border: 1px solid #61bee2;
+  border-radius: 7px;
+  margin: 0.5em 0;
+  color: #0d4a91;
+  text-align:center;
+  background-color: #c9f0ff;
 }
 .button:hover, .primaryBtn:hover {
-  background-color: #f7f7f7;
+  background-color: #fde387;
   cursor:pointer;
-  border: 1px solid #222;
+  border: 1px solid #0d4a91;
+  color: #0d4a91;
+}
+.button-secondary:hover {
+  background-color: #84d7f7;
+  cursor:pointer;
+  border: 1px solid #0d4a91;
+  color: #0d4a91;
+}
+.button[disabled], .button-secondary[disabled] {
+  cursor: default;
+  color: #999;
+  border: 1px solid #d1d1d1;
+  background-color: rgba(239, 239, 239, 0.3);
+}
+.button[disabled]:hover {
+  border: 1px solid #d1d1d1;
+  background-color: rgba(239, 239, 239, 0.3);
 }
 i.button-icon {
   font-size: 1.5em;
   padding-right: 5px;
   line-height:1.2em;
+}
+.button-close {
+  position: absolute;
+  top: 0.5em;
+  background-color:#fff;
+  border: 0;
+  color: #61bee2;
+}
+.button-close:hover {
+  position: absolute;
+  top: 0.5em;
+  background-color:#fff;
+  border: 0;
+  color: #0d4a91;
 }
 .page-title {
   font-size: 2em;
@@ -495,14 +550,43 @@ nav a:hover {
   border-radius: 50%;
   background-color: #f7f7f7;
 }
-#data-legend a {
+.pendingChildLabel {
+  background-color: #61bee2;
+  color: #fff;
+  padding: 0 1em;
+  letter-spacing:0.1em;
+  font-size: 11px;
+  border-radius: 100px;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+.flexBetween > span {
+  width: 100%;
+}
+.flexBetween > span:last-child {
+  text-align:center;
+}
+#data-legend {
+  width: 30%;
+}
+#data-legend a, .data-legend a {
   font-weight: 500!important;
   color: #222;
+  cursor: pointer;
 }
 #data-legend span {
   font-weight: 400!important;
-  color:#999!important;
-  font-size: 14px!important;
+  /* font-size: 14px!important; */
+}
+td .smalltxt {
+  width: 180px;
+  padding-left:10px;
+  text-align:right;
+}
+.modal-footer button:first-child {
+  margin-right:1em;
 }
 
 #clockinIcon {
@@ -532,12 +616,13 @@ nav a:hover {
 /* react calendar */
 
 .react-calendar {
-  width: 350px;
+  /* width: 350px; */
   max-width: 100%;
-  background: white;
+  background: #fff;
   border: 1px solid #a0a096;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   line-height: 1.125em;
+  padding: 1em;
 }
 .react-calendar--doubleView {
   width: 700px;
@@ -569,6 +654,9 @@ nav a:hover {
 .react-calendar__navigation {
   height: 34px;
   margin-bottom: 1em;
+}
+.react-calendar__navigation__arrow {
+  font-size: 28px!important;
 }
 .react-calendar__navigation button {
   min-width: 44px;
@@ -619,17 +707,21 @@ nav a:hover {
 }
 .react-calendar__tile:disabled {
   background-color: #f0f0f0;
+  border-radius: 5px;
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background-color: #e6e6e6;
+  border-radius: 5px;
 }
 .react-calendar__tile--now {
-  background: #ffff76;
+  background: #fde387;
+  border-radius: 5px;
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #ffffa9;
+  background: #fde387;
+  border-radius: 5px;
 }
 .react-calendar__tile--hasActive {
   background: #76baff;
@@ -639,15 +731,17 @@ nav a:hover {
   background: #a9d4ff;
 }
 .react-calendar__tile--active {
-  background: #006edc;
+  background: #61bee2;
   color: white;
+  border-radius: 5px;
 }
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #1087ff;
+  background: #0d4a91;
 }
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+  border-radius: 5px;
 }
 #admindashboard button.blankBtn{
   border: 0;
@@ -710,7 +804,7 @@ nav a:hover {
 }
 
 #dangerMark {
-  color: firebrick
+  color: #ea4646
 }
 
 .basicFlexColumn {
@@ -883,7 +977,7 @@ nav a:hover {
   opacity:0;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 62.8rem;
   width: 100%;
   position: absolute;
   left: 0;
@@ -951,6 +1045,7 @@ nav a:hover {
 }
 
 #CalendarBox {
+  padding-top: 1em;
   display: flex;
   flex-wrap: nowrap;
   width:100%;
@@ -984,7 +1079,7 @@ nav a:hover {
   border-style: solid;
   border-color:white;
   background-color: white;
-  color: black;
+  color: #fcce30;
   font-size: large;
   font-weight: bold;
   padding: 3px;
@@ -1010,7 +1105,11 @@ padding: .1rem;
 
   
 #calendarEvents {
-  list-style-image: url('bar.png');
+  list-style:none;
+  padding-left:0;
+}
+li.calendarEventLine {
+  padding: 5px;
 }
   
 #calendarSpace {
@@ -1124,6 +1223,7 @@ padding: .1rem;
   text-align:center;
   width: 100%;
   padding: 2em 1em;
+  position: relative;
 }
 .childCard td:hover {
   border: 1px solid #d1d1d1;
@@ -1261,17 +1361,26 @@ padding: .1rem;
 
 /* Parent invoices*/
 
+#parent-billing-page {
+  padding: 2.5em;
+  background-color: #fbf9f6;
+}
 .invoices {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+}
+.invoices > div {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.product {
   display: flex;
-  margin: 3rem;
 }
-#single-pay-btn {
-  margin: 3rem;
+.product > div {
+  width: 100%;
+  text-align:right;
 }
-#subscribe-monthly-btn {
-  margin: 3rem;
-}
-
 #active-subs-title{
   text-align: center;
 }
@@ -1283,7 +1392,11 @@ padding: .1rem;
   margin: 3rem
 }
 .manage-subscription{
-  min-height: 100vh;
+  min-height: calc(100vh - 226px - 7em);
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  margin-top: 2em;
 }
 
 /* Stripe-Success */
@@ -1301,8 +1414,19 @@ padding: .1rem;
   margin: 2rem;
 }
 /* Stripe-Failed */
-#stripe-cancel-div{
-  margin: 2rem;
+#stripe-cancel-page {
+  background-color: #fbf9f6;
+  padding: 2.5em;
+}
+#stripe-cancel-page > div {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  text-align: center;
+  min-height:calc(100vh - 112px - 5em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .pay-failed {
@@ -1328,6 +1452,7 @@ padding: .1rem;
   font-size: 1.5rem;
   padding: 1rem;
 }
+
 
 /* Payments Made by parents*/
 .payment-made {
