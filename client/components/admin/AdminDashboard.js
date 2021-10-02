@@ -62,8 +62,8 @@ class AdminDashboard extends Component {
             <br /><br />
             <h2 className="block-title">Billings</h2>
             <div className="col2">
-              <p>2 Delayed</p>
-              <a href="">Manage</a>
+              <p>Payments</p>
+              <a href="/paymentsmade">Manage</a>
             </div>
             <div className="col2">
               <p>4 Credited</p>

@@ -37,6 +37,7 @@ import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
 import ViewStudents from './components/employee/ViewStudents';
 import ForgotPassword from './components/ForgotPassword';
+import PaymentsMade from './components/admin/PaymentsMade';
 
 
 /**
@@ -87,6 +88,7 @@ class Routes extends Component {
                 <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
                 <Route path="/financial-snapshot" component={financialSnapshot} />
+                <Route path="/paymentsmade" component={PaymentsMade} />
                 <Redirect to="/home" />
               </Switch>
               :

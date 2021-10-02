@@ -12,6 +12,7 @@ router.use('/v1/reporting/report_runs', require('./reportingRun'))
 router.use('/v1/reporting/report_runs', require('./reportingRunId'))
 router.use('/v1/reporting/report_runs', require('./reportingGetFile'))
 router.use('/openreport', require('./openReport'))
+router.use('/parentswhopaid/', require('./parentsWhoPaid'))
 
 router.use('/students', require('./students'))
 
