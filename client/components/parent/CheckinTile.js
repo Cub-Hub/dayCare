@@ -10,22 +10,19 @@ export const ParentCheckin = (props) => {
   const innerPadding = "";
 
   return (
-    <div className="col-xl-4">
-      <div className={`card ${className}`}>
+    <div>
+      <div className="parentShortcuts">
         {/* begin::Body */}
-        <div className={`card-body pb-0 ${innerPadding}`}>
+        <div>
           {/* begin::Wrapper */}
           <div className="d-flex flex-column h-100">
             {/* begin::Text */}
-            <h3 className="text-dark text-center fs-1 fw-bolder pt-15 lh-lg">
-              Online Checkin
+            <h3 className="block-title">
+              Online checkin
             </h3>
-            <div className="text-center pt-7">
-
-            <Link to='/onlineCheckin' className="btn btn-primary fw-bolder fs-6 px-7 py-3">
-                Checkin Now
+            <Link className="button" to='/onlineCheckin'>
+              Checkin now
             </Link>
-            </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}

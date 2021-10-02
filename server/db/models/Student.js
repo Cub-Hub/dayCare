@@ -9,7 +9,6 @@ const Student = db.define("student", {
   },
   firstName: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false,
   },
   lastName: {
@@ -21,9 +20,10 @@ const Student = db.define("student", {
   imgURL: {
     type: Sequelize.STRING,
     defaultValue: 'https://cub-hub.s3.us-east-2.amazonaws.com/generic.jpg',
-    validate: {
-      isUrl: true,
-    },
+  },
+  isPending: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   }
 });
 

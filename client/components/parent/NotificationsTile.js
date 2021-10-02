@@ -9,21 +9,19 @@ export const ParentNotifications = (props) => {
   const innerPadding = "";
 
   return (
-    <div className="col-xl-4">
-      <div className={`card ${className}`}>
+    <div>
+      <div className="parentShortcuts">
         {/* begin::Body */}
-        <div className={`card-body pb-0 ${innerPadding}`}>
+        <div>
           {/* begin::Wrapper */}
           <div className="d-flex flex-column h-100">
             {/* begin::Text */}
-            <h3 className="text-dark text-center fs-1 fw-bolder pt-15 lh-lg">
+            <h3 className="block-title">
               Notifications
             </h3>
-            <div className="text-center pt-7">
-              <a className="btn btn-primary fw-bolder fs-6 px-7 py-3">
-                See Notifications
+            <a className="button">
+              See notifications
               </a>
-            </div>
             <div className="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"></div>
 
             {/* end::Image */}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { authenticate } from '../store'
 
 
@@ -9,26 +10,81 @@ import { authenticate } from '../store'
 const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="username">
-            <small>Username</small>
-          </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-    </div>
+    <div id="loginSignupPage">
+      <div>
+
+        {name === 'login' ?
+          // Login form
+          <form onSubmit={handleSubmit} name={name}>
+            <h2 className="block-title">Login</h2>
+            <div>
+              <label htmlFor="username">
+                <small>Username</small>
+              </label>
+              <input name="username" type="text" />
+            </div>
+            <div>
+              <label htmlFor="password">
+                <small>Password</small>
+              </label>
+              <input name="password" type="password" />
+            </div>
+            <div>
+              <button type="submit" className="button">{displayName}</button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+
+            <div className="smallLink">
+              <Link to="/signup">Don't have an account yet? Click here.</Link>
+            </div>
+          </form>
+          :
+          // Signup form
+          <form onSubmit={handleSubmit} name={name}>
+            <h2 className="block-title">Sign up</h2>
+            <div>
+              <label htmlFor="username">
+                <small>Username</small>
+              </label>
+              <input name="username" type="text" />
+            </div>
+            <div className="radioWrapper">
+              <input name="typeId" type="radio" value="3" />
+              <label htmlFor="typeId">
+                <small>Parent</small>
+              </label>
+            </div>
+            <div className="radioWrapper">
+              <input name="typeId" type="radio" value="1" />
+              <label htmlFor="typeId">
+                <small>Employee</small>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password">
+                <small>Password</small>
+              </label>
+              <input name="password" type="password" />
+            </div>
+            <div>
+              <label htmlFor="confirmpassword">
+                <small>Confirm Password</small>
+              </label>
+              <input name="confirmpassword" type="password" />
+            </div>
+            <div>
+              <button type="submit" className="button">{displayName}</button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+            <div className="smallLink">
+              <Link to="/login">Already have an account? Click here.</Link>
+            </div>
+          </form>
+        }
+
+      </div >
+
+    </div >
   )
 }
 
@@ -59,10 +115,25 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const formName = evt.target.name
-      const username = evt.target.username.value
-      const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
+      if (evt.target.name === 'login') {
+        const formName = evt.target.name
+        const username = evt.target.username.value
+        const password = evt.target.password.value
+        dispatch(authenticate(username, password, formName))
+      } else if (evt.target.name === 'signup' && evt.target.password.value === evt.target.confirmpassword.value) {
+        const formName = evt.target.name
+        const username = evt.target.username.value
+        const password = evt.target.password.value
+        const typeId = evt.target.typeId ? evt.target.typeId.value * 1 : ''
+        dispatch(authenticate(username, password, formName, typeId))
+      }
+      else {
+        alert('passwords do not match - please correct and submit again')
+        evt.target.password.value = '';
+        evt.target.confirmpassword.value = '';
+        evt.target.password.focus();
+      }
+
     }
   }
 }

@@ -15,6 +15,8 @@ router.use('/openreport', require('./openReport'))
 
 router.use('/students', require('./students'))
 
+router.use('/schools', require('./schools'))
+
 router.use('/parents', require('./parents'))
 
 router.use('/employees', require('./employees'))

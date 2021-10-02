@@ -14,7 +14,7 @@ body {
 p {
   margin: 0!important;
 }
-h2.block-title, h3.block-title, span.block-title {
+h2.block-title, h3.block-title, span.block-title, p.block-title, div.block-title, h3.mc__title {
   font-size: 18px;
   font-weight: 600;
   color: #222;
@@ -30,6 +30,31 @@ a {
 label {
   display: block;
 }
+select {
+  padding: 0.5em 1em;
+}
+.width100 {
+  width:100%;
+}
+.position-relative {
+  position: relative;
+}
+.position-r-t {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+.radioWrapper {
+   width: fit-content!important;
+   display: inline-block!important;
+}
+.radioWrapper > *{
+  width: fit-content!important;
+  display: inline-block;
+}
+.radioWrapper input {
+  width: 25px!important;
+}
 
 
 
@@ -38,18 +63,32 @@ form div {
   display: inline-block;
 }
 
-.button {
+.button-with-icon {
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
+.button-with-icon > * {
+  width: fit-content;
+}
+.button, .primaryBtn {
   padding: 0.5em 1em;
   text-align:center;
   border: 1px solid #d1d1d1;
   border-radius: 7px;
   margin: 0.5em 0;
   color: #222;
+  text-align:center;
 }
-.button:hover {
+.button:hover, .primaryBtn:hover {
   background-color: #f7f7f7;
   cursor:pointer;
   border: 1px solid #222;
+}
+i.button-icon {
+  font-size: 1.5em;
+  padding-right: 5px;
+  line-height:1.2em;
 }
 .page-title {
   font-size: 2em;
@@ -83,9 +122,200 @@ form div {
  */
 
 
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+.gray-bg {
+  background-color: #f5f5f5;
+}
+img {
+  max-width: 100%;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+/*  */
+/* HOME */
+#home {
+  padding: 2.5em;
+  background-color:#fbf9f6;
+}
+#home > div {
+  position: relative;
+  border-radius: 1.5em;
+  min-height: calc(100vh - 112px - 5em);
+  background-image: url('/imgs/hero.jpg');
+  background-position-y: 50%;
+  background-size: cover;
+}
+#home .heroImg {
+  position: absolute;
+  bottom:0;
+}
+#home h1 {
+  /* width:100%; */
+  text-align:center;
+  padding: 1.5em 0;
+  color: #0d4a91;
+}
 
 
 
+/*  */
+/* Email Signup Page */
+#emailSignupPage {
+  padding: 2.5em;
+  background-color: #fbf9f6;
+  min-height: calc(100vh - 112px);
+}
+#emailSignupPage > div {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  height: calc(100vh - 112px - 5em);
+  background-image: url('/imgs/emailSignup.jpg');
+  background-size: cover;
+  background-position-y: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+form.mc__form {
+  background-color:#fff;
+  padding: 2em;
+  width: fit-content;
+  height:fit-content;
+}
+input.inputField__field {
+  display: block;
+  padding: 0.5em 1em;
+  margin-bottom: 1.5em;
+  width: 20vw;
+  min-width: 245px;
+}
+.mc__field-container {
+  display:block;
+  margin: 1em 0;
+}
+
+
+
+/* About Me 
+---------------------*/
+.about-text h3 {
+font-size: 45px;
+font-weight: 700;
+margin: 0 0 6px;
+}
+@media (max-width: 767px) {
+.about-text h3 {
+  font-size: 35px;
+}
+}
+.about-text h6 {
+font-weight: 600;
+margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+.about-text h6 {
+  font-size: 18px;
+}
+}
+.about-text p {
+font-size: 18px;
+max-width: 450px;
+}
+.about-text p mark {
+font-weight: 600;
+color: #20247b;
+}
+
+.about-list {
+padding-top: 10px;
+}
+.about-list .media {
+padding: 5px 0;
+}
+.about-list label {
+color: #20247b;
+font-weight: 600;
+width: 88px;
+margin: 0;
+position: relative;
+}
+.about-list label:after {
+content: "";
+position: absolute;
+top: 0;
+bottom: 0;
+right: 11px;
+width: 1px;
+height: 12px;
+background: #20247b;
+-moz-transform: rotate(15deg);
+-o-transform: rotate(15deg);
+-ms-transform: rotate(15deg);
+-webkit-transform: rotate(15deg);
+transform: rotate(15deg);
+margin: auto;
+opacity: 0.5;
+}
+.about-list p {
+margin: 0;
+font-size: 15px;
+}
+
+@media (max-width: 991px) {
+.about-avatar {
+  margin-top: 30px;
+}
+}
+
+.about-section .counter {
+padding: 22px 20px;
+background: #ffffff;
+border-radius: 10px;
+box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+}
+.about-section .counter .count-data {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.about-section .counter .count {
+font-weight: 700;
+color: #20247b;
+margin: 0 0 5px;
+}
+.about-section .counter p {
+font-weight: 600;
+margin: 0;
+}
+mark {
+  background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+  background-size: 100% 3px;
+  background-repeat: no-repeat;
+  background-position: 0 bottom;
+  background-color: transparent;
+  padding: 0;
+  color: currentColor;
+}
+.theme-color {
+  color: #fc5356;
+}
+.dark-color {
+  color: #20247b;
+}
+
+.statusDot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 /* NAVBAR */
 #navbar {
@@ -167,7 +397,63 @@ nav a:hover {
   width: 100%;
 }
 
+.avatarContainer {
+  height: 15rem;
+  margin: 20%;
+}
 
+.avatarContainer > img {
+  align-self: center;
+  height: 100%
+}
+
+/*  */
+/* LOGIN / SIGNUP PAGE */
+#loginSignupPage {
+  width:100%;
+  padding: 2.5em;
+  background-color: #fbf9f6;
+  min-height: calc(100vh - 112px);
+}
+#loginSignupPage > div {
+  height: calc(100vh - 190px);
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/imgs/waitingroom.jpg');
+  background-position-y:70%;
+  background-size: cover;
+}
+#loginSignupPage h2.block-title {
+  padding: 1em 0;
+  text-align:center;
+}
+#loginSignupPage form {
+  background-color:#fff;
+}
+#loginSignupPage form > div{
+  display: block;
+  width: 25vw;
+}
+#loginSignupPage form input {
+  width: 100%;
+  padding: 0.5em 1em;
+}
+#loginSignupPage .smallLink {
+  font-size: 0.8em;
+  text-align:center;
+  padding: 1em;
+}
+#loginSignupPage .smallLink a {
+  color: #999;
+}
+#loginSignupPage .smallLink:hover a {
+  color: #0a58ca;
+  border-bottom: 3px solid #fccc27
+}
 
 
 
@@ -198,7 +484,10 @@ nav a:hover {
 
 .childPic{
   height: 80px;
-  margin: 10px
+  margin-bottom: 10px;
+  padding: 1em;
+  border-radius: 50%;
+  background-color: #f7f7f7;
 }
 #data-legend a {
   font-weight: 500!important;
@@ -218,10 +507,17 @@ nav a:hover {
   color:red
 }
 
-#studentCard {
-  width: 18rem;
-  margin: 10px
+.studentCard {
+  width: 21rem;
+  margin: 10px;
+  border-style: solid;
+  border-color: lightgray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+
+/* react calendar */
 
 .react-calendar {
   width: 350px;
@@ -259,7 +555,7 @@ nav a:hover {
   cursor: pointer;
 }
 .react-calendar__navigation {
-  height: 44px;
+  height: 34px;
   margin-bottom: 1em;
 }
 .react-calendar__navigation button {
@@ -301,12 +597,12 @@ nav a:hover {
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
-  padding: 2em 0.5em;
+  padding: 1em 0.3em;
 }
 .react-calendar__tile {
   max-width: 100%;
   text-align: center;
-  padding: 0.75em 0.5em;
+  padding: 0.65em 0.3em;
   background: none;
 }
 .react-calendar__tile:disabled {
@@ -341,10 +637,31 @@ nav a:hover {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+#admindashboard button.blankBtn{
+  border: 0;
+  background-color:#fff;
+}
 
-.checkinHeader{
-  width:60%;
-  height: 100px;
+
+
+
+/*  */
+/* Online Checkin */
+
+#onlineCheckinPage {
+  padding: 2.5em;
+  background-color: #fbf9f6;
+}
+#onlineCheckinPage > div {
+  background-color: #fff;
+  border-radius: 1.5em;
+  padding: 2em;
+}
+.checkinAll {
+  margin-bottom: 2.5em;
+}
+
+.checkinHeader, .addchildform{
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -352,23 +669,24 @@ nav a:hover {
   align-items: center;
 }
 
-.checkinHeader button{
-  width: 60%;
-}
 
-.checkinHeader h3{
+.checkinHeader p, .addchildform p{
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: normal;
+}
+.checkinHeader p strong{
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
-.failure {
-  color: firebrick;
+.failed {
+  color: #ea4646!important;
 }
-
-.blankBtn {
-  background-color: white;
-  border-style: none;
+.failed:before {
+  content: "\f06a";
+  font-family: 'fontawesome';
+  padding-right: 5px;
+  font-size: 1.2em;
 }
 
 #checkMark {
@@ -393,7 +711,29 @@ nav a:hover {
 .flexBetween {
   display: flex;
   justify-content: space-between;
-  width: 100%
+  width: 100%;
+}
+
+.flexEmployee{
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left:22%;
+  margin:0 auto;
+  border-style: solid;
+  border-color: black;
+  padding: 2rem
+}
+
+.flexEmployee > div{
+  width: 45%
+}
+
+.employeeHR {
+  width:40%;
+  margin: auto;
+  background-color: black;
 }
 
 .flexWrap {
@@ -413,19 +753,36 @@ nav a:hover {
   align-self: center;
   color: red
 }
-
 #centeredColumn {
   text-align: center;
   width: 40%
 }
 
+.employeeText {
+  font-size: 1.5rem;
+  text-align: center;
+}
 
-
-
-
+.employeeTitle {
+  font-size: 2rem;
+  text-align: center;
+  color: black;
+  margin-top: 4rem;
+}
 
 
 /* EMPLOYEE LANDING */
+.clockedInBtn {
+  border-color: green!important;
+  background-color: #eff9ef!important;
+}
+.clockedInBtn i{
+  color: green!important;
+}
+.clockedOutBtn {
+  border-color: red!important;
+  background-color: #fff4f4!important;
+}
 .carousel-wrapper {
   display: flex;
   width:100%;
@@ -450,7 +807,7 @@ nav a:hover {
 
 .scroll-content-wrapper {
   height: 450px;
-  width: calc(70vw - 2em);
+  width: 75vw;
 }
 .scroll-content {
   display: flex; 
@@ -464,6 +821,82 @@ nav a:hover {
   border-collapse: collapse;
 }
 
+
+#FullCalendar {
+  width:100%;
+  height:10%;
+}
+
+#CalendarBox {
+  display: flex;
+  flex-wrap: nowrap;
+  width:100%;
+
+}
+
+#CalendarLeft {
+  width:40%;
+
+}
+
+#CalendarRight {
+  width:60%;
+
+}
+
+
+/* Calendar Dashboard */
+#calendarDashboard {
+  background-color: #fbf9f6;
+  min-height:70vh;
+  padding: 0.5em 2em 2em 2em;
+  width: 100%;
+  display: flex;
+}
+
+
+.calendarButtons {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  border-color:white;
+  background-color: white;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  padding: 3px;
+  margin: 0px 20px;
+}
+
+#calendarContainer {
+  display: flex;
+  max-height: 1000;
+  margin: 15px;
+  padding: 10px;
+}
+
+#calendarDashboard > div > input {
+margin: .2rem;
+padding: .1rem;
+}
+
+#calendarDashboard > div > select {
+margin: .2rem;
+padding: .1rem;
+}
+
+  
+#calendarEvents {
+  list-style-image: url('bar.png');
+}
+  
+#calendarSpace {
+  width:100px;
+}  
+  
+  
+
+
 .ReactModalPortal > div {
   background-color: rgba(0, 0, 0, 0.5)!important
 }
@@ -475,18 +908,103 @@ nav a:hover {
 }
 
 
-/* Calendar page */
-#calendarpage {
-  background-color: #fbf9f6;
-  min-height:100vh;
-  padding: 2em 2.5em;
+
+
+
+
+
+
+
+/*  */
+/* Parent Landing Page */
+#parentLandingPage{
+  background-color:#fbf9f6;
+  padding: 2.5em;
+  min-height: calc(100vh - 112px);
 }
-#calendarpage > div {
+#parentLandingPage > div > div {
+  display: flex;
+  justify-content: space-between;
+}
+.parentShortcutsWrapper {
+  padding-bottom: 2.5em;
+}
+.parentLandingEmptyWrapper {
   background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+  flex-direction: column; 
+}
+.parentShortcutsWrapper-empty {
+  min-height: calc(100vh - 112px - 5em);
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
   border-radius: 1.5em;
   padding:2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parentLandingEmptyWrapper form > div{
+  display: block;
+  margin: 0.5em;
+}
+.addchildform {
+  background-color:#fff;
+  padding: 2em;
+  width: fit-content;
+}
+.addchildform form{
+  display: flex;
+  flex-direction: column;
+}
+.addchildform form > div {
+  margin: 1em 0;
+}
+.addchildform input[type="text"], .addchildform select {
+  max-width: 30vw;
+  min-width: 245px;
+  padding: 0.5em 1em;
 }
 
+.parentShortcuts {
+  background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+  width: calc(100vw / 3 - 3.5em);
+}
+#childrenTable {
+  flex-direction: column;
+  background-color:#fff;
+  padding: 2em;
+  border-radius: 1.5em;
+}
+#childrenTable .block-title {
+  padding-bottom: 1em;
+}
+#childrenTable table {
+  width:100%;
+}
+#childrenTable tbody {
+  display: flex;
+  flex-wrap: wrap;
+}
+.childCard {
+  width: 20%;
+  padding: 0.5em;
+  display: flex;
+}
+.childCard td{
+  border: 1px solid #ededed;
+  border-radius: 0.5em;
+  text-align:center;
+  width: 100%;
+  padding: 2em 1em;
+}
+.childCard td:hover {
+  border: 1px solid #d1d1d1;
+}
 /* Parent invoices*/
 
 .invoices {

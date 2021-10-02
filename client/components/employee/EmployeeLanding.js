@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import Clockin from './Clockin';
+import Carousel from '../Carousel'
 // import { Button, Modal } from 'react-bootstrap'
 
 import { getStudents } from '../../store';
@@ -33,32 +34,6 @@ class EmployeeLanding extends Component {
   async componentDidMount() {
     await this.props.getStudents();
   }
-
-  // eachStudentFeedingNote() {
-  //   const form = document.getElementById('feeding-update-form');
-  //   const studentsList = this.props.students
-  //   for (let i = 0; i < studentsList.length; i++) {
-  //     let currentStudentName = studentsList[i].firstName
-  //     currentStudentName = function openFeedingNote() {
-  //       this.setState({ showFeedingNote: true });
-  //       form.innerHTML = (
-  //         <div>
-  //           <form>
-  //             <div>
-  //               <label>Label</label>
-  //               <input value="asdf" />
-  //             </div>
-  //             <div>
-  //               <label>Label</label>
-  //               <input value="asdf" />
-  //             </div>
-  //           </form>
-  //           <button id="submit" name="submit" value="submit"></button>
-  //         </div>
-  //       )
-  //     }
-  //   }
-  // }
 
   openFeedingNote(student) {
     this.setState({ showFeedingNote: true, currentStudent: student });
@@ -95,23 +70,23 @@ class EmployeeLanding extends Component {
         <div className="col2">
           <div className="block sidepanel">
             <div>
-              <h2>Hi, {this.props.username}</h2>
+              <h2 className="block-title">Hi, {this.props.username}</h2>
               <Clockin />
               <br /><br />
-              <p>Your school:</p>
-              <h3>
-                {myGroup? myGroup.school.name : ''}<br />
-                _____ {myGroup ? myGroup.name : ''}
-              </h3>
+              <p className="block-title">Your school:</p>
+              <p>
+                {myGroup ? myGroup.school.name : ''}<br />
+                {myGroup ? myGroup.name : 'No assigned classroom'}
+              </p>
             </div>
-            <br /><br />
+            <br />
             <div>
               <p>Total Students: {this.props.students.length}</p>
               <a href="">Manage</a>
             </div>
             <br />
             <div>
-              <div>Group Status:</div>
+              <div className="block-title">Group Status:</div>
               <div>{myGroup ? myGroup.status : ''}</div>
             </div>
             <br /><br />
@@ -122,29 +97,31 @@ class EmployeeLanding extends Component {
           <div>
             <div className="col2">
               <div className="block sidepanel">
-                <h2>Log & Share</h2>
+                <h2 className="block-title">Log & Share</h2>
                 <div className="button"><p>Take a Photo</p></div>
                 <div className="button"><p>Take a Video</p></div>
                 <div className="button"><p>Share Photo/Video</p></div>
               </div>
               <div className="block">
                 <div className="carousel-wrapper">
-                  <div className="carousel-arrow-left">Arrow Left</div>
+                  
                   <div>
-                    <h3>Today's Lesson Plan</h3>
+                    <Carousel />
+                    {/*<h3 className="block-title">Today's Lesson Plan</h3>
                     <ol>
                       <li>12:00 – Color match</li>
                       <li>13:30 – Clay play</li>
                     </ol>
+                    */}
                   </div>
-                  <div className="carousel-arrow-right">Arrow Right</div>
+               
                 </div>
               </div>
             </div>
-            <div className="block scroll-content-wrapper">
-              <h3>Student Daily Tracker</h3>
-              <Link to="/students-activity-monitor">View Details</Link>
-
+            <div className="block scroll-content-wrapper position-relative">
+              <h3 className="block-title">Student Daily Tracker</h3>
+              <Link to="/students-activity-monitor" className="position-r-t">View Details</Link>
+              <br />
               <div className="scroll-content">
                 {this.props.students.map(student => {
                   return (
