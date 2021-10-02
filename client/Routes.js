@@ -32,6 +32,7 @@ import Invoices from './components/parent/Invoices'
 import financialSnapshot from './components/admin/financialSnapshot';
 import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
+import ForgotPassword from './components/ForgotPassword';
 
 /**
  * COMPONENT
@@ -105,6 +106,7 @@ class Routes extends Component {
               <Route path="/newsletter" component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/forgotpassword" component={ForgotPassword} />
             </Switch>
           )}
       </div>

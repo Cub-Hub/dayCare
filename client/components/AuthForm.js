@@ -28,6 +28,9 @@ const AuthForm = props => {
                 <small>Password</small>
               </label>
               <input name="password" type="password" />
+              <div className="smallLink">
+                <Link to="/forgotpassword">Forgot your password?</Link>
+              </div>
             </div>
             <div>
               <button type="submit" className="button">{displayName}</button>
