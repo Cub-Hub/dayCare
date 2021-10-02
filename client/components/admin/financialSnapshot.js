@@ -37,14 +37,14 @@ const financialSnapshot = () => {
         </>
       :
         <div>
-          <h1>Snapshot</h1>
+          <h1 id='summary-title'>Financial Summary</h1>
             <table>
-              <tbody>
+              <tbody className='table'>
                 <tr>
-                  <th>Category</th>
-                  <th>Description</th>
-                  <th>Net Amount</th>
-                  <th>Currency</th>
+                  <th className='table-words'>Category</th>
+                  <th className='table-words'>Description</th>
+                  <th className='table-words'>Net Amount</th>
+                  <th className='table-words'>Currency</th>
                 </tr>
                 {
                   finalReport.map( (row, idx)=>{
@@ -54,7 +54,7 @@ const financialSnapshot = () => {
                           {
                             row.map( (info, idx) =>{
                               return (
-                                <td key={idx}>{info}</td>
+                                <td className='table-words' key={idx}>{info}</td>
                               )
                             })
                           }

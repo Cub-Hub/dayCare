@@ -541,3 +541,18 @@ nav a:hover {
 #stripe-cancel-redirect-btn {
   margin: 2rem;
 }
+
+/* Financial Summary*/
+#fin-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#summary-title {
+  text-align: center;
+}
+.table-words {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
