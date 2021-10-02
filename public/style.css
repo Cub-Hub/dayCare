@@ -1074,3 +1074,14 @@ padding: .1rem;
   font-size: 1.5rem;
   padding: 1rem;
 }
+/* Payments Made by parents*/
+.payment-made {
+  margin: 1rem;
+  text-align: center;
+}
+#parent-tracker-title {
+  text-align: center;
+}
+#tracker-table {
+  margin: 0 auto;
+}

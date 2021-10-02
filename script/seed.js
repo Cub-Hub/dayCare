@@ -66,7 +66,7 @@ async function seed() {
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp1.jpeg', email: 'Khadijah@gmail.com', phone: '305-781-2359'
       }),
       User.create({
-        username: 'Jayson', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Foster',
+        username: 'Jayson', password: '123', typeId: 3, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Foster',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp2.jpeg', email: 'Jayson@gmail.com', phone: '305-932-9572'
       }),
       User.create({
