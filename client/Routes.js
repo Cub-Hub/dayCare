@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
+import ChatApp from './components/ChatApp';
+
 import Calendar from './components/Calendar';
 
 import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
@@ -37,6 +39,7 @@ class Routes extends Component {
           userType === 3 ?
             <Switch>
               <Route path="/home" component={ParentLanding} />
+              <Route path="/chat" component={ChatApp} />
               <Route path="/calendar" component={Calendar} />
               {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
               <Route path="/admin-dashboard" component={AdminDashboard} />
@@ -49,6 +52,7 @@ class Routes extends Component {
             userType === 2 ?
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
+                <Route path="/chat" component={ChatApp} />
                 <Route path="/calendar" component={Calendar} />
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 <Route path="/admin-dashboard" component={AdminDashboard} />
@@ -60,6 +64,7 @@ class Routes extends Component {
               :
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
+                <Route path="/chat" component={ChatApp} />
                 <Route path="/calendar" component={Calendar} />
                 <Route path="/status" component={GroupStatus} />
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}

@@ -53,8 +53,9 @@ async function seed() {
 
   // Creating Users
 
-  const [olsock, lemon, onion, tums, shward, gumps, widdle, otaco, kimp, bean, qonk, pregut, frobeets, scunchy, cody,
+  const [workerbee, olsock, lemon, onion, tums, shward, gumps, widdle, otaco, kimp, bean, qonk, pregut, frobeets, scunchy, cody,
      lumpy, skunk, slarzard, hoonfunk, tonka, oreo, puddle, plop, wurton, blublub, pwanko, toespink] = await Promise.all([
+    User.create({ username: 'workerbee', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     User.create({ username: 'olsock', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     User.create({ username: 'lemon', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsA.id }),
     User.create({ username: 'onion', password: '123', typeId: 1, schoolId:cots4tots.id, groupId: cotsB.id  }),
@@ -83,7 +84,7 @@ async function seed() {
     User.create({ username: 'pwanko', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
     User.create({ username: 'toespink', password: '123', typeId: 3, schoolId:lidsNkids.id  }),
   ])
-  const users = [olsock, lemon, onion, tums, shward, gumps, widdle, kimp, bean, pregut, frobeets, scunchy, cody, qonk, otaco, lumpy, skunk, 
+  const users = [workerbee, olsock, lemon, onion, tums, shward, gumps, widdle, kimp, bean, pregut, frobeets, scunchy, cody, qonk, otaco, lumpy, skunk, 
     tonka, puddle, plop, wurton, blublub, pwanko, slarzard, oreo, hoonfunk, toespink];
 
   // create students
