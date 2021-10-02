@@ -41,7 +41,7 @@ class AdminDashboard extends Component {
     const updatePendingChild = this.state.pendingChildren.filter(student => student.id !== updatedStudent.id)
     this.setState({ pendingChildren: updatePendingChild })
   }
-  
+
   render() {
     console.log('FIND PENDING CHILD ', this.state.pendingChildren)
     return (
@@ -53,21 +53,22 @@ class AdminDashboard extends Component {
             <h2 className="block-title">Total</h2>
             <div className="col2">
               <p>{this.props.users.length} Teachers</p>
-              <Link to='/employees'>Manage</Link>
+              <Link to='/employees' className="hyperlink">Manage</Link>
             </div>
             <div className="col2">
               <p>{this.props.students.length} Students</p>
-              <Link to='/students'>Manage</Link>
+              <Link to='/students' className="hyperlink">Manage</Link>
             </div>
             <br /><br />
             <h2 className="block-title">Billings</h2>
             <div className="col2">
-              <p>Payments</p>
-              <a href="/paymentsmade">Manage</a>
+              <p>2 Delayed</p>
+              <a href="" className="hyperlink">Manage</a>
+
             </div>
             <div className="col2">
               <p>4 Credited</p>
-              <a href="">Manage</a>
+              <a href="" className="hyperlink">Manage</a>
             </div>
             <br /><br />
             <hr />
@@ -85,7 +86,7 @@ class AdminDashboard extends Component {
             <div className="button"><p>Teachers</p></div>
             <div className="button"><p>Children</p></div>
             <div className="button"><p>Parents</p></div>
-            <div className="button" onClick={ ()=> this.props.history.push('/financial-snapshot')}><p>Financial Summary</p></div>
+            <div className="button" onClick={() => this.props.history.push('/financial-snapshot')}><p>Financial Summary</p></div>
           </div>
           <div>
 

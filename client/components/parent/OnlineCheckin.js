@@ -164,6 +164,7 @@ const OnlineCheckin = (props) => {
                               className="childPic"
                             />
                             <p>
+                              {child.isPending === true ? <span className="pendingChildLabel">PENDING<br /></span> : null}
                               {`${child.firstName} ${child.lastName}`}
                             </p>
 
@@ -175,7 +176,7 @@ const OnlineCheckin = (props) => {
                                 singleLoad ?
                                   'Checking in your child'
                                   :
-                                  <button className="button" onClick={() => handleSingle(child.id)}>Checkin {child.firstName}</button>
+                                  <button className="button" onClick={() => handleSingle(child.id)} disabled={child.isPending === true ? true : false} >Checkin {child.firstName}</button>
 
                               :
                               ''
