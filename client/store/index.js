@@ -23,7 +23,7 @@ const reducer = combineReducers({
   checkins,
   clockin,
   groups,
-  activities
+  activities,
   stripe,
   employeeClockins
 })
