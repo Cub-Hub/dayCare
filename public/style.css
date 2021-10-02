@@ -1447,6 +1447,8 @@ li.calendarEventLine {
 }
 #summary-title {
   text-align: center;
+  color: #0d4a91;
+  font-weight:600
 }
 .table-words {
   font-size: 1.5rem;

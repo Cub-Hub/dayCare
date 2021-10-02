@@ -8,7 +8,7 @@ module.exports = router
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
 router.post('/', async(req, res, next)=>{
-  const monthStart = Math.round(((new Date()).getTime() - 259200000)/ 1000) 
+  const monthStart = Math.round(((new Date()).getTime() - 1900800000)/ 1000) 
   const monthEnd = Math.round(((new Date()).getTime() - 172800000)/ 1000) 
   console.log('YESTERDAY-->')
   try {
@@ -26,3 +26,7 @@ router.post('/', async(req, res, next)=>{
 })
 //Start-1631260317
 //1632556317
+
+
+//22 days miliseconds - 1900800000
+// 1month in miliseconds - 2628002880
