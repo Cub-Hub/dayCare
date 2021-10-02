@@ -5,7 +5,7 @@ import ManageSubscription from './ManageSubscription'
 
 const Invoices = () => {
   return (
-    <div>
+    <div id="parent-billing-page">
       <Checkout />
       <ManageSubscription />
     </div>

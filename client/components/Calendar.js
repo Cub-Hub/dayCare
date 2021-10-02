@@ -172,22 +172,26 @@ class CalendarPage extends React.Component {
       <div>
         <h2 className="block-title">Student Calendar</h2>
         <div id="CalendarBox">
-          <div id="calendarSpace"></div>
+          {/* <div id="calendarSpace"></div> */}
           <div id="Previous">
-            <button className='calendarButtons' onClick={this.previousButton}>{' << '}</button>
+            {/* <button className='calendarButtons' onClick={this.previousButton}>{' << '}</button> */}
+            <i className="fa fa-arrow-circle-o-left calendarButtons icon-button" aria-hidden="true" onClick={this.previousButton}></i>
+            {/* <button className='calendarButtons' onClick={this.previousButton}><i className="fa fa-arrow-circle-o-left" aria-hidden="true"></i></button> */}
+
           </div>
           <div id="CalendarLeft">
-            <h3 className="card-title align-items-start flex-column">
-              <center><span className="card-label fw-bolder text-dark fs-3">
+            <h3>
+              <center><span className="block-title">
                 {this.state.today.toDateString() === this.state.message.toDateString() ? 'Today' : this.state.message.toDateString()}
               </span></center>
             </h3>
             <ul id='calendarEvents'>
-              {this.state.events.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x => <li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11, 16)}{' '}{' '}{x.summary}</div></li>)}
+              {this.state.events.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1).map(x => <li className='calendarEventLine' key={x.id}><div id='eventListing'>{x.start.dateTime.slice(11, 16)}{' '}  {' '}{x.summary}</div></li>)}
             </ul>
           </div>
           <div id="Next">
-            <button className='calendarButtons' onClick={this.nextButton}>{' >> '}</button>
+            {/* <button className='calendarButtons' onClick={this.nextButton}>{' >> '}</button> */}
+            <i className="fa fa-arrow-circle-o-right calendarButtons icon-button" aria-hidden="true" onClick={this.nextButton}></i>
           </div>
           <div id="CalendarRight">
             <CalendarMini y={this.state.message.getUTCFullYear() * 1}

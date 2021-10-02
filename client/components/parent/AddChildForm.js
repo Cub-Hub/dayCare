@@ -12,7 +12,6 @@ class AddChildForm extends Component {
     super(props);
     this.state = {
       schools: [],
-      added: false,
       firstName: '',
       lastName: '',
       categoryId: 0,
@@ -39,7 +38,7 @@ class AddChildForm extends Component {
     const userId = this.props.state.auth.id
     const isPending = true;
     this.props.createStudent({ userId, firstName, lastName, categoryId, schoolId, isPending })
-    this.setState({ added: true });
+    window.location.reload(false);
   }
 
 
