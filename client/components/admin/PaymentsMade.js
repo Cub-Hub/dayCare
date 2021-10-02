@@ -28,6 +28,16 @@ const PaymentsMade = () =>{
                   <th className='table-words'>Currency</th> */}
                 </tr>
                 {
+                  madePayments.length === 0 
+                  ?
+                  <tr>
+                    <td className='payment-made'>n/a</td>
+                    <td className='payment-made'>n/a</td>
+                    <td className='payment-made'>n/a</td>
+                    <td className='payment-made'>n/a</td>
+                    <td className='payment-made'>n/a</td>
+                  </tr>
+                  :
                   madePayments.map( (payment, idx)=>{
                     return (
                       <tr className='payment-made-row' key={payment.id}>  
