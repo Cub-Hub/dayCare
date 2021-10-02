@@ -10,7 +10,7 @@ import CalendarBig from './components/CalendarBig';
 import Calendar from './components/Calendar';
 
 
-import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins } from './store'
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins, fetchActivities } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
 import Home from './components/Home'
@@ -29,11 +29,16 @@ import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuc
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
 import Invoices from './components/parent/Invoices'
+
+import IncidentForm from './components/IncidentForm';
+
 import financialSnapshot from './components/admin/financialSnapshot';
 import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
+import ViewStudents from './components/employee/ViewStudents';
 import ForgotPassword from './components/ForgotPassword';
 import PaymentsMade from './components/admin/PaymentsMade';
+
 
 /**
  * COMPONENT
@@ -90,10 +95,14 @@ class Routes extends Component {
               //employee
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
-
+                <Route path="/incidents" component={IncidentForm} />{/* Experiment*/}
                 <Route path="/calendar" component={CalendarBig} />
 
                 <Route path="/status" component={GroupStatus} />
+
+                <Route path="/my/students" component={ViewStudents} />
+
+                <Route path="/student/:id" component={SingleStudent} />
 
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
@@ -137,6 +146,7 @@ const mapDispatch = dispatch => {
       dispatch(getUsers())
       dispatch(fetchGroups())
       dispatch(fetchClockins())
+      dispatch(fetchActivities())
     }
   }
 }
