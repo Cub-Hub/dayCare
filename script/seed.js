@@ -59,6 +59,7 @@ async function seed() {
 
   // Creating Users
 
+
   const [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Frida, Rosemary, Victor, Viviana, Cooper, Molly, Harley, Darien,
     Lilianna, Javier, Terrell, Cordell, Maria, Sincere, Shayla, Lea, Amara, Gemma, Zoe, Derrick, Anabella] = await Promise.all([
       User.create({
@@ -134,6 +135,7 @@ async function seed() {
     ])
   const users = [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Rosemary, Victor, Cooper, Molly, Harley, Darien, Viviana, Frida, Lilianna, Javier,
     Maria, Shayla, Lea, Amara, Gemma, Zoe, Terrell, Sincere, Cordell, Derrick, Anabella];
+
 
   // create students
   const students = await Promise.all([

@@ -4,6 +4,9 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 
 
+import ChatApp from './components/ChatApp';
+
+
 import CalendarBig from './components/CalendarBig';
 
 
@@ -58,7 +61,12 @@ class Routes extends Component {
           userType === 3 ?
             <Switch>
               <Route path="/home" component={ParentLanding} />
+
+              <Route path="/chat" component={ChatApp} />
+             
+
               <Route path="/calendar" component={CalendarBig} />
+
               {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
               <Route path="/admin-dashboard" component={AdminDashboard} />
               <Route path="/employee-landing" component={EmployeeLanding} />
@@ -78,7 +86,10 @@ class Routes extends Component {
             userType === 2 ?
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
+
+                <Route path="/chat" component={ChatApp} />
                 <Route path="/calendar" component={CalendarBig} />
+
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
@@ -95,8 +106,12 @@ class Routes extends Component {
               //employee
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
+
+                <Route path="/chat" component={ChatApp} />
+
                 <Route path="/incidents" component={IncidentForm} />{/* Experiment*/}
                 <Route path="/calendar" component={CalendarBig} />
+
 
                 <Route path="/status" component={GroupStatus} />
 

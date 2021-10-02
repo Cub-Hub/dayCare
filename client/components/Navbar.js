@@ -6,6 +6,7 @@ import { logout } from '../store'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div id="navbar">
+
     {isLoggedIn ? (
       <div>
         <Link to="/home"><h1><img id="navbar-logo" src="/cubhub.png" alt="cubhub logo" />Cub-Hub</h1></Link>
@@ -13,6 +14,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <nav>
             <div>
               {/* The navbar will show these links after you log in */}
+              <Link to="/chat">Chat</Link>
               <Link to="/calendar">Calendar</Link>
               <Link to='/billing'>Billing</Link>
               <a href="#" onClick={handleClick}>
