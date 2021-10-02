@@ -133,6 +133,7 @@ class Routes extends Component {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/forgotpassword" component={ForgotPassword} />
+              <Route path='/home' exact component={Home} />
             </Switch>
           )}
       </div>
