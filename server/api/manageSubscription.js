@@ -25,7 +25,6 @@ router.post('/:sessionId', cors(), async (req, res, next)=>{
         return_url: returnUrl,
       })
       res.json({ "url": portalSession.url })
-      // res.redirect(303, portalSession.url);
   } catch (err){
     console.log('MANAGE SUBSCRIPTION Err--->', err)
   }

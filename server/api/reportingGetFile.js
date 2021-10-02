@@ -13,8 +13,6 @@ router.get('/', async(req, res, next)=>{
       limit: 3,
     });
     res.send(reportRuns)
-    //res.json({ url: reportRuns.url  })
-    //res.redirect(reportRuns.url)
   } catch (err){
     console.log('reporting GET-FILE ERROR--->',err)
   }

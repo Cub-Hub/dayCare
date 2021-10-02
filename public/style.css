@@ -486,3 +486,58 @@ nav a:hover {
   border-radius: 1.5em;
   padding:2em;
 }
+
+/* Parent invoices*/
+
+.invoices {
+  display: flex;
+  margin: 3rem;
+}
+#single-pay-btn {
+  margin: 3rem;
+}
+#subscribe-monthly-btn {
+  margin: 3rem;
+}
+
+#active-subs-title{
+  text-align: center;
+}
+.multi-subs-btns{
+  display: flex;
+  min-height: 30vh;
+}
+.multi-subs-btn{
+  margin: 3rem
+}
+.manage-subscription{
+  min-height: 100vh;
+}
+
+/* Stripe-Success */
+
+#subs-init {
+  text-align: center;
+  margin: 2rem
+}
+.subs-btns {
+  margin: 2rem;
+  padding: 1rem;
+  min-height: 100vh;
+}
+.home-btn {
+  margin: 2rem;
+}
+/* Stripe-Failed */
+#stripe-cancel-div{
+  margin: 2rem;
+}
+
+.pay-failed {
+  text-align: center;
+  margin: 3rem;
+  font-size:x-large
+}
+#stripe-cancel-redirect-btn {
+  margin: 2rem;
+}

@@ -10,7 +10,6 @@ router.get('/:userId', async(req, res, next)=>{
         userId
       }
     })
-    //console.log('FOUND SESSION--->', session)
     res.send(session)
   } catch (err){
     console.log(err)

@@ -11,7 +11,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_API)
 
 router.post('/', async(req, res, next)=>{
   const { stripeUrl } = req.body
-  console.log('undefined URL--------------------->', stripeUrl)
   try {
      const { data } = await axios.get(`${stripeUrl}`, {
       headers: {
@@ -19,10 +18,9 @@ router.post('/', async(req, res, next)=>{
       } 
     })
     parse(data, {}, (err, _data)=>{
-      console.log(_data)
+      //console.log(_data)
       res.send(_data)
     })
-    
   } catch(err){
     console.log('opening-->', err)
   }

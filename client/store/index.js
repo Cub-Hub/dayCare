@@ -9,6 +9,7 @@ import students from './students'
 import checkins from './admin/checkins'
 import clockin from './employee/clockin'
 import groups from './admin/groups'
+import stripe from './stripe'
 
 const reducer = combineReducers({
   auth,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   children,
   checkins,
   clockin,
-  groups
+  groups,
+  stripe
 })
 
 

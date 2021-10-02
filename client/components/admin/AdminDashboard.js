@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentTable from './StudentTable';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+
 
 import { getStudents, getUsers, fetchDailyCheckin } from '../../store';
 
@@ -19,17 +19,8 @@ class AdminDashboard extends Component {
     await this.props.getUsers();
     await this.props.fetchDailyCheckin();
   }
-  // runReport = async()=>{
-  //   const { id } = (await axios.post('/api/v1/reporting/report_runs')).data
-  //   const dataTwo = await axios.get(`/api/v1/reporting/report_runs/${id}`)
-  //   const { data } = (await axios.get('/api/v1/reporting/report_runs')).data
-  //   const report = data.find( report => report.status === 'succeeded')
-  //   const balance = (await axios.post('/api/openreport', { stripeUrl: report.result.url })).data
-  //   console.log('balance---->', balance)
-  // }
   
   render() {
-    console.log('props--->', this.props.history)
     return (
       <div id="admindashboard">
         <div className="col2">

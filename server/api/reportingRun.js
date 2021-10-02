@@ -14,8 +14,8 @@ router.post('/', async(req, res, next)=>{
       parameters: {
       interval_start: 1631260317,
       interval_end: 1632556317
-    },
-});
+      },
+    });
     res.send(reportRun)
   } catch (err){
     console.log('download-Report ERROR--->',err)

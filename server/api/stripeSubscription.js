@@ -30,8 +30,7 @@ router.post('/subscription', cors(), async (req, res, next)=>{
       success_url: `${YOUR_DOMAIN}checkout/subscriptionsuccess`,
       cancel_url: `${YOUR_DOMAIN}checkout/subscriptioncanceled`,
     });
-    console.log('SUBSCIPTION SESSION--->', session)
-    //res.redirect(303, session.url)
+    //console.log('SUBSCIPTION SESSION--->', session)
     res.json({ "url": session.url, "sessionId": session.id })
   } catch (err){
     console.log('STRIPE SUBSCRIPTION Err--->', err)
