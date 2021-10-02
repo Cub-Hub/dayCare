@@ -68,13 +68,13 @@ const StudentTable = (props) => {
 
   // console.log("props of tablewidget~~~~~~~~~: ", props );
 
-
+  // console.log('CHECK THIS', props)
   return (
     <div className="block">
       {/* <!--begin::Header--> */}
       <div className="col2">
         <h3 className="block-title sidepanel align-items-start flex-column">
-          Student Data
+          Daily Overview
         </h3>
         <div className="card-toolbar">
           <ul id="tabs-wrapper" className="nav nav-pills nav-pills-sm nav-light">
@@ -84,7 +84,7 @@ const StudentTable = (props) => {
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_1_1"
               >
-                Daily Attendance
+                Attendance
               </a>
             </li>
             <li id="tab-item-link" className="nav-item tab-item">
@@ -102,7 +102,7 @@ const StudentTable = (props) => {
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_1_3"
               >
-                Absent Students
+                Room Status
               </a>
             </li>
           </ul>
@@ -170,14 +170,14 @@ const StudentTable = (props) => {
             {/* <!--begin::Table--> */}
             <div className="table-responsive">
               <table className="table table-borderless align-middle">
-                <thead>
+                {/* <thead>
                   <tr>
                     <th className="p-0 w-50px"></th>
                     <th className="p-0 min-w-200px"></th>
                     <th className="p-0 min-w-100px"></th>
                     <th className="p-0 min-w-40px"></th>
                   </tr>
-                </thead>
+                </thead> */}
                 <tbody>
                   <tr>
                     <th className="px-0 py-3">

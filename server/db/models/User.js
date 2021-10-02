@@ -17,6 +17,9 @@ const User = db.define('user', {
     unique: true,
     allowNull: false
   },
+  lastName: {
+    type: Sequelize.STRING
+  },
   typeId: {
     type: Sequelize.INTEGER
   },
@@ -31,6 +34,12 @@ const User = db.define('user', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  imgURL: {
+    type: Sequelize.STRING,
+  },
+  phone: {
+    type: Sequelize.STRING
+  }
 })
 
 module.exports = User

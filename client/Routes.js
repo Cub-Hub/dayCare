@@ -10,7 +10,7 @@ import CalendarBig from './components/CalendarBig';
 import Calendar from './components/Calendar';
 
 
-import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups } from './store'
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins, fetchActivities } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
 import Home from './components/Home'
@@ -29,7 +29,16 @@ import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuc
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
 import Invoices from './components/parent/Invoices'
+
 import IncidentForm from './components/IncidentForm';
+
+import financialSnapshot from './components/admin/financialSnapshot';
+import AllEmployees from './components/admin/AllEmployees';
+import SingleEmployee from './components/admin/SingleEmployee';
+import ViewStudents from './components/employee/ViewStudents';
+import ForgotPassword from './components/ForgotPassword';
+
+
 /**
  * COMPONENT
  */
@@ -69,13 +78,15 @@ class Routes extends Component {
               <Switch>
                 <Route path="/home" component={AdminDashboard} />
                 <Route path="/calendar" component={CalendarBig} />
-                {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 <Route path="/admin-dashboard" component={AdminDashboard} />
                 <Route path="/employee-landing" component={EmployeeLanding} />
                 <Route path="/onlineCheckin" component={OnlineCheckin} />
+                <Route path="/employees" component={AllEmployees} />
+                <Route path="/employee/:id" component={SingleEmployee} />
                 <Route path="/students" component={AllStudents} />
                 <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+                <Route path="/financial-snapshot" component={financialSnapshot} />
                 <Redirect to="/home" />
               </Switch>
               :
@@ -86,6 +97,10 @@ class Routes extends Component {
                 <Route path="/calendar" component={CalendarBig} />
 
                 <Route path="/status" component={GroupStatus} />
+
+                <Route path="/my/students" component={ViewStudents} />
+
+                <Route path="/student/:id" component={SingleStudent} />
 
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
@@ -100,6 +115,7 @@ class Routes extends Component {
               <Route path="/newsletter" component={MailchimpFormContainer} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/forgotpassword" component={ForgotPassword} />
             </Switch>
           )}
       </div>
@@ -127,6 +143,8 @@ const mapDispatch = dispatch => {
       dispatch(getStudents())
       dispatch(getUsers())
       dispatch(fetchGroups())
+      dispatch(fetchClockins())
+      dispatch(fetchActivities())
     }
   }
 }

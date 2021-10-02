@@ -19,7 +19,6 @@ const GroupStatus = (props) => {
 
   }
 
-  console.log('these are my group status props: ', props)
 
   return (
     <div>

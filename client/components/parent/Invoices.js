@@ -1,12 +1,13 @@
 import React from 'react'
 import Checkout from './Checkout'
-import Transactions from './Transactions'
+import ManageSubscription from './ManageSubscription'
+
 
 const Invoices = () => {
   return (
     <div>
       <Checkout />
-      <Transactions />
+      <ManageSubscription />
     </div>
   )
 }
