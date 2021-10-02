@@ -10,6 +10,7 @@ import schools from './schools'
 import checkins from './admin/checkins'
 import clockin from './employee/clockin'
 import groups from './admin/groups'
+import stripe from './stripe'
 import employeeClockins from './admin/employeeClockins'
 
 const reducer = combineReducers({
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   checkins,
   clockin,
   groups,
+  stripe,
   employeeClockins
 })
 

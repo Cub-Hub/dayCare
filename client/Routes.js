@@ -28,7 +28,8 @@ import StripeCanceled from './components/parent/StripeCanceled';
 import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuccess'
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
-import Invoices from './components/parent/Invoices';
+import Invoices from './components/parent/Invoices'
+import financialSnapshot from './components/admin/financialSnapshot';
 import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
 
@@ -79,6 +80,7 @@ class Routes extends Component {
                 <Route path="/students" component={AllStudents} />
                 <Route path="/student/:id" component={SingleStudent} />
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
+                <Route path="/financial-snapshot" component={financialSnapshot} />
                 <Redirect to="/home" />
               </Switch>
               :
