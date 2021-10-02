@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import Clockin from './Clockin';
 import Carousel from '../Carousel'
 
+import Calendar from '../Calendar'
+// import { Button, Modal } from 'react-bootstrap'
+
+
 import { getStudents, postActivities, fetchActivities } from '../../store';
 
 /**
@@ -137,7 +141,14 @@ const EmployeeLanding = (props) => {
             <br /><br />
 
             <div className="button"><Link to='/status'>Set Group Status</Link></div>
-            <div className="button"><p>Incident Report</p></div>
+            
+            
+            
+            <div className="button"><p> <Link to='/incidents'>Incident Report</Link></p></div>
+            
+            
+            
+            
           </div>
           <div>
             <div className="col2">
@@ -151,7 +162,7 @@ const EmployeeLanding = (props) => {
                 <div className="carousel-wrapper">
                   
                   <div>
-                    <Carousel />
+                    <Calendar />
                     {/*<h3 className="block-title">Today's Lesson Plan</h3>
                     <ol>
                       <li>12:00 – Color match</li>

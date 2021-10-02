@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ApiCalendar from 'react-google-calendar-api'
 
+
 class CalendarPage extends React.Component {
   constructor(props) {
     super(props);
@@ -230,14 +231,17 @@ class CalendarPage extends React.Component {
      {/*<button onClick = {this.authorizeClick}>Authorize</button><br/>
           <button onClick = {this.signoutClick}>Sign-Out</button><br/>*/}
           <button onClick = {this.addItemClick}>Add Event</button>
+
   </div>}
   
+
   
-  
+
   <div id='bigCalendarRight' className = 'block'>
       <center><iframe id = "FullCalendar3" src="calendar.html" width = '1600' height = '700' scrolling = 'yes'></iframe></center>
     </div>
   
+
     </div>
     )
   }
