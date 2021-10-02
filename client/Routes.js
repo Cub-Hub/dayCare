@@ -29,7 +29,7 @@ import StripeSubscriptionSuccess from './components/parent/StripeSubscriptionSuc
 import TermsOfService from './components/parent/TermsOfService';
 import PrivacyPolicy from './components/parent/PrivacyPolicy';
 import Invoices from './components/parent/Invoices'
-
+import IncidentForm from './components/IncidentForm';
 /**
  * COMPONENT
  */
@@ -82,7 +82,7 @@ class Routes extends Component {
               //employee
               <Switch>
                 <Route path="/home" component={EmployeeLanding} />
-
+                <Route path="/incidents" component={IncidentForm} />{/* Experiment*/}
                 <Route path="/calendar" component={CalendarBig} />
 
                 <Route path="/status" component={GroupStatus} />

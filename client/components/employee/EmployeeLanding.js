@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import Clockin from './Clockin';
 import Carousel from '../Carousel'
+import Calendar from '../Calendar'
 // import { Button, Modal } from 'react-bootstrap'
 
 import { getStudents } from '../../store';
@@ -92,7 +93,14 @@ class EmployeeLanding extends Component {
             <br /><br />
 
             <div className="button"><Link to='/status'>Set Group Status</Link></div>
-            <div className="button"><p>Incident Report</p></div>
+            
+            
+            
+            <div className="button"><p> <Link to='/incidents'>Incident Report</Link></p></div>
+            
+            
+            
+            
           </div>
           <div>
             <div className="col2">
@@ -106,7 +114,7 @@ class EmployeeLanding extends Component {
                 <div className="carousel-wrapper">
                   
                   <div>
-                    <Carousel />
+                    <Calendar />
                     {/*<h3 className="block-title">Today's Lesson Plan</h3>
                     <ol>
                       <li>12:00 – Color match</li>
