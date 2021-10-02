@@ -10,7 +10,7 @@ import CalendarBig from './components/CalendarBig';
 import Calendar from './components/Calendar';
 
 
-import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins } from './store'
+import { me, fetchDailyCheckin, getStudents, getUsers, fetchGroups, fetchClockins, fetchActivities } from './store'
 
 // import { QrGenerator } from './components/QrGenerator';
 import Home from './components/Home'
@@ -32,6 +32,7 @@ import Invoices from './components/parent/Invoices'
 import financialSnapshot from './components/admin/financialSnapshot';
 import AllEmployees from './components/admin/AllEmployees';
 import SingleEmployee from './components/admin/SingleEmployee';
+import ViewStudents from './components/employee/ViewStudents';
 import ForgotPassword from './components/ForgotPassword';
 
 /**
@@ -93,6 +94,10 @@ class Routes extends Component {
 
                 <Route path="/status" component={GroupStatus} />
 
+                <Route path="/my/students" component={ViewStudents} />
+
+                <Route path="/student/:id" component={SingleStudent} />
+
                 {/* <Route path="/qrgenerator" component={QrGenerator} /> */}
                 {/* <Route path="/admin-dashboard" component={AdminDashboard} /> */}
                 <Route path="/students-activity-monitor" component={StudentsActivityMonitor} />
@@ -135,6 +140,7 @@ const mapDispatch = dispatch => {
       dispatch(getUsers())
       dispatch(fetchGroups())
       dispatch(fetchClockins())
+      dispatch(fetchActivities())
     }
   }
 }

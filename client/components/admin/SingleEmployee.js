@@ -54,7 +54,15 @@ const SingleEmployee = (props) => {
             <div className='employeeText'>Today's Clockin History</div>
             <hr/>
             {curEmployee ? curClockins.map((clockin) => {
-                return <div key={clockin.id}>{curEmployee.username} {clockin.clockedin ? 'Clocked in' : 'Clocked out'} today at {clockin.time}</div>
+                return (
+                  clockin.adminChange ?
+                  <div key={clockin.id}>
+                 <br/> Admin {clockin.clockedin ? 'Clocked in' : 'Clocked out'} {curEmployee.username}  today at {clockin.time} 
+                </div>
+                :
+                <div key={clockin.id}>
+                 <br/> {curEmployee.username} {clockin.clockedin ? 'Clocked in' : 'Clocked out'} today at {clockin.time}
+                </div>)
             }):''}
         </div>
     </div>
