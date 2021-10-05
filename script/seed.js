@@ -63,11 +63,11 @@ async function seed() {
   const [Khadijah, Jayson, Suzannah, Enzo, Brisa, Eliza, Cameron, Frida, Rosemary, Victor, Viviana, Cooper, Molly, Harley, Admin,
     Lilianna, Javier, Terrell, Cordell, Maria, Sincere, Shayla, Lea, Amara, Gemma, Zoe, Derrick, Anabella] = await Promise.all([
       User.create({
-        username: 'Khadijah', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Oneil',
+        username: 'Bob', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Oneil',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp1.jpeg', email: 'Khadijah@gmail.com', phone: '305-781-2359'
       }),
       User.create({
-        username: 'Jayson', password: '123', typeId: 3, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Foster',
+        username: 'Jayson', password: '123', typeId: 3, schoolId: cots4tots.id, groupId: cotsC.id, lastName: 'Foster',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp2.jpeg', email: 'Jayson@gmail.com', phone: '305-932-9572'
       }),
       User.create({
@@ -75,7 +75,7 @@ async function seed() {
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp3.jpeg', email: 'Suzannah@gmail.com', phone: '305-341-2762'
       }),
       User.create({
-        username: 'Enzo', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsC.id, lastName: 'Michael',
+        username: 'Enzo', password: '123', typeId: 1, schoolId: cots4tots.id, groupId: cotsA.id, lastName: 'Michael',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp4.jpeg', email: 'Enzo@gmail.com', phone: '305-320-4321'
       }),
       User.create({
@@ -111,7 +111,7 @@ async function seed() {
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp12.jpeg', email: 'Cooper@gmail.com', phone: '305-129-5969'
       }),
       User.create({
-        username: 'Molly', password: '123', typeId: 1, schoolId: lidsNkids.id, groupId: lidsE.id, lastName: 'Benitez',
+        username: 'Molly', password: '123', typeId: 3, schoolId: lidsNkids.id, groupId: lidsE.id, lastName: 'Benitez',
         imgURL: 'https://cub-hub.s3.us-east-2.amazonaws.com/emp13.jpeg', email: 'Molly@gmail.com', phone: '305-781-9992'
       }),
       User.create({
