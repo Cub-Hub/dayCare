@@ -151,7 +151,7 @@ async function seed() {
     }),
     Student.create({
       firstName: 'Natalie', lastName: 'Bell', userId: Khadijah.id,
-      categoryId: preschooler.id, age: 3, groupId: cotsC.id,
+      categoryId: preschooler.id, age: 3, groupId: cotsA.id,
       imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/toddler2.png", schoolId: cots4tots.id
     }),
     Student.create({
@@ -168,7 +168,7 @@ async function seed() {
     }),
     Student.create({
       firstName: 'Arturo', lastName: 'Welch', userId: Jayson.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/boy-4.png",
-      categoryId: infant.id, age: 1, schoolId: wildChilds.id, groupId: cotsA.id
+      categoryId: infant.id, age: 1, schoolId: wildChilds.id, groupId: cotsB.id
     }),
     Student.create({
       firstName: 'Jayla', lastName: 'Conley', userId: Jayson.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/boy-5.png",
@@ -316,7 +316,7 @@ async function seed() {
     }),
     Student.create({
       firstName: 'Jameson', lastName: 'Blackwell', userId: Suzannah.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/girl-17.png",
-      categoryId: infant.id, age: 1, schoolId: cots4tots.id, groupId: cotsA.id
+      categoryId: infant.id, age: 1, schoolId: cots4tots.id, groupId: cotsB.id
     }),
     Student.create({
       firstName: 'Nadia', lastName: 'Walsh', userId: Suzannah.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/girl-18.png",
@@ -436,7 +436,7 @@ async function seed() {
     }),
     Student.create({
       firstName: 'Kira', lastName: 'Gallegos', userId: Lea.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/boy-7.png",
-      categoryId: infant.id, age: 1, schoolId: cots4tots.id, groupId: cotsA.id
+      categoryId: infant.id, age: 1, schoolId: cots4tots.id, groupId: cotsB.id
     }),
     Student.create({
       firstName: 'Pierre', lastName: 'Logan', userId: Terrell.id, imgURL: "https://cub-hub.s3.us-east-2.amazonaws.com/boy-6.png",
